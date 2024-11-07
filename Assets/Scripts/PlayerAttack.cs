@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//유저의 공격가능 여부 판단 및 공격 시행 명령
 public class PlayerAttack : MonoBehaviour
 {    
-    
+
     [SerializeField] private float swordAttackSpeed;
     [SerializeField] private float reloadSpeed;
     [SerializeField] private float gunAttackSpeed;
-
-    private float swordAttackCool = 1f;//1f/swordAttackSpeed;
     
     public int bulletNumber = 2;
     public int maxBullet = 2;
@@ -47,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator SwordAttack()
     {
         canSwordAttack = false;
-        yield return new WaitForSeconds(swordAttackCool);
+        yield return new WaitForSeconds(swordAttackSpeed);
         canSwordAttack = true;
     }
 
@@ -64,6 +62,6 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(reloadSpeed);
         bulletNumber += 1;
-        Debug.Log("1발장전");
+        Debug.Log($"1발장전 {bulletNumber}");
     }
 }
