@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/EnemyMove.cs.meta
+guid: 0d3cc5e6e7e977e4c9f300c6880bc576
+========
+guid: 6c8a6470887c69c4eacbfbec50c13465
+>>>>>>>> e151cfbf73b2de97bc79af3cb6d787ce0cdbe965:Assets/Scripts/PlayerMove.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
