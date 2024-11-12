@@ -22,6 +22,9 @@ public class PlayerMove : MonoBehaviour
     private HingeJoint2D joint;
     private bool isOnRope = false;
     HingeJoint2D linkedHinge;
+    [SerializeField] private float ropeForce = 15f;
+    float ropeCooltime=0.1f;
+    bool ableRope = false;
 
     //플레이어 대쉬
     private bool isDash = false;
@@ -38,7 +41,6 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         joint = GetComponent<HingeJoint2D>();
-
     }
     // Update is called once per frame
     void Update()
@@ -60,6 +62,20 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
+        if(Input.GetKey(KeyCode.UpArrow) && isOnRope)
+        {
+            if (!ableRope)
+            {
+                StartCoroutine(UpRope());
+            }
+        }
+        if (Input.GetKey(KeyCode.DownArrow) && isOnRope) 
+        {
+            if (!ableRope)
+            {
+                StartCoroutine(DownRope());
+            }
+        }
         if (Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
@@ -71,33 +87,45 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isOnRope)
         {
             isOnRope = false;
-            joint.connectedBody = rb;
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (Rope.FindHead(linkedHinge) != linkedHinge.connectedBody)
-            {
-                Rigidbody2D connectedRigidbody = linkedHinge.connectedBody;//현재 연결되어있는 오브젝트(1)에서 오브젝트(1)을 잡고있는 오브젝트(2)를 구함
-                joint.connectedBody = connectedRigidbody;//오브젝트(2)에 플레이어를 연결
-
-                joint.anchor = new Vector2(0, 0.5f);//플레이어의 anchor를 오브젝트의 아랫부분으로 연결
-                joint.connectedAnchor = new Vector2(0, -0.5f);
-                linkedHinge = connectedRigidbody.GetComponent<HingeJoint2D>();//현재 연결 된 오브젝트(2)를 오브젝트(1)이 있던 변수에 덮어씌움
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Rigidbody2D connectedRigidbody = Rope.FindBefore(linkedHinge);//연결되어있는 오브젝트(1)이 잡고있는 오브젝트(0)를 구함
-            joint.connectedBody = connectedRigidbody;//오브젝트(0)에 플레이어를 연결
-
-            joint.anchor = new Vector2(0, 0.5f);//플레이어의 anchor를 오브젝트의 아랫부분으로 연결
-            joint.connectedAnchor = new Vector2(0, -0.5f);
-            linkedHinge = connectedRigidbody.GetComponent<HingeJoint2D>();//현재 연결 된 오브젝트(0)를 오브젝트(1)이 있던 변수에 덮어씌움
+            joint.enabled = false;
+            //rb.velocity+=new Vector2(rb.velocity.x, rb.velocity.y);
+            rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.5f;//1.5f는 반동 계수
         }
 
         Flip();
     }
 
+    IEnumerator UpRope()
+    {
+        if (Rope.FindHead(linkedHinge) != linkedHinge.connectedBody)
+        {
+            ableRope = true;
+            Rigidbody2D connectedRigidbody = linkedHinge.connectedBody;
+            //현재 연결되어있는 오브젝트(1)에서 오브젝트(1)을 잡고있는 오브젝트(2)를 구함
+            joint.connectedBody = connectedRigidbody;//오브젝트(2)에 플레이어를 연결
+
+            joint.anchor = new Vector2(0, 0.5f);//플레이어의 anchor를 오브젝트의 아랫부분으로 연결
+            joint.connectedAnchor = new Vector2(0, -0.5f);
+            linkedHinge = connectedRigidbody.GetComponent<HingeJoint2D>();
+            //현재 연결 된 오브젝트(2)를 오브젝트(1)이 있던 변수에 덮어씌움
+        }
+        yield return new WaitForSeconds(ropeCooltime);
+        ableRope = false;
+    }
+    IEnumerator DownRope()
+    {
+        ableRope = true;
+        Rigidbody2D connectedRigidbody = Rope.FindBefore(linkedHinge);
+        //연결되어있는 오브젝트(1)이 잡고있는 오브젝트(0)를 구함
+        joint.connectedBody = connectedRigidbody;//오브젝트(0)에 플레이어를 연결
+
+        joint.anchor = new Vector2(0, 0.5f);//플레이어의 anchor를 오브젝트의 아랫부분으로 연결
+        joint.connectedAnchor = new Vector2(0, -0.5f);
+        linkedHinge = connectedRigidbody.GetComponent<HingeJoint2D>();
+        //현재 연결 된 오브젝트(0)를 오브젝트(1)이 있던 변수에 덮어씌움
+        yield return new WaitForSeconds(ropeCooltime);
+        ableRope = false;
+    }
     IEnumerator dash()
     {
         isDash = true;
@@ -117,12 +145,16 @@ public class PlayerMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
         if (isOnRope)
         {
-            rb.AddForce(new Vector2(speed * moveInput, 0f));
-            return;
+            rb.AddForce(new Vector2(ropeForce * moveInput, 0f));
         }
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        else
+        {
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        }
+
     }
 
     private bool IsGrounded()
@@ -144,8 +176,9 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("Rope") && !isOnRope)
+        if (coll.CompareTag("Rope") && !isOnRope&&Input.GetKey(KeyCode.UpArrow))
         {
+            joint.enabled=true;
             Rigidbody2D ropeRb = coll.GetComponent<Rigidbody2D>();
             joint.connectedBody = ropeRb;
 
@@ -158,7 +191,6 @@ public class PlayerMove : MonoBehaviour
 
         }
     }
-
 }
 
 
