@@ -18,3 +18,4 @@ public class Bullet : MonoBehaviour
         transform.Translate(direction * bulletSpeed * Time.deltaTime);
     }
 }
+//바지락칼국수
