@@ -5,10 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Rope
-<<<<<<< HEAD
-  - Enemy
-=======
->>>>>>> e151cfbf73b2de97bc79af3cb6d787ce0cdbe965
   layers:
   - Default
   - TransparentFX
@@ -17,13 +13,8 @@ TagManager:
   - Water
   - UI
   - Ground
-<<<<<<< HEAD
-  - Platform
-  - Platform2
-=======
   - 
   - 
->>>>>>> e151cfbf73b2de97bc79af3cb6d787ce0cdbe965
   - 
   - 
   - 
