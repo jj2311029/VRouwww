@@ -1,6 +1,8 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEditor.Experimental;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Tilemaps;
@@ -15,9 +17,14 @@ public class PlayerMove : MonoBehaviour
 
     //플레이어 점프
     private float jumpingPower = 16f;//점프 높이
-    
+
+    //플레이어 로프 이동
+    private HingeJoint2D joint;
+    private bool isOnRope = false;
+    HingeJoint2D linkedHinge;
+
     //플레이어 대쉬
-    private bool isDash=false;
+    private bool isDash = false;
     private bool canDash = true;
     [SerializeField] private float dashDuration = 0.2f;//대쉬 지속시간
     [SerializeField] private float dashCoolTime = 2.0f;//대쉬 쿨타임
@@ -27,17 +34,21 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    
 
+    private void Start()
+    {
+        joint = GetComponent<HingeJoint2D>();
+
+    }
     // Update is called once per frame
     void Update()
     {
-        
-        if( Input.GetKey(KeyCode.LeftArrow))
+
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             moveInput = -1f;
         }
-        else if ( Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             moveInput = 1f;
         }
@@ -53,10 +64,37 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash&&!isDash) 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDash)
         {
             StartCoroutine(dash());
         }
+        if (Input.GetKeyDown(KeyCode.Space) && isOnRope)
+        {
+            isOnRope = false;
+            joint.connectedBody = rb;
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (Rope.FindHead(linkedHinge) != linkedHinge.connectedBody)
+            {
+                Rigidbody2D connectedRigidbody = linkedHinge.connectedBody;//현재 연결되어있는 오브젝트(1)에서 오브젝트(1)을 잡고있는 오브젝트(2)를 구함
+                joint.connectedBody = connectedRigidbody;//오브젝트(2)에 플레이어를 연결
+
+                joint.anchor = new Vector2(0, 0.5f);//플레이어의 anchor를 오브젝트의 아랫부분으로 연결
+                joint.connectedAnchor = new Vector2(0, -0.5f);
+                linkedHinge = connectedRigidbody.GetComponent<HingeJoint2D>();//현재 연결 된 오브젝트(2)를 오브젝트(1)이 있던 변수에 덮어씌움
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Rigidbody2D connectedRigidbody = Rope.FindBefore(linkedHinge);//연결되어있는 오브젝트(1)이 잡고있는 오브젝트(0)를 구함
+            joint.connectedBody = connectedRigidbody;//오브젝트(0)에 플레이어를 연결
+
+            joint.anchor = new Vector2(0, 0.5f);//플레이어의 anchor를 오브젝트의 아랫부분으로 연결
+            joint.connectedAnchor = new Vector2(0, -0.5f);
+            linkedHinge = connectedRigidbody.GetComponent<HingeJoint2D>();//현재 연결 된 오브젝트(0)를 오브젝트(1)이 있던 변수에 덮어씌움
+        }
+
         Flip();
     }
 
@@ -64,9 +102,9 @@ public class PlayerMove : MonoBehaviour
     {
         isDash = true;
         canDash = false;
-        
+
         Debug.Log("Dash!");
-        
+
         //rb.AddForce(new Vector2(horizontal* dashSpeed, 1f), ForceMode2D.Impulse);  // 대시 힘 가하기
 
         float dashDirection = transform.localScale.x > 0 ? 1 : -1;
@@ -79,6 +117,11 @@ public class PlayerMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (isOnRope)
+        {
+            rb.AddForce(new Vector2(speed * moveInput, 0f));
+            return;
+        }
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
     }
 
@@ -98,14 +141,24 @@ public class PlayerMove : MonoBehaviour
 
         }
     }
-    private void OnCollisionEnter2D(Collision2D coll)
+
+    private void OnTriggerEnter2D(Collider2D coll)
     {
-        /*if(coll.collider.CompareTag("Rope"))
+        if (coll.CompareTag("Rope") && !isOnRope)
         {
-            Rope rope=coll.gameObject.GetComponent<Rope>();
-            rope.AnchorPlayer(this.gameObject.transform);
-        }*///로프 액션아직 구현 못함
+            Rigidbody2D ropeRb = coll.GetComponent<Rigidbody2D>();
+            joint.connectedBody = ropeRb;
+
+            joint.anchor = new Vector2(0, 0.5f);
+            joint.connectedAnchor = new Vector2(0, -0.5f);
+
+            isOnRope = true;
+            linkedHinge = coll.GetComponent<HingeJoint2D>();
+
+
+        }
     }
+
 }
 
 
