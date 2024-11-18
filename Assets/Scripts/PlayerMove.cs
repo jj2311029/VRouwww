@@ -22,8 +22,8 @@ public class PlayerMove : MonoBehaviour
     private HingeJoint2D joint;
     private bool isOnRope = false;
     HingeJoint2D linkedHinge;
-    [SerializeField] private float ropeForce = 15f;
-    float ropeCooltime=0.1f;
+    [SerializeField] private float ropeForce = 30f;
+    float ropeCooltime = 0.1f;
     bool ableRope = false;
 
     //플레이어 대쉬
@@ -62,14 +62,14 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
-        if(Input.GetKey(KeyCode.UpArrow) && isOnRope)
+        if (Input.GetKey(KeyCode.UpArrow) && isOnRope)
         {
             if (!ableRope)
             {
                 StartCoroutine(UpRope());
             }
         }
-        if (Input.GetKey(KeyCode.DownArrow) && isOnRope) 
+        if (Input.GetKey(KeyCode.DownArrow) && isOnRope)
         {
             if (!ableRope)
             {
@@ -88,8 +88,7 @@ public class PlayerMove : MonoBehaviour
         {
             isOnRope = false;
             joint.enabled = false;
-            //rb.velocity+=new Vector2(rb.velocity.x, rb.velocity.y);
-            rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.5f;//1.5f는 반동 계수
+            rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.8f;//1.5f는 반동 계수
         }
 
         Flip();
@@ -133,8 +132,6 @@ public class PlayerMove : MonoBehaviour
 
         Debug.Log("Dash!");
 
-        //rb.AddForce(new Vector2(horizontal* dashSpeed, 1f), ForceMode2D.Impulse);  // 대시 힘 가하기
-
         float dashDirection = transform.localScale.x > 0 ? 1 : -1;
         rb.velocity = new Vector2(dashDirection * dashSpeed, rb.velocity.y);
 
@@ -148,7 +145,7 @@ public class PlayerMove : MonoBehaviour
 
         if (isOnRope)
         {
-            rb.AddForce(new Vector2(ropeForce * moveInput, 0f));
+            rb.AddForce(rb.velocity.normalized*ropeForce);
         }
         else
         {
@@ -176,9 +173,9 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("Rope") && !isOnRope&&Input.GetKey(KeyCode.UpArrow))
+        if (coll.CompareTag("Rope") && !isOnRope && Input.GetKey(KeyCode.UpArrow))
         {
-            joint.enabled=true;
+            joint.enabled = true;
             Rigidbody2D ropeRb = coll.GetComponent<Rigidbody2D>();
             joint.connectedBody = ropeRb;
 
@@ -192,5 +189,6 @@ public class PlayerMove : MonoBehaviour
         }
     }
 }
+
 
 
