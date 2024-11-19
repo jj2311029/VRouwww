@@ -7,6 +7,7 @@ using UnityEditor.Experimental;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     private HingeJoint2D joint;
     private bool isOnRope = false;
     HingeJoint2D linkedHinge;
-    [SerializeField] private float ropeForce = 30f;
+    [SerializeField] private float ropeForce = 15f;
     float ropeCooltime = 0.1f;
     bool ableRope = false;
 
@@ -38,10 +39,23 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    //현재 체력
+    [SerializeField] private float curHealth;
+    //최대 체력
+    [SerializeField] public float maxHealth;
+    //HP 설정
+    public Slider HpBarSlider;
+    Rigidbody2D rigid;
+
+    private SpriteRenderer spriteRenderer;
+
     private void Start()
     {
         joint = GetComponent<HingeJoint2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); // SpriteRenderer 초기화
+        rigid = GetComponent<Rigidbody2D>(); // Rigidbody2D 초기화
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -88,7 +102,8 @@ public class PlayerMove : MonoBehaviour
         {
             isOnRope = false;
             joint.enabled = false;
-            rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.8f;//1.5f는 반동 계수
+            //rb.velocity+=new Vector2(rb.velocity.x, rb.velocity.y);
+            rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.5f;//1.5f는 반동 계수
         }
 
         Flip();
@@ -132,6 +147,8 @@ public class PlayerMove : MonoBehaviour
 
         Debug.Log("Dash!");
 
+        //rb.AddForce(new Vector2(horizontal* dashSpeed, 1f), ForceMode2D.Impulse);  // 대시 힘 가하기
+
         float dashDirection = transform.localScale.x > 0 ? 1 : -1;
         rb.velocity = new Vector2(dashDirection * dashSpeed, rb.velocity.y);
 
@@ -145,7 +162,7 @@ public class PlayerMove : MonoBehaviour
 
         if (isOnRope)
         {
-            rb.AddForce(rb.velocity.normalized*ropeForce);
+            rb.AddForce(new Vector2(ropeForce * moveInput, 0f));
         }
         else
         {
@@ -188,7 +205,42 @@ public class PlayerMove : MonoBehaviour
 
         }
     }
+
+    public void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+    }
+    public void SetUp(float amount)
+    {
+        maxHealth = amount;
+        curHealth = maxHealth;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+            return;
+        //   OnDamaged(collision.transform.position);
+    }
+    public void OnDamaged(Vector2 targetPos)
+    {
+        //PlayerDamaged 10레이어
+        gameObject.layer = 10;
+        //플레이어 무적판정
+        spriteRenderer.color = new Color(1, 1, 1, 0.3f);
+        //피격 시 뒤로 물러남
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
+        rigid.AddForce(new Vector2(dirc, 1) * 3, ForceMode2D.Impulse);
+
+        Invoke("OffDamaged", 0.5f);
+
+    }
+
+
+    void OffDamaged()
+    {
+        //무적판정 풀림
+        gameObject.layer = 11;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
+
 }
-
-
-

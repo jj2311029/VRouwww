@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
@@ -18,11 +17,7 @@ public class EnemyMove : MonoBehaviour
     private bool isChasing;
     private int nextMove;
 
-    NER EA;
-    void Start()
-    {
-        EA = GetComponentInChildren<NER>();
-    }
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -90,8 +85,19 @@ public class EnemyMove : MonoBehaviour
 
     private void StopAndPrepareAttack()
     {
-        rigid.velocity = Vector2.zero;
-        EA.Start();
+        rigid.velocity = Vector2.zero; // 적 멈춤
+        Debug.Log("적 플레이어 공격");
+
+        // 플레이어가 근처에 있는지 확인
+        if (player != null)
+        {
+            PlayerHP playerScript = player.GetComponent<PlayerHP>();
+            if (playerScript != null)
+                if (playerScript != null)
+                {
+                    playerScript.TakeDamage(1, this.transform.position);
+                }
+        }
     }
 
     private void Think()
