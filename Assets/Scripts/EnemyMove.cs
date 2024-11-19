@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigid;
-    [SerializeField] private SpriteRenderer render;
+    [SerializeField] protected Rigidbody2D rigid;
+    [SerializeField] protected SpriteRenderer render;
 
-    [SerializeField] private float speed = 2.5f;
-    [SerializeField] private float followDistance = 5f;    // 추격 시작 거리
-    [SerializeField] private float stopChaseRange = 2f;    // 추적 멈출 거리 (공격 준비 거리)
-    [SerializeField] private int Hp;
+    [SerializeField] protected float speed = 2.5f;
+    [SerializeField] protected float followDistance = 5f;    // 추격 시작 거리
+    [SerializeField] protected float stopChaseRange = 2f;    // 추적 멈출 거리 (공격 준비 거리)
+    [SerializeField] protected float Hp;
 
-    private Transform player;
-    private bool isPlayerOnSamePlatform;
-    private bool isChasing;
-    private int nextMove;
+    protected Transform player;
+    protected bool isPlayerOnSamePlatform;
+    protected bool isChasing;
+    protected int nextMove;
 
 
     void Awake()
