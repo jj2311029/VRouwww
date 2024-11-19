@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class SwordStrike : MonoBehaviour
 {
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.transform.position += -transform.right * 3f;
+        if (collision.tag == "Enemy")
+        {
+            EnemyMove EA = collision.GetComponent<EnemyMove>();
+            EA.TakeDamage(2);
+        }
     }
 }
