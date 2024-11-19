@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
@@ -10,12 +11,18 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] private float speed = 2.5f;
     [SerializeField] private float followDistance = 5f;    // 추격 시작 거리
     [SerializeField] private float stopChaseRange = 2f;    // 추적 멈출 거리 (공격 준비 거리)
+    [SerializeField] private int Hp;
 
     private Transform player;
     private bool isPlayerOnSamePlatform;
     private bool isChasing;
     private int nextMove;
 
+    NER EA;
+    void Start()
+    {
+        EA = GetComponentInChildren<NER>();
+    }
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -59,7 +66,7 @@ public class EnemyMove : MonoBehaviour
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
         Debug.DrawRay(frontVector, Vector3.down, Color.green);
 
-        RaycastHit2D rayHit = Physics2D.Raycast(frontVector, Vector3.down, 2f, LayerMask.GetMask("Platform"));
+        RaycastHit2D rayHit = Physics2D.Raycast(frontVector, Vector3.down, 2f, LayerMask.GetMask("Ground"));
 
         if (rayHit.collider == null)
         {
@@ -84,7 +91,7 @@ public class EnemyMove : MonoBehaviour
     private void StopAndPrepareAttack()
     {
         rigid.velocity = Vector2.zero;
-        Debug.Log("플레이어 공격");
+        EA.Start();
     }
 
     private void Think()
@@ -104,5 +111,29 @@ public class EnemyMove : MonoBehaviour
     private void CheckPlatform()
     {
         isPlayerOnSamePlatform = Mathf.Abs(player.position.y - transform.position.y) < 0.5f;
+    }
+
+    // 2024/11/14 남정현 적 hp 및 사망 추가
+
+    // 충돌 감지
+    // 이거 istrigger로 가면 사거리가 trigger라서 플레이어가 적 사거리를 때려도 적이 죽어버린다
+    // collision으로 가면 총알과 검이 둘 다 trigger 여서 적의 체력이 닳지 않는다
+
+
+    // 데미지 사망
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("아야");
+        Hp -= damage;
+        if (Hp <= 0)
+            Destroy(this.gameObject);
+    }
+
+    // 슬로우
+    public IEnumerator Slow()
+    {
+        speed -= 1.5f;
+        yield return new WaitForSeconds(1.5f);
+        speed += 1.5f;
     }
 }
