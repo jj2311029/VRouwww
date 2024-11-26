@@ -215,31 +215,22 @@ public class PlayerMove : MonoBehaviour
         maxHealth = amount;
         curHealth = maxHealth;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-            return;
-        //   OnDamaged(collision.transform.position);
-    }
+   
     public void OnDamaged(Vector2 targetPos)
     {
-        //PlayerDamaged 10레이어
-        gameObject.layer = 10;
-        //플레이어 무적판정
+        gameObject.layer = LayerMask.NameToLayer("PlayerDamaged"); // 무적 레이어
+        
         spriteRenderer.color = new Color(1, 1, 1, 0.3f);
-        //피격 시 뒤로 물러남
-        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        rigid.AddForce(new Vector2(dirc, 1) * 3, ForceMode2D.Impulse);
+      
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1; //넉백
+        rigid.AddForce(new Vector2(dirc, 2) * 5, ForceMode2D.Impulse);
 
-        Invoke("OffDamaged", 0.5f);
-
+        Invoke("OffDamaged", 0.5f); //무적해제
     }
-
-
     void OffDamaged()
     {
         //무적판정 풀림
-        gameObject.layer = 11;
+        gameObject.layer = LayerMask.NameToLayer("Player"); ; // 무적 레이어 해제
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 

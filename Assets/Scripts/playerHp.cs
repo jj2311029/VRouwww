@@ -1,8 +1,8 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHP : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class PlayerHP : MonoBehaviour
     private float currentHP;      // 현재 HP
 
     PlayerMove Playerscript;
+
     void Start()
     {
         // 초기 HP 설정
@@ -25,29 +26,6 @@ public class PlayerHP : MonoBehaviour
         Playerscript = GetComponent<PlayerMove>();
     }
 
-    // HP를 감소시키는 함수
-    /*void DecreaseHP(int amount)
-    {
-        // HP 감소
-        currentHP -= amount;
-
-        // HP가 0 미만으로 떨어지지 않도록 처리
-        if (currentHP < 0)
-        {
-            currentHP = 0;
-        }
-
-        // 슬라이더 값 갱신
-        HpBarSlider.value = currentHP;
-    }*/
-
-    private void HpBar()
-    {
-        // 플레이어의 HP 값을 초기 
-        currentHP = maxHP;
-        HpBarSlider.maxValue = maxHP;
-        HpBarSlider.value = currentHP;
-    }
     public void TakeDamage(float damage, Vector2 targetpos)
     {
         currentHP -= damage;
@@ -58,13 +36,13 @@ public class PlayerHP : MonoBehaviour
             Die(); // 사망 처리
         }
         CheckHp(); // 체력 UI 갱신
-        
+        Playerscript.OnDamaged(targetpos);//넉백
     }
 
     private void Die()
     {
         Debug.Log("플레이어 사망!");
-        // 사망 처리 로직 추가 (예: 게임 오버 화면)
+        SceneManager.LoadScene("Gameover");
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -77,19 +55,6 @@ public class PlayerHP : MonoBehaviour
     public void CheckHp() //hp 상시 업데이트
     {
         if (HpBarSlider != null)
-            HpBarSlider.value = (int)(currentHP / maxHP);
+            HpBarSlider.value = currentHP;
     }
-
-    /*public void Damage(float damage) //데미지 받음
-    {
-        if (maxHP == 0 || currentHP <= 0) //체력 0이하 패스
-            return;
-        currentHP -= damage;
-        CheckHp();
-        if (currentHP <= 0)
-        {
-            //체력 0 플레이어 사망
-        }
-    }*/
-
 }

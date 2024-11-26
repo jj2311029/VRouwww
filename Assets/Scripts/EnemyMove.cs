@@ -10,7 +10,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] protected float speed = 2.5f;
     [SerializeField] protected float followDistance = 5f;    // 추격 시작 거리
     [SerializeField] protected float stopChaseRange = 2f;    // 추적 멈출 거리 (공격 준비 거리)
-    [SerializeField] protected float Hp;
+    [SerializeField] protected int Hp;
 
     protected Transform player;
     protected bool isPlayerOnSamePlatform;
@@ -18,14 +18,14 @@ public class EnemyMove : MonoBehaviour
     protected int nextMove;
 
 
-    void Awake()
+    protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
         Think(); // 초기 이동 방향 설정
     }
 
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         CheckPlatform(); // 플레이어와 같은 플랫폼에 있는지 확인
 
@@ -55,7 +55,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    private void Patrol()
+    protected void Patrol()
     {
         rigid.velocity = new Vector2(nextMove * speed, rigid.velocity.y);
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
@@ -69,7 +69,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    private void ChasePlayer()
+    protected void ChasePlayer()
     {
         isChasing = true;
         Vector2 direction = (player.position - transform.position).normalized;
@@ -77,13 +77,13 @@ public class EnemyMove : MonoBehaviour
         render.flipX = direction.x < 0;
     }
 
-    private void StopChasing()
+    protected void StopChasing()
     {
         isChasing = false;
         Think(); // 정찰 상태로 전환
     }
 
-    private void StopAndPrepareAttack()
+    protected void StopAndPrepareAttack()
     {
         rigid.velocity = Vector2.zero; // 적 멈춤
         Debug.Log("적 플레이어 공격");
@@ -100,7 +100,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    private void Think()
+    protected void Think()
     {
         nextMove = Random.Range(-1, 2);
         render.flipX = nextMove == -1;
@@ -108,13 +108,13 @@ public class EnemyMove : MonoBehaviour
         Invoke("Think", nextThinkTime); // 일정 시간 후 방향 변경
     }
 
-    private void Turn()
+    protected void Turn()
     {
         nextMove *= -1;
         render.flipX = nextMove == -1;
     }
 
-    private void CheckPlatform()
+    protected void CheckPlatform()
     {
         isPlayerOnSamePlatform = Mathf.Abs(player.position.y - transform.position.y) < 0.5f;
     }
@@ -127,7 +127,7 @@ public class EnemyMove : MonoBehaviour
 
 
     // 데미지 사망
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         Debug.Log("아야");
         Hp -= damage;
