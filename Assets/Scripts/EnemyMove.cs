@@ -93,9 +93,8 @@ public class EnemyMove : MonoBehaviour
         {
             PlayerHP playerScript = player.GetComponent<PlayerHP>();
             if (playerScript != null)
-                if (playerScript != null)
                 {
-                    playerScript.TakeDamage(1, this.transform.position);
+                    playerScript.TakeDamage(1);
                 }
         }
     }
@@ -127,7 +126,7 @@ public class EnemyMove : MonoBehaviour
 
 
     // 데미지 사망
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         Debug.Log("아야");
         Hp -= damage;

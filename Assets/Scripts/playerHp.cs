@@ -7,22 +7,21 @@ using UnityEngine.UI;
 public class PlayerHP : MonoBehaviour
 {
     [SerializeField] private Slider HpBarSlider; // UI 슬라이더
-    public float maxHP = 100;     // 최대 HP
-    private float currentHP;      // 현재 HP
+    public float maxHP = 10;     // 최대 HP
+    public float currentHP;      // 현재 HP
 
     PlayerMove Playerscript;
     void Start()
     {
         // 초기 HP 설정
         currentHP = maxHP;
-
-        HpBarSlider.minValue = 0;
+        //HpBar();
         HpBarSlider.maxValue = maxHP;
-
-        // 슬라이더의 초기 값 설정
         HpBarSlider.value = currentHP;
-
+        // 슬라이더의 초기 값 설정
+        //HpBarSlider.value = currentHP;
         Playerscript = GetComponent<PlayerMove>();
+        CheckHp();
     }
 
     // HP를 감소시키는 함수
@@ -48,7 +47,7 @@ public class PlayerHP : MonoBehaviour
         HpBarSlider.maxValue = maxHP;
         HpBarSlider.value = currentHP;
     }
-    public void TakeDamage(float damage, Vector2 targetpos)
+    public void TakeDamage(float damage)
     {
         currentHP -= damage;
         // 체력이 0 이하인지 확인
@@ -77,7 +76,7 @@ public class PlayerHP : MonoBehaviour
     public void CheckHp() //hp 상시 업데이트
     {
         if (HpBarSlider != null)
-            HpBarSlider.value = (int)(currentHP / maxHP);
+            HpBarSlider.value = currentHP;
     }
 
     /*public void Damage(float damage) //데미지 받음

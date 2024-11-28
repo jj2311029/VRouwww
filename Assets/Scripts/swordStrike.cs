@@ -9,7 +9,15 @@ public class SwordStrike : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             EnemyMove EA = collision.GetComponent<EnemyMove>();
-            EA.TakeDamage(2);
+            if (EA != null)
+            {
+                EA.TakeDamage(2);
+            }
+            else
+            {
+                EnemyStats ES = collision.GetComponent<EnemyStats>();
+                ES.TakeDamage(2, transform);
+            }
         }
     }
 }

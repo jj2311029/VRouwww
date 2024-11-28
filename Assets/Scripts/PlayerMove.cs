@@ -39,12 +39,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    //현재 체력
-    [SerializeField] private float curHealth;
-    //최대 체력
-    [SerializeField] public float maxHealth;
-    //HP 설정
-    public Slider HpBarSlider;
+    
     Rigidbody2D rigid;
 
     private SpriteRenderer spriteRenderer;
@@ -209,11 +204,6 @@ public class PlayerMove : MonoBehaviour
     public void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-    }
-    public void SetUp(float amount)
-    {
-        maxHealth = amount;
-        curHealth = maxHealth;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
