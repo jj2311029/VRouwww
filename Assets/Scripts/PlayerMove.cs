@@ -187,7 +187,6 @@ public class PlayerMove : MonoBehaviour
 
         }
     }
-
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.CompareTag("Rope") && !isOnRope && Input.GetKey(KeyCode.UpArrow))
