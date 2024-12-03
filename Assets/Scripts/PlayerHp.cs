@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class playerHP : MonoBehaviour
+public class PlayerHP : MonoBehaviour
 {
     [SerializeField] private Slider HpBarSlider; // UI 슬라이더
     public float maxHP = 100;     // 최대 HP
