@@ -39,7 +39,12 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-
+    //현재 체력
+    [SerializeField] private float curHealth;
+    //최대 체력
+    [SerializeField] public float maxHealth;
+    //HP 설정
+    public Slider HpBarSlider;
     Rigidbody2D rigid;
 
     private SpriteRenderer spriteRenderer;
@@ -205,31 +210,27 @@ public class PlayerMove : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void SetUp(float amount)
     {
-        if (collision.gameObject.tag == "Enemy")
-            return;
-        //   OnDamaged(collision.transform.position);
+        maxHealth = amount;
+        curHealth = maxHealth;
     }
+
     public void OnDamaged(Vector2 targetPos)
     {
-        //PlayerDamaged 10레이어
-        gameObject.layer = 10;
-        //플레이어 무적판정
+        gameObject.layer = LayerMask.NameToLayer("PlayerDamaged"); // 무적 레이어
+
         spriteRenderer.color = new Color(1, 1, 1, 0.3f);
-        //피격 시 뒤로 물러남
-        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        rigid.AddForce(new Vector2(dirc, 1) * 3, ForceMode2D.Impulse);
 
-        Invoke("OffDamaged", 0.5f);
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1; //넉백
+        rigid.AddForce(new Vector2(dirc, 2) * 5, ForceMode2D.Impulse);
 
+        Invoke("OffDamaged", 0.5f); //무적해제
     }
-
-
     void OffDamaged()
     {
         //무적판정 풀림
-        gameObject.layer = 11;
+        gameObject.layer = LayerMask.NameToLayer("Player"); ; // 무적 레이어 해제
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
