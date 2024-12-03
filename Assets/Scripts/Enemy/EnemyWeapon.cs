@@ -31,7 +31,7 @@ public class EnemyWeapon : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerHP playerScript = collision.gameObject.GetComponent<PlayerHP>();
+            playerHP playerScript = collision.gameObject.GetComponent<playerHP>();
             if (playerScript != null&&behavior.GetAttackMode())
             {
                 playerScript.TakeDamage(WeaponDamage,transform.position);

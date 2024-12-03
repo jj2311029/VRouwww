@@ -91,7 +91,7 @@ public class EnemyMove : MonoBehaviour
         // 플레이어가 근처에 있는지 확인
         if (player != null)
         {
-            PlayerHP playerScript = player.GetComponent<PlayerHP>();
+            playerHP playerScript = player.GetComponent<playerHP>();
             if (playerScript != null)
                 if (playerScript != null)
                 {
