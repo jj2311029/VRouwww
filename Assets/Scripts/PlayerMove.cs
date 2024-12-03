@@ -187,6 +187,7 @@ public class PlayerMove : MonoBehaviour
 
         }
     }
+
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.CompareTag("Rope") && !isOnRope && Input.GetKey(KeyCode.UpArrow))
@@ -214,13 +215,13 @@ public class PlayerMove : MonoBehaviour
         maxHealth = amount;
         curHealth = maxHealth;
     }
-
+   
     public void OnDamaged(Vector2 targetPos)
     {
         gameObject.layer = LayerMask.NameToLayer("PlayerDamaged"); // 무적 레이어
-
+        
         spriteRenderer.color = new Color(1, 1, 1, 0.3f);
-
+      
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1; //넉백
         rigid.AddForce(new Vector2(dirc, 2) * 5, ForceMode2D.Impulse);
 
