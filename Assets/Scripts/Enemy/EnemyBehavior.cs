@@ -48,61 +48,17 @@ public class EnemyBehavior : MonoBehaviour
         if(!attackMode)
         { 
             Move();
-            Debug.Log("Move");
         }
 
         if (!InsideOfLimits() && !inRange )
         {
             SelectTarget();
-            Debug.Log("Select Target");
         }
-        /*if (inRange)
+        if (inRange)
         {
-            hit = Physics2D.Raycast(raycast.position, transform.right, -raycastLength, raycastMask);
-            RaycastDebugger();
-        }
-        
-        if (hit.collider != null)
-        {
-            EnemyLogic();
-            Flip();
-            Debug.Log("Enemy Logic");
-        }
-        else if(hit.collider == null)
-        {
-            inRange = false;
-            Debug.Log("Raycast null");
-        }*/
-
-
-        if (inRange /*== false*/)
-        {
-            /*StopAttack();
-            
-            Debug.Log("Out Range");*/
             EnemyLogic();
         }
     }
-
-    /*protected void OnTriggerEnter2D(Collider2D collision)
-    {
-        if ((collision.gameObject.tag == "Player"))
-        {
-            target = collision.gameObject;
-            inRange = true;
-            Invoke("Flip", curveTime);
-        }
-    }*/
-    /*protected void OnTriggerStay2D(Collider2D collision)
-    {
-        if(target==null&&collision.gameObject.tag=="Player")
-        {
-            target = collision.transform.position;
-            inRange = true;
-            Invoke("Flip", curveTime);
-        }
-    }*/
-    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -123,8 +79,6 @@ public class EnemyBehavior : MonoBehaviour
         }
         
     }
-
-
     protected void EnemyLogic()
     {
         distance = Vector2.Distance(enemySprite.transform.position, target.transform.position);
@@ -150,7 +104,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (target != null)
         {
-            return Mathf.Abs(target.transform.position.y - transform.position.y) < 0.5f;
+            return target.transform.position.y  > transform.position.y-0.5f;
         }
         return false;
     }
@@ -180,19 +134,6 @@ public class EnemyBehavior : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position,targetPos,moveSpeed*Time.deltaTime);
         }
     }
-
-    /*protected void RaycastDebugger()
-    {
-        if (distance > attackDistance)
-        {
-            Debug.DrawRay(raycast.position,transform.right*-raycastLength,Color.red);
-        }
-        else if(attackDistance>distance)
-        {
-            Debug.DrawRay(raycast.position, transform.right * -raycastLength, Color.green);
-        }
-
-    }*/
      protected void CoolDown()
     {
         timer -= Time.deltaTime;

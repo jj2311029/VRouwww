@@ -49,5 +49,5 @@ public class HotZoneCheck : MonoBehaviour
             enemyParent.inRange=false;
             enemyParent.SelectTarget();
         }
-    }//Left/ Right Limit문제 해결
+    }
 }
