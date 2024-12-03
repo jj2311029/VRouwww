@@ -674,6 +674,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  curHealth: 0
+  maxHealth: 0
+  HpBarSlider: {fileID: 0}
 --- !u!61 &963613522
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -853,7 +856,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HpBarSlider: {fileID: 1766806861}
   maxHP: 10
-  currentHP: 0
 --- !u!1 &963836088
 GameObject:
   m_ObjectHideFlags: 0
