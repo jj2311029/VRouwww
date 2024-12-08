@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6573330941414656927}
   - component: {fileID: 5457050445537046360}
   - component: {fileID: 4465731864428221803}
+  - component: {fileID: 2671307636283592302}
   m_Layer: 0
   m_Name: Strike3
   m_TagString: Untagged
@@ -120,3 +121,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.000000059604645}
   serializedVersion: 2
   m_Radius: 0.5000002
+--- !u!114 &2671307636283592302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5999432795829674040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da848187739006245ae4e087ea3b01e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

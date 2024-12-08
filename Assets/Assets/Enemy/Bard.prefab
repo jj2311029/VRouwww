@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6874067678321268496}
   m_Layer: 0
   m_Name: Bard
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,6 @@ MonoBehaviour:
   Attackspeed: 10
   increaseRate: 1
   decreaseRate: 0.5
-  growthSpeed: 1
 --- !u!1001 &1805578071765018145
 PrefabInstance:
   m_ObjectHideFlags: 0
