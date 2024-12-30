@@ -14,9 +14,9 @@ public class BucklerStats : EnemyStats
     
     public override void TakeDamage(float damage, Transform player)
     {
-        if (isDamage || isDie) return;
-        ChangeState(true);
-        if (this.gameObject.transform.rotation.y != 0)//적이 왼쪽을 보고 있을 때
+        if ( isDie) return;
+        Debug.Log("Enemy hit" + damage);;
+        if (this.gameObject.transform.rotation.y == 0)//적이 왼쪽을 보고 있을 때
         {
             if (player.transform.position.x < gameObject.transform.position.x)//플레이어가 적의 왼쪽에 있을 경우 
             {
@@ -39,7 +39,6 @@ public class BucklerStats : EnemyStats
             }
         }
 
-        Invoke("ChangeState(false)", 0.05f);
         CheckHp();
     }
 }

@@ -9,7 +9,6 @@ public class EnemyStats : MonoBehaviour
     public float damage=1f;
 
     protected bool isDie=false;
-    protected bool isDamage=false;
     virtual protected void Awake()
     {
         maxHp = 3f;
@@ -18,16 +17,19 @@ public class EnemyStats : MonoBehaviour
     }
     virtual public void TakeDamage(float damage,Transform player)
     {
-        if (isDamage||isDie) return;
-        ChangeState(true);
-        if (this.gameObject.transform.rotation.y != 0)//적이 왼쪽을 보고 있을 때
+        if (isDie) return;
+        
+        
+        if (this.gameObject.transform.rotation.y == 0)//적이 왼쪽을 보고 있을 때
         {
             if (player.transform.position.x < gameObject.transform.position.x)//플레이어가 적의 왼쪽에 있을 경우 
             {
+                Debug.Log("Enemy hit" + damage);
                 curHp -= damage;
             }
             else
             {
+                Debug.Log("BackAttack!! Enemy hit" + (damage+1));
                 curHp -= damage + 1;
             }
         }
@@ -36,27 +38,25 @@ public class EnemyStats : MonoBehaviour
             if (player.transform.position.x < gameObject.transform.position.x)//플레이어가 적의 왼쪽에 있을 경우 
             {
                 curHp -= damage + 1;//백어택
+                Debug.Log("BackAttack!! Enemy hit" + (damage + 1));
             }
             else
             {
+                Debug.Log("Enemy hit" + damage);
                 curHp -= damage ;
             }
         }
 
-        Invoke("ChangeState(false)", 0.05f);
         CheckHp();
     }
-    protected void ChangeState(bool state)
-    {
-        isDamage = state;
-    }
-    protected void CheckHp()
+    
+    virtual protected void CheckHp()
     {
         if (curHp <= 0)
         {
             isDie = true;
+            Destroy(this.gameObject, 1f);
         }
-        Destroy(this.gameObject,1f);
     }
     protected void Update()
     {

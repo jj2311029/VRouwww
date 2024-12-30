@@ -18,7 +18,7 @@ public class HotZoneCheck : MonoBehaviour
     {
         if (inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Attack"))
         {
-            enemyParent.Flip();
+            
             if(!enemyParent.CheckPlatform())
             {
                 inRange = false;
@@ -27,6 +27,8 @@ public class HotZoneCheck : MonoBehaviour
                 enemyParent.inRange = false;
                 enemyParent.SelectTarget();
             }
+           
+            enemyParent.Flip();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,7 +38,10 @@ public class HotZoneCheck : MonoBehaviour
             inRange = true;
         }
     }
-
+    void _()
+    {
+        return;
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {

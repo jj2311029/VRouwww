@@ -82,22 +82,18 @@ public class EnemyBehavior : MonoBehaviour
     protected void EnemyLogic()
     {
         distance = Vector2.Distance(enemySprite.transform.position, target.transform.position);
-        Debug.Log(enemySprite.transform.position+"and"+ target);
         if (distance > attackDistance)
         {
             StopAttack();
-            Debug.Log("Stop Attack");
         }
         else if (attackDistance >= distance && cooling == false)
         {
             Attack();
-            Debug.Log("Attack");
         }
         if (cooling)
         {
             CoolDown();
             animator.SetBool("Attack", false);
-            Debug.Log("cooling");
         }
     }
     public bool CheckPlatform()
@@ -172,7 +168,13 @@ public class EnemyBehavior : MonoBehaviour
     }
     public void Flip()
     {
-        Vector3 rotation=transform.eulerAngles;
+        StartCoroutine( waitFlip());
+        
+    }
+    IEnumerator waitFlip()
+    {
+        yield return new WaitForSeconds(curveTime);
+        Vector3 rotation = transform.eulerAngles;
         if (transform.position.x < target.transform.position.x)
         {
             rotation.y = 180f;
@@ -182,9 +184,16 @@ public class EnemyBehavior : MonoBehaviour
             rotation.y = 0f;
         }
         transform.eulerAngles = rotation;
+        StopCoroutine(waitFlip());
     }
     public bool GetAttackMode()
     {
         return attackMode;  
+    }
+    public IEnumerator Slow()
+    {
+        moveSpeed =1f;
+        yield return new WaitForSeconds(1.5f);
+        moveSpeed =2f;
     }
 }

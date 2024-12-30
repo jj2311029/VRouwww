@@ -11,13 +11,13 @@ public class PlayerHP : MonoBehaviour
     private float currentHP;      // 현재 HP
 
     PlayerMove Playerscript;
+    PlayerAttack PlayerAtk;
 
     void Start()
     {
         // 초기 HP 설정
         currentHP = maxHP;
 
-        HpBarSlider.minValue = 0;
         HpBarSlider.maxValue = maxHP;
 
         // 슬라이더의 초기 값 설정
@@ -28,6 +28,11 @@ public class PlayerHP : MonoBehaviour
 
     public void TakeDamage(float damage, Vector2 targetpos)
     {
+        if(Playerscript.GetParrying()==true)
+        {
+            StartCoroutine(Playerscript.ParryingSuccess());
+            return;
+        }
         currentHP -= damage;
         // 체력이 0 이하인지 확인
         if (currentHP <= 0)

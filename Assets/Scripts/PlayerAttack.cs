@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(swordAttackSpeed);
         canSwordAttack = true;
     }
-
+    
     private IEnumerator GunAttack()
     {
         canGunAttack = false;
@@ -64,4 +64,5 @@ public class PlayerAttack : MonoBehaviour
         bulletNumber += 1;
         Debug.Log($"1발장전 {bulletNumber}");
     }
+
 }

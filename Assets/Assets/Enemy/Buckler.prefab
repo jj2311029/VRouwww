@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 13508176257822772}
   m_Layer: 0
   m_Name: FrontCollider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   timer: 2
   hotZone: {fileID: 9062179326721024029}
   triggerArea: {fileID: 4547207603394874171}
-  curveTime: 1
+  curveTime: 3
   target: {fileID: 0}
   inRange: 0
   cooling: 0
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 4381639529421622308}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
