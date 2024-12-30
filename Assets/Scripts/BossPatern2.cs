@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossPatern2 : MonoBehaviour
@@ -7,67 +6,93 @@ public class BossPatern2 : MonoBehaviour
     public GameObject leg;
     private GameObject legAttack;
 
-    [SerializeField] private float speed = 40f; 
+    [SerializeField] private float speed = 100f;
+    [SerializeField] private float attackTurm = 3f;
 
     private int legWhere;
     private int currentLegWhere = 0;
 
     private float randomX;
     private float randomY;
-    private bool move;
+    private int direction = 1;
 
-    
+    private Vector3 startPos;
+    private Vector3 targetPos;
+    private bool isMovingForward = true;
+
+    float[,] legPositions = {
+        { -22f,  3f, 1 },
+        { -22f, -2f, 1 },
+        { -22f, -7f, 1 },
+        {  22f,  3f, -1 },
+        {  22f, -2f, -1 },
+        {  22f, -7f, -1 }
+    };
+
+    void Update()
+    {
+        if (legAttack != null)
+        {
+            // 왕복 이동 구현
+            if (isMovingForward)
+            {
+                legAttack.transform.position = Vector3.MoveTowards(legAttack.transform.position, targetPos, speed * Time.deltaTime);
+                if (Vector3.Distance(legAttack.transform.position, targetPos) < 0.1f)
+                {
+                    isMovingForward = false;  // 목표에 도달하면 반대로 이동
+                }
+            }
+            else
+            {
+                legAttack.transform.position = Vector3.MoveTowards(legAttack.transform.position, startPos, speed * Time.deltaTime);
+                if (Vector3.Distance(legAttack.transform.position, startPos) < 0.1f)
+                {
+                    isMovingForward = true;  // 다시 시작 위치로 돌아가면 앞으로 이동
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            Debug.Log("공격");
+            Attack();
+        }
+    }
+
     public void Attack()
     {
         Debug.Log("패턴2");
-        legWhere = Random.Range(1, 6);
-        switch (legWhere)
-        {
-            case 1:
-                randomX = -22f;
-                randomY = 3f;
-                move = true;
-                break;
-            case 2:
-                randomX = -22f;
-                randomY = -2f;
-                move = true;
-                break;
-            case 3:
-                randomX = -22f;
-                randomY = -7f;
-                move = true;
-                break;
-            case 4:
-                randomX = 22f;
-                randomY = 3f;
-                move = false;
-                break;
-            case 5:
-                randomX = 22f;
-                randomY = -2f;
-                move = false;
-                break;
-            case 6:
-                randomX = 22f;
-                randomY = -7f;
-                move = false;
-                break;
-        }
+
+        // 랜덤 인덱스 선택
+        legWhere = Random.Range(0, legPositions.GetLength(0));
+
+        // 값 할당
+        randomX = legPositions[legWhere, 0];
+        randomY = legPositions[legWhere, 1];
+        direction = (int)legPositions[legWhere, 2];
+
         currentLegWhere = legWhere;
-        Vector2 SpawnPos = new Vector2(randomX, randomY);
-        legAttack = Instantiate(leg, SpawnPos, transform.rotation);
-        Destroy(legAttack, 1f);
-    }
-    void Update()
-    {
-        if (move)
+
+        // 방향 결정
+        Vector3 legDirection = leg.transform.localScale;
+        if (direction == 1)
         {
-            legAttack.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            legDirection.x = Mathf.Abs(legDirection.x);
         }
         else
         {
-            legAttack.transform.Translate(speed * Time.deltaTime * -Vector3.right);
+            legDirection.x = -Mathf.Abs(legDirection.x);
         }
+
+        // 다리 공격 생성
+        Vector2 SpawnPos = new Vector2(randomX, randomY);
+        legAttack = Instantiate(leg, SpawnPos, transform.rotation);
+        legAttack.transform.localScale = legDirection;
+
+        // 왕복할 목표 위치 설정
+        startPos = legAttack.transform.position;
+        targetPos = new Vector3(randomX + 20f * direction, randomY, startPos.z);  // 5 단위로 목표 지점 설정
+
+        Destroy(legAttack, 3f);  // 일정 시간 후에 다리 공격 삭제
     }
 }
