@@ -67,5 +67,12 @@ public class Bullet : MonoBehaviour
                 EB.StartCoroutine(EB.Slow());
             }
         }
+        if (collision.tag == "Boss")
+        {
+            Boss BS = collision.GetComponent<Boss>();
+            Destroy(this.gameObject);
+            BS.TakeDamage(1);
+            BS.StartCoroutine("Slow");
+        }
     }
 }

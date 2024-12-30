@@ -54,5 +54,10 @@ public class SwordStrike : MonoBehaviour
 
             }
         }
+        if (collision.tag == "Boss")
+        {
+            EnemyMove EA = collision.GetComponent<EnemyMove>();
+            EA.TakeDamage(2);
+        }
     }
 }
