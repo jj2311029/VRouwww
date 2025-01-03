@@ -10,12 +10,12 @@ public class Golam : EnemyMove
 
     private float attackCooldown = 0f; // 현재 쿨타임 상태
 
-    void Awake()
+    protected override void Awake()
     {
         base.Awake(); // 부모 클래스의 Awake 메서드를 호출
     }
 
-    void FixedUpdate()
+    protected override void  FixedUpdate()
     {
         attackCooldown -= Time.deltaTime;
 
@@ -46,7 +46,7 @@ public class Golam : EnemyMove
     }
 
     // Patrol 메서드는 필요하면 Golam에서만 커스터마이징
-    protected virtual void Patrol()
+    protected override void Patrol()
     {
         rigid.velocity = new Vector2(nextMove * speed, rigid.velocity.y);
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
@@ -61,7 +61,7 @@ public class Golam : EnemyMove
     }
 
     // StopAndPrepareAttack 메서드는 Golam만의 공격 준비 로직을 추가
-    protected virtual void StopAndPrepareAttack()
+    protected override void StopAndPrepareAttack()
     {
         rigid.velocity = Vector2.zero; // 적을 멈추게 함
         render.flipX = player.position.x < transform.position.x; // 플레이어 방향으로 바라보기

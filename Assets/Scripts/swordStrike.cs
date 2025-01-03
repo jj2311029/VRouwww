@@ -58,6 +58,21 @@ public class SwordStrike : MonoBehaviour
         {
             EnemyMove EA = collision.GetComponent<EnemyMove>();
             EA.TakeDamage(2);
+
+            Boss bossScript = collision.GetComponent<Boss>();
+            if (bossScript != null)
+            {
+                bossScript.TakeDamage(2);
+            }
+            else
+            {
+                bossScript=collision.gameObject.GetComponentInParent<Boss>();
+                if (bossScript != null)
+                {
+                    bossScript.TakeDamage(2);
+                }
+                else Debug.Log("NullRefference of bossScript");
+            }
         }
     }
 }
