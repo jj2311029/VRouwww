@@ -15,7 +15,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float speed = 8f;//플레이어 스피드
     private float moveInput = 0f;//플레이어 좌우이동 input
     private bool isFacingRight = true;//좌우 처다보는것
-
     //플레이어 점프
     private float jumpingPower = 16f;//점프 높이
 
@@ -46,6 +45,13 @@ public class PlayerMove : MonoBehaviour
     //HP 설정
     public Slider HpBarSlider;
     Rigidbody2D rigid;
+
+    //패링
+    bool isparrying = false;
+    private float parryingCoolTime = 0.5f;
+    bool successParrying=false;
+    float DamageUpTime = 1f;
+    public GameObject shield;//임시 모션
 
     private SpriteRenderer spriteRenderer;
 
@@ -105,10 +111,43 @@ public class PlayerMove : MonoBehaviour
             //rb.velocity+=new Vector2(rb.velocity.x, rb.velocity.y);
             rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.5f;//1.5f는 반동 계수
         }
+        if (Input.GetKeyDown(KeyCode.F) && !isparrying) 
+        {
+
+            StartCoroutine(Parrying());
+        }
 
         Flip();
     }
 
+    IEnumerator Parrying()
+    {
+        isparrying = true;
+        //일정 시간동안 패링 true인 상황에서 PlayerHp에 있는TakeDamage함수가 실행된다면
+        //isparrying이 false로 바뀌고 공격력을 1.5초간 올림
+        shield.SetActive(true);
+        yield return new WaitForSeconds(parryingCoolTime);
+        shield.SetActive(false);
+        isparrying = false;
+    }
+    public bool GetParrying()
+    {
+        return isparrying;
+    }
+    public bool GetSuccessParrying()
+    {
+        return successParrying;
+    }
+    public IEnumerator ParryingSuccess()
+    {
+        Debug.Log("패링 성공");
+        successParrying = true;
+        shield.SetActive(false);
+        isparrying = false;
+        //animator.SetBool("IsParrying",false);
+        yield return new WaitForSeconds(DamageUpTime);
+        successParrying = false;
+    }
     IEnumerator UpRope()
     {
         if (Rope.FindHead(linkedHinge) != linkedHinge.connectedBody)

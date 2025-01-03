@@ -26,7 +26,7 @@ public class EnemyMove : MonoBehaviour
         Think(); // 초기 이동 방향 설정
     }
 
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         CheckPlatform(); // 플레이어와 같은 플랫폼에 있는지 확인
 
@@ -56,7 +56,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    protected void Patrol()
+    protected virtual void Patrol()
     {
         rigid.velocity = new Vector2(nextMove * speed, rigid.velocity.y);
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
@@ -84,7 +84,7 @@ public class EnemyMove : MonoBehaviour
         Think(); // 정찰 상태로 전환
     }
 
-    protected void StopAndPrepareAttack()
+    protected virtual void StopAndPrepareAttack()
     {
         rigid.velocity = Vector2.zero; // 적 멈춤
         Debug.Log("적 플레이어 공격");
