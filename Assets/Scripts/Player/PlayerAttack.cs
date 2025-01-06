@@ -28,12 +28,12 @@ public class PlayerAttack : MonoBehaviour
     //zx공격
     void Update()
     {
-        if( Input.GetKey(KeyCode.Z) && canSwordAttack)
+        if( Input.GetKey(KeySetting.Keys[KeyAction.SWORD]) && canSwordAttack)
         {
             StartCoroutine("SwordAttack");
             S.doSwordAttack();
         }
-        if ( Input.GetKey(KeyCode.X) && canGunAttack && (bulletNumber > 0))
+        if ( Input.GetKey(KeySetting.Keys[KeyAction.GUN]) && canGunAttack && (bulletNumber > 0))
         {
             StartCoroutine("GunAttack");
             StartCoroutine("Reload");

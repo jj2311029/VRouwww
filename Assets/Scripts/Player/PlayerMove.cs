@@ -66,11 +66,11 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeySetting.Keys[KeyAction.LEFT]))
         {
             moveInput = -1f;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeySetting.Keys[KeyAction.RIGHT]))
         {
             moveInput = 1f;
         }
@@ -78,40 +78,40 @@ public class PlayerMove : MonoBehaviour
         {
             moveInput = 0f;
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.UP]) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
-        if (Input.GetKey(KeyCode.UpArrow) && isOnRope)
+        if (Input.GetKey(KeySetting.Keys[KeyAction.UP]) && isOnRope)
         {
             if (!ableRope)
             {
                 StartCoroutine(UpRope());
             }
         }
-        if (Input.GetKey(KeyCode.DownArrow) && isOnRope)
+        if (Input.GetKey(KeySetting.Keys[KeyAction.DOWN]) && isOnRope)
         {
             if (!ableRope)
             {
                 StartCoroutine(DownRope());
             }
         }
-        if (Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0f)
+        if (Input.GetKeyUp(KeySetting.Keys[KeyAction.UP]) && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDash)
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && canDash && !isDash)
         {
             StartCoroutine(dash());
         }
-        if (Input.GetKeyDown(KeyCode.Space) && isOnRope)
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.INTERACTION]) && isOnRope)
         {
             isOnRope = false;
             joint.enabled = false;
             //rb.velocity+=new Vector2(rb.velocity.x, rb.velocity.y);
             rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.5f;//1.5f는 반동 계수
         }
-        if (Input.GetKeyDown(KeyCode.F) && !isparrying) 
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.PARRYING]) && !isparrying) 
         {
 
             StartCoroutine(Parrying());
@@ -229,7 +229,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("Rope") && !isOnRope && Input.GetKey(KeyCode.UpArrow))
+        if (coll.CompareTag("Rope") && !isOnRope && Input.GetKey(KeySetting.Keys[KeyAction.UP]))
         {
             joint.enabled = true;
             Rigidbody2D ropeRb = coll.GetComponent<Rigidbody2D>();
