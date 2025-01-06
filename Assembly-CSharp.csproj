@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BC156427-EC69-C310-9D61-883A326D92EB}</ProjectGuid>
+    <ProjectGuid>{D48512D1-6F5C-93AD-3D86-654C6DFAF72C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -65,6 +65,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Player\Bullet.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
+    <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
+    <Compile Include="Assets\Scripts\saveButton.cs" />
     <Compile Include="Assets\Scripts\Player\Gun.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHp.cs" />
@@ -74,6 +76,10 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\SaveLoad.cs" />
+    <Compile Include="Assets\Scripts\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\HotZoneCheck.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
@@ -91,6 +97,12 @@
     <Compile Include="Assets\Scripts\MainStatus.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Interval.cs" />
+    <Compile Include="Assets\Scripts\BossPatern2.cs" />
+    <Compile Include="Assets\Scripts\SavePoint.cs" />
+    <Compile Include="Assets\Scripts\TriggerAreaCheck.cs" />
+    <Compile Include="Assets\Scripts\PlayerHp.cs" />
+    <Compile Include="Assets\Scripts\EnemyWeapon.cs" />
+    <Compile Include="Assets\Scripts\Bard.cs" />
     <Compile Include="Assets\Scripts\Enemy\TriggerAreaCheck.cs" />
     <Compile Include="Assets\Scripts\Enemy\Bard_Buff.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyWeapon.cs" />
