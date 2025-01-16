@@ -110,7 +110,7 @@ public class PlayerMove : MonoBehaviour
         {
             //rb.velocity += new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown /*&& canDash && !isDash*/)
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown )
         {
             //StartCoroutine(dash());
             StartDash();
@@ -154,14 +154,15 @@ public class PlayerMove : MonoBehaviour
         {
             dashDirection = new Vector2(horizontalInput, verticalInput).normalized;
         }
-
-        rb.velocity += dashDirection * dashSpeed; // 대시 속도 적용
+        rb.velocity = Vector2.zero;
+        rb.velocity += new Vector2( dashDirection.x * dashSpeed*4f,0); // 대시 속도 적용
     }
 
     private void EndDash()
     {
         isDashing = false;
-        rb.velocity = Vector2.zero; // 대시 후 정지
+        //rb.velocity = Vector2.zero; // 대시 후 정지
+        rb.velocity -= new Vector2(dashDirection.x * dashSpeed * 3f, 0);
     }
 
     IEnumerator Parrying()
@@ -224,23 +225,7 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(ropeCooltime);
         ableRope = false;
     }
-    IEnumerator dash()
-    {
-        isDash = true;
-        canDash = false;
-
-        Debug.Log("Dash!");
-
-        //rb.AddForce(new Vector2(horizontal* dashSpeed, 1f), ForceMode2D.Impulse);  // 대시 힘 가하기
-
-        float dashDirection = transform.localScale.x > 0 ? 1 : -1;
-        rb.velocity = new Vector2(dashDirection * dashSpeed, rb.velocity.y);
-
-        yield return new WaitForSeconds(dashDuration);
-        isDash = false;
-        yield return new WaitForSeconds(dashCoolTime);
-        canDash = true;
-    }
+    
     private void FixedUpdate()
     {
 
@@ -248,6 +233,7 @@ public class PlayerMove : MonoBehaviour
         {
             rb.AddForce(new Vector2(ropeForce * moveInput, 0f));
         }
+
         else if (rb.velocity.x >= -speed && rb.velocity.x <= speed)
         {
             if (moveInput != 0)
