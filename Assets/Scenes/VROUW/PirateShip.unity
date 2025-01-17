@@ -155,8 +155,7 @@ MonoBehaviour:
   coolTime: 3
   stopLine: {fileID: 1506357047}
   enemyPrefab:
-  - {fileID: 8347177359197843237, guid: 722cca40fc7cfbe42b6c5adc1348c965, type: 3}
-  - {fileID: 3689519650179363224, guid: fa96de6aa6724834e9d7d640bd57d0fc, type: 3}
+  - {fileID: 4258371774635121816, guid: 6cb4d994076eb034daac6fe22d292329, type: 3}
 --- !u!4 &320882361
 Transform:
   m_ObjectHideFlags: 0
@@ -201,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a00de0eddc0494a9e249fad18e6531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTime: 10
+  targetTime: 60
 --- !u!4 &905253857
 Transform:
   m_ObjectHideFlags: 0

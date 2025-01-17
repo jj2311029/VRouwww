@@ -1,15 +1,16 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
-    protected float Hp = 5f;
+    protected float Hp = 2f;
 
     protected float speed = 3f;
 
-    bool arrive = false;
-    protected GameObject boundary;
+    bool arrive = false;//다 내려갔으면 true 로 바뀜
+    protected GameObject boundary;//어디까지 내려가는지
 
 
     private void Start()
@@ -41,11 +42,23 @@ public class BasicEnemy : MonoBehaviour
             }
             yield return new WaitForSeconds(0.002f);
         }
-        
+        Attack();
     }
 
     protected virtual void Attack()
     {
         
+    }
+    public void TakeDamage()
+    {
+        Hp--;
+        CheckHp();
+    }
+    private void CheckHp()
+    {
+        if (Hp == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
