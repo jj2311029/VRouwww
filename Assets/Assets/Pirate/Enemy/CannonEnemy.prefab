@@ -93,11 +93,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4024604141209125094}
-  - component: {fileID: 6559342170603714775}
   - component: {fileID: 7065153261783423714}
   - component: {fileID: 4698674297290990884}
+  - component: {fileID: 8288122650449035526}
   m_Layer: 0
-  m_Name: ObstacleEnemy
+  m_Name: CannonEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,21 +119,6 @@ Transform:
   - {fileID: 390041114169127446}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6559342170603714775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4258371774635121816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae44ef1e811d7e4cad34746863becfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstacle: {fileID: 6385419921423314724, guid: 961f9418fb1205c42ba9634cef3068ee, type: 3}
-  spawnPoint: {x: 0, y: 0, z: 0}
-  coolTime: 4
 --- !u!212 &7065153261783423714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -176,7 +161,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 93ffe013ecde20449a5cdd46623639e7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8616352, g: 0.33327392, b: 0.33327392, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -231,3 +216,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 22.73072, y: 14.657672}
   m_EdgeRadius: 0
+--- !u!114 &8288122650449035526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258371774635121816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 298c785b305d0164fabc27d12e04374a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannonField: {fileID: 79046166859709592, guid: 6e48a22d3db79fa489a4d77b22757cea, type: 3}
