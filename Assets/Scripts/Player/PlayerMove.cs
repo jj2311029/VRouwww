@@ -36,7 +36,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float dashCoolTime = 2.0f;//대쉬 쿨타임
     [SerializeField] private float dashSpeed = 20.0f;//대쉬 속도
 
-    
+
     public float dashCooldown = 1f; // 대시 재사용 대기 시간
     private Vector2 dashDirection;
 
@@ -59,7 +59,7 @@ public class PlayerMove : MonoBehaviour
     //패링
     bool isparrying = false;
     private float parryingCoolTime = 0.5f;
-    bool successParrying=false;
+    bool successParrying = false;
     float DamageUpTime = 1f;
     public GameObject shield;//임시 모션
 
@@ -110,7 +110,7 @@ public class PlayerMove : MonoBehaviour
         {
             //rb.velocity += new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown )
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown)
         {
             //StartCoroutine(dash());
             StartDash();
@@ -126,7 +126,7 @@ public class PlayerMove : MonoBehaviour
             //rb.velocity+=new Vector2(rb.velocity.x, rb.velocity.y);
             rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.5f;//1.5f는 반동 계수
         }
-        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.PARRYING]) && !isparrying) 
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.PARRYING]) && !isparrying)
         {
 
             StartCoroutine(Parrying());
@@ -155,7 +155,7 @@ public class PlayerMove : MonoBehaviour
             dashDirection = new Vector2(horizontalInput, verticalInput).normalized;
         }
         rb.velocity = Vector2.zero;
-        rb.velocity += new Vector2( dashDirection.x * dashSpeed*4f,0); // 대시 속도 적용
+        rb.velocity += new Vector2(dashDirection.x * dashSpeed * 4f, 0); // 대시 속도 적용
     }
 
     private void EndDash()
@@ -195,7 +195,7 @@ public class PlayerMove : MonoBehaviour
     }
     IEnumerator UpRope()
     {
-        
+
         if (Rope.FindHead(linkedHinge) != linkedHinge.connectedBody)
         {
             ableRope = true;
@@ -225,7 +225,7 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(ropeCooltime);
         ableRope = false;
     }
-    
+
     private void FixedUpdate()
     {
 
@@ -242,7 +242,7 @@ public class PlayerMove : MonoBehaviour
                 Debug.Log(rb.velocity.x);
             }
         }
-        
+
 
     }
 
@@ -290,13 +290,13 @@ public class PlayerMove : MonoBehaviour
         maxHealth = amount;
         curHealth = maxHealth;
     }
-   
+
     public void OnDamaged(Vector2 targetPos)
     {
         gameObject.layer = LayerMask.NameToLayer("PlayerDamaged"); // 무적 레이어
-        
+
         spriteRenderer.color = new Color(1, 1, 1, 0.3f);
-      
+
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1; //넉백
         rigid.AddForce(new Vector2(dirc, 2) * 5, ForceMode2D.Impulse);
 
