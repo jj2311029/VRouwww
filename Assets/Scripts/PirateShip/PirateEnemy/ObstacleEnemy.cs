@@ -39,6 +39,7 @@ public class ObstacleEnemy : BasicEnemy
         {
             Instantiate(obstacle,transform.position,Quaternion.identity);
             yield return new WaitForSeconds(coolTime);
+
         }
     }
 }
