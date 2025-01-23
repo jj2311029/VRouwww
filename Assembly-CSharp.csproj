@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Enemy\Golam.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossPatern2.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\ObstacleEnemy.cs" />
+    <Compile Include="Assets\Scripts\CameraMove.cs" />
     <Compile Include="Assets\Scripts\KeyManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
