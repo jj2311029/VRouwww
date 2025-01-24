@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     private float moveInput = 0f;//플레이어 좌우이동 input
     private bool isFacingRight = true;//좌우 처다보는것
     //플레이어 점프
-    [SerializeField] private float jumpingPower = 15f;//점프 높이
+    private float jumpingPower = 15f;//점프 높이
 
     //플레이어 로프 이동
     private HingeJoint2D joint;
@@ -53,7 +53,7 @@ public class PlayerMove : MonoBehaviour
     //최대 체력
     [SerializeField] public float maxHealth;
     //HP 설정
-    public Slider HpBarSlider;
+    private PlayerHP playerHP; // PlayerHP 참조 변수 추가
     Rigidbody2D rigid;
 
     //패링
@@ -70,6 +70,7 @@ public class PlayerMove : MonoBehaviour
         joint = GetComponent<HingeJoint2D>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // SpriteRenderer 초기화
         rigid = GetComponent<Rigidbody2D>(); // Rigidbody2D 초기화
+        playerHP = GetComponent<PlayerHP>();
     }
 
     // Update is called once per frame
@@ -284,6 +285,10 @@ public class PlayerMove : MonoBehaviour
     public void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        if (rigid == null)
+        {
+            Debug.LogError("Rigidbody2D not found on Player!");
+        }
     }
     public void SetUp(float amount)
     {
@@ -300,21 +305,57 @@ public class PlayerMove : MonoBehaviour
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1; //넉백
         rigid.AddForce(new Vector2(dirc, 2) * 5, ForceMode2D.Impulse);
 
-        Invoke("OffDamaged", 0.5f); //무적해제
+        StartCoroutine(TemporarilyIgnoreEnemyCollision(1.5f)); // 적과 충돌 무시 코루틴 호출
+
+        Invoke("OffDamaged", 0.2f);
     }
+
+    IEnumerator TemporarilyIgnoreEnemyCollision(float duration)
+    {
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int enemyLayer = LayerMask.NameToLayer("Enemy");
+
+        if (playerLayer == -1 || enemyLayer == -1)
+        {
+            Debug.LogError("Layer names 'Player' or 'Enemy' are not defined in the Tags and Layers settings.");
+            yield break;
+        }
+
+        Debug.Log("Ignoring collisions between Player and Enemy layers.");
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true);
+
+        yield return new WaitForSeconds(duration);
+
+        Debug.Log("Restoring collisions between Player and Enemy layers.");
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false);
+    }
+
+
     void OffDamaged()
     {
-        //무적판정 풀림
-        gameObject.layer = LayerMask.NameToLayer("Player"); ; // 무적 레이어 해제
+        // 무적판정 풀림
+        gameObject.layer = LayerMask.NameToLayer("Player"); // 무적 레이어 해제
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 대시 중 벽에 충돌하면 대시 종료
         if (isDashing)
         {
             EndDash();
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Vector2 targetPos = collision.transform.position;
+
+            // 넉백 먼저 적용
+            OnDamaged(targetPos);
+
+            // PlayerHP의 TakeDamage 호출
+            playerHP.TakeDamage(1, targetPos); // 대미지 처리 및 넉백 적용
         }
     }
 

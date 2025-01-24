@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
@@ -12,13 +11,13 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] protected float speed = 2.5f;
     [SerializeField] protected float followDistance = 5f;    // 추격 시작 거리
     [SerializeField] protected float stopChaseRange = 2f;    // 추적 멈출 거리 (공격 준비 거리)
-    [SerializeField] protected int Hp;
+    [SerializeField] protected int Hp = 3;
+    [SerializeField] protected float knockbackForce = 10f;   // 넉백 힘
 
     protected Transform player;
     protected bool isPlayerOnSamePlatform;
     protected bool isChasing;
     protected int nextMove;
-
 
     protected virtual void Awake()
     {
@@ -35,27 +34,22 @@ public class EnemyMove : MonoBehaviour
 
         if (isPlayerOnSamePlatform && Vector2.Distance(transform.position, player.position) <= followDistance)
         {
-            // 플레이어가 추적 범위 내에 있으면
             if (Vector2.Distance(transform.position, player.position) > stopChaseRange)
             {
-                // 공격 거리 이상일 때 추격
-                ChasePlayer();
+                ChasePlayer(); // 공격 거리 이상일 때 추격
             }
             else
             {
-                // 공격 범위 내에 도달하면 정지
-                StopAndPrepareAttack();
+                StopAndPrepareAttack(); // 공격 범위 내에 도달하면 정지
             }
         }
         else if (isChasing && Vector2.Distance(transform.position, player.position) > followDistance)
         {
-            // 추적 중지
-            StopChasing();
+            StopChasing(); // 추적 중지
         }
         else if (!isChasing)
         {
-            // 정찰 상태
-            Patrol();
+            Patrol(); // 정찰 상태
         }
     }
 
@@ -123,38 +117,45 @@ public class EnemyMove : MonoBehaviour
         isPlayerOnSamePlatform = Mathf.Abs(player.position.y - transform.position.y) < 0.5f;
     }
 
-    // 2024/11/14 남정현 적 hp 및 사망 추가
-
-    // 충돌 감지
-    // 이거 istrigger로 가면 사거리가 trigger라서 플레이어가 적 사거리를 때려도 적이 죽어버린다
-    // collision으로 가면 총알과 검이 둘 다 trigger 여서 적의 체력이 닳지 않는다
-
-
+    // 충돌 처리 (플레이어의 공격)
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 충돌한 객체가 "Player" 또는 플레이어의 공격인지 확인
         if (collision.gameObject.CompareTag("PlayerAttack"))
         {
-            TakeDamage(1); //데미지 1
+            TakeDamage(1); // 데미지 1
         }
     }
 
-    // 데미지 사망
+    // 데미지 처리 및 사망
     public virtual void TakeDamage(int damage)
     {
-        Debug.Log("아야");
         Hp -= damage;
+
+        Debug.Log("적이 데미지를 받음. 현재 HP: " + Hp);
+
+        // 넉백 방향 계산
+        Vector2 knockbackDirection = (transform.position - player.position).normalized;
+
+        // 넉백 적용
+        rigid.velocity = Vector2.zero; // 현재 속도 초기화
+        rigid.AddForce(new Vector2(knockbackDirection.x * knockbackForce, rigid.velocity.y), ForceMode2D.Impulse);
+
         if (Hp <= 0)
+        {
+            Debug.Log("적이 사망했습니다.");
             Destroy(this.gameObject);
+        }
     }
 
-    // 슬로우
+    // 슬로우 효과
     public IEnumerator Slow()
     {
         speed -= 1.5f;
         yield return new WaitForSeconds(1.5f);
         speed += 1.5f;
     }
+
+    // 버프 효과
     public IEnumerator Buff()
     {
         speed = 6f;
@@ -162,4 +163,3 @@ public class EnemyMove : MonoBehaviour
         speed = 2.5f;
     }
 }
-
