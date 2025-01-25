@@ -55,6 +55,7 @@ public class PlayerMove : MonoBehaviour
     //HP 설정
     private PlayerHP playerHP; // PlayerHP 참조 변수 추가
     Rigidbody2D rigid;
+   
 
     //패링
     bool isparrying = false;
@@ -64,6 +65,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject shield;//임시 모션
 
     private SpriteRenderer spriteRenderer;
+
+    private float originalGravityScale; // Rigidbody2D의 기본 중력값 저장
 
     private void Start()
     {
@@ -298,17 +301,50 @@ public class PlayerMove : MonoBehaviour
 
     public void OnDamaged(Vector2 targetPos)
     {
-        gameObject.layer = LayerMask.NameToLayer("PlayerDamaged"); // 무적 레이어
+        if (gameObject.layer == LayerMask.NameToLayer("PlayerDamaged"))
+        {
+            // 이미 무적 상태인 경우 처리하지 않음
+            return;
+        }
 
-        spriteRenderer.color = new Color(1, 1, 1, 0.3f);
+        gameObject.layer = LayerMask.NameToLayer("PlayerDamaged"); // 무적 레이어 설정
+        spriteRenderer.color = new Color(1, 1, 1, 0.3f); // 무적 상태 시 투명도 변경
 
-        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1; //넉백
-        rigid.AddForce(new Vector2(dirc, 2) * 5, ForceMode2D.Impulse);
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1; // 넉백 방향 결정
+        rigid.AddForce(new Vector2(dirc, 2) * 5, ForceMode2D.Impulse); // 넉백 적용
 
-        StartCoroutine(TemporarilyIgnoreEnemyCollision(1.5f)); // 적과 충돌 무시 코루틴 호출
-
-        Invoke("OffDamaged", 0.2f);
+        StartCoroutine(HandleTemporaryInvincibility(1.5f)); // 무적 상태 관리 코루틴 호출
     }
+
+    void OffDamaged()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Player"); // 무적 레이어 해제
+        spriteRenderer.color = new Color(1, 1, 1, 1); // 원래 상태로 복구
+    }
+
+    IEnumerator HandleTemporaryInvincibility(float duration)
+    {
+        int playerLayer = LayerMask.NameToLayer("PlayerDamaged");
+        int enemyLayer = LayerMask.NameToLayer("Enemy");
+
+        if (playerLayer == -1 || enemyLayer == -1)
+        {
+            Debug.LogError("Layer names 'PlayerDamaged' or 'Enemy' are not defined in the Tags and Layers settings.");
+            yield break;
+        }
+
+        // 충돌을 무시하도록 설정
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true);
+
+        // 무적 타이머
+        yield return new WaitForSeconds(duration);
+
+        // 충돌 다시 활성화
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false);
+
+        OffDamaged(); // 무적 해제
+    }
+
 
     IEnumerator TemporarilyIgnoreEnemyCollision(float duration)
     {
@@ -321,22 +357,11 @@ public class PlayerMove : MonoBehaviour
             yield break;
         }
 
-        Debug.Log("Ignoring collisions between Player and Enemy layers.");
-        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true);
-
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true); // 플레이어와 적의 충돌 무시
         yield return new WaitForSeconds(duration);
-
-        Debug.Log("Restoring collisions between Player and Enemy layers.");
-        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false);
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false); // 충돌 복구
     }
 
-
-    void OffDamaged()
-    {
-        // 무적판정 풀림
-        gameObject.layer = LayerMask.NameToLayer("Player"); // 무적 레이어 해제
-        spriteRenderer.color = new Color(1, 1, 1, 1);
-    }
 
 
 

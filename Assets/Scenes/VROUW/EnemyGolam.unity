@@ -1466,7 +1466,7 @@ MonoBehaviour:
   stopChaseRange: 2
   Hp: 5
   knockbackForce: 10
-  attackPower: 0
+  attackPower: 1
   attackRange: {fileID: 1181267825}
   attackDelay: 1.5
   pushBackForce: 10

@@ -97,10 +97,20 @@ public class Golam : EnemyMove
 
         // 플레이어에 데미지를 입힘
         PlayerHP playerScript = player.GetComponent<PlayerHP>();
-        if (playerScript != null)
+        PlayerMove playerMove = player.GetComponent<PlayerMove>();
+        if (playerScript != null && playerMove != null)
         {
-            // 공격 범위에서 플레이어에게 데미지 적용
-            playerScript.TakeDamage(attackPower, transform.position); // position을 targetpos로 전달
+            // 무적 상태인지 확인
+            if (player.gameObject.layer != LayerMask.NameToLayer("PlayerDamaged"))
+            {
+                // 공격 범위에서 플레이어에게 데미지 적용
+                playerScript.TakeDamage(attackPower, transform.position); // position을 targetpos로 전달
+                playerMove.OnDamaged(transform.position); // 넉백 및 무적 상태 활성화
+            }
+            else
+            {
+                Debug.Log("플레이어가 무적 상태이므로 공격하지 않습니다.");
+            }
         }
     }
 
