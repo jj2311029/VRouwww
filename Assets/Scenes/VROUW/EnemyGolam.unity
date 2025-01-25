@@ -628,7 +628,7 @@ MonoBehaviour:
   ropeForce: 15
   dashDuration: 0.2
   dashCoolTime: 2
-  dashSpeed: 5
+  dashSpeed: 6
   dashCooldown: 1
   rb: {fileID: 719359725}
   groundCheck: {fileID: 1674511960}
@@ -1467,7 +1467,7 @@ MonoBehaviour:
   Hp: 5
   knockbackForce: 10
   attackPower: 1
-  attackRange: {fileID: 1181267825}
+  attackRange: {fileID: 1181267820}
   attackDelay: 1.5
   pushBackForce: 10
 --- !u!1 &1445604596

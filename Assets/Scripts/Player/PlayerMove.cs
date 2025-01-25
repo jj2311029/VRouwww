@@ -66,7 +66,7 @@ public class PlayerMove : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    private float originalGravityScale; // Rigidbody2D의 기본 중력값 저장
+    private float originalGravityScale; //대시 중력
 
     private void Start()
     {
@@ -74,6 +74,7 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); // SpriteRenderer 초기화
         rigid = GetComponent<Rigidbody2D>(); // Rigidbody2D 초기화
         playerHP = GetComponent<PlayerHP>();
+        originalGravityScale = rigid.gravityScale;
     }
 
     // Update is called once per frame
@@ -138,7 +139,6 @@ public class PlayerMove : MonoBehaviour
 
         Flip();
     }
-
     private void StartDash()
     {
         isDashing = true;
@@ -158,15 +158,34 @@ public class PlayerMove : MonoBehaviour
         {
             dashDirection = new Vector2(horizontalInput, verticalInput).normalized;
         }
-        rb.velocity = Vector2.zero;
-        rb.velocity += new Vector2(dashDirection.x * dashSpeed * 4f, 0); // 대시 속도 적용
+
+        rigid.velocity = Vector2.zero;
+        rigid.velocity += new Vector2(dashDirection.x * dashSpeed * 4f, 0); // 대시 속도 적용
+
+        rigid.gravityScale = 0; // 중력 비활성화
+        IgnoreEnemyCollision(true); // Enemy와의 충돌 비활성화
     }
 
     private void EndDash()
     {
         isDashing = false;
-        //rb.velocity = Vector2.zero; // 대시 후 정지
-        rb.velocity -= new Vector2(dashDirection.x * dashSpeed * 3f, 0);
+        rigid.velocity -= new Vector2(dashDirection.x * dashSpeed * 3f, 0); // 대시 종료 시 속도 감소
+        rigid.gravityScale = originalGravityScale; // 원래 중력값 복구
+        IgnoreEnemyCollision(false); // Enemy와의 충돌 활성화
+    }
+
+    private void IgnoreEnemyCollision(bool ignore)
+    {
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int enemyLayer = LayerMask.NameToLayer("Enemy");
+
+        if (playerLayer == -1 || enemyLayer == -1)
+        {
+            Debug.LogError("Layer names 'Player' or 'Enemy' are not defined in the Tags and Layers settings.");
+            return;
+        }
+
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, ignore);
     }
 
     IEnumerator Parrying()

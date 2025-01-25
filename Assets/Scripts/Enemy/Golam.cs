@@ -5,7 +5,7 @@ using UnityEngine;
 public class Golam : EnemyMove
 {
     [SerializeField] private int attackPower; // 공격력 설정
-    [SerializeField] public CircleCollider2D attackRange; // 공격 범위 설정
+    [SerializeField] public BoxCollider2D attackRange; // 공격 범위 설정
     [SerializeField] private float attackDelay = 1.5f; // 공격 딜레이
     [SerializeField] private float pushBackForce = 5f;
 
