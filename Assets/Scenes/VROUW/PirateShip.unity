@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 123315874}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
   enemyPrefab:
   - {fileID: 4258371774635121816, guid: 6cb4d994076eb034daac6fe22d292329, type: 3}
   - {fileID: 4258371774635121816, guid: 6707d22de7a29a04ea1c302b5c2e33ba, type: 3}
+  - {fileID: 7195089604514043776, guid: 5ff42ad9cd7810e41ad529df004a71dd, type: 3}
 --- !u!4 &320882361
 Transform:
   m_ObjectHideFlags: 0
