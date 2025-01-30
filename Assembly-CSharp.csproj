@@ -75,10 +75,12 @@
     <Compile Include="Assets\Scripts\Enemy\Golam.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossPatern2.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\ObstacleEnemy.cs" />
+    <Compile Include="Assets\Scripts\CameraMove.cs" />
     <Compile Include="Assets\Scripts\KeyManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
+    <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\distantshipEnemy.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\MainStatus.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\BasicEnemy.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="Assets\Scripts\Enemy\Bard.cs" />
     <Compile Include="Assets\Scripts\Player\swordStrike.cs" />
     <Compile Include="Assets\Scripts\Enemy\BucklerStats.cs" />
+    <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\ShipBullet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
