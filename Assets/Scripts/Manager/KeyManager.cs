@@ -68,13 +68,5 @@ public class KeyManager : MonoBehaviour
         key = num;
     }
 
-    public void OpenKeyPanel()
-    {
-        keyPanel.SetActive(true);
-    }
-
-    public void CloseKeyPanel()
-    {
-        keyPanel.SetActive(false);
-    }
+    
 }

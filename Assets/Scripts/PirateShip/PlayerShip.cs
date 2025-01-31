@@ -9,7 +9,7 @@ public class PlayerShip : MonoBehaviour
     [SerializeField] float shipSpeed = 6f;
     [SerializeField] float rotationSpeed = 5f;
     [SerializeField] float cannonSpeed = 15f;
-    [SerializeField] float timer = 60f;
+    //[SerializeField] float timer = 60f;
     private Quaternion originalRotation;
     private float maxY = 3.3f;
     private float maxRotationAngle = 35f;
