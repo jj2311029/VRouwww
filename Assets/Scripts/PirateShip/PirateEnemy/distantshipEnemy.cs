@@ -6,10 +6,9 @@ public class distantshipEnemy : BasicEnemy
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float fireInterval = 1f; // ¹ß»ç °£°Ý
+    [SerializeField] private float fireInterval = 1f; // ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½
     [SerializeField] private float bulletSpeed = 20f;
-
-    private void Start()
+    protected override void Attack()
     {
         InvokeRepeating("Shoot", 0f, fireInterval);
     }
@@ -18,25 +17,25 @@ public class distantshipEnemy : BasicEnemy
     {
         if (bulletPrefab == null || firePoint == null) return;
 
-        // ÃÑ¾Ë »ý¼º
+        // ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
-        // »ý¼ºµÈ ÃÑ¾ËÀÇ ShipBullet ½ºÅ©¸³Æ®¸¦ °¡Á®¿È
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ ShipBullet ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ShipBullet bulletScript = bullet.GetComponent<ShipBullet>();
 
         if (bulletScript != null)
         {
-            // ÇÃ·¹ÀÌ¾î ¹æÇâ °è»ê
+            // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             Vector3 playerPosition = FindPlayerPosition();
             Vector3 fireDirection = (playerPosition - firePoint.position).normalized;
 
-            // ÃÑ¾Ë ¹æÇâ ¼³Á¤
+            // ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             bulletScript.SetDirection(fireDirection);
         }
     }
 
 
-    // ÇÃ·¹ÀÌ¾î À§Ä¡¸¦ Ã£´Â ÇïÆÛ ÇÔ¼ö
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     private Vector3 FindPlayerPosition()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
