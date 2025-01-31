@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     private float moveInput = 0f;//플레이어 좌우이동 input
     private bool isFacingRight = true;//좌우 처다보는것
     //플레이어 점프
-    private float jumpingPower = 15f;//점프 높이
+    private float jumpingPower = 25f;//점프 높이
 
     //플레이어 로프 이동
     private HingeJoint2D joint;
@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour
     bool ableRope = false;
 
     //플레이어 대쉬
-    private bool isDash = false;
+    //private bool isDash = false;
     private bool canDash = true;
 
     [Header("Dash Settings")]
@@ -81,7 +81,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeySetting.Keys[KeyAction.LEFT]))
+        if (Input.GetKey(KeySetting.Keys[KeyAction.LEFT]))//기본 좌우 이동
         {
             moveInput = -1f;
         }
@@ -93,29 +93,24 @@ public class PlayerMove : MonoBehaviour
         {
             moveInput = 0f;
         }
-        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.UP]) && IsGrounded())
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.UP]) && IsGrounded())//기본 점프
         {
             rb.velocity += new Vector2(0, jumpingPower);
         }
-        if (Input.GetKey(KeySetting.Keys[KeyAction.UP]) && isOnRope)
-        {
-            if (!ableRope)
-            {
-                StartCoroutine(UpRope());
-            }
-        }
-        if (Input.GetKey(KeySetting.Keys[KeyAction.DOWN]) && isOnRope)
-        {
-            if (!ableRope)
-            {
-                StartCoroutine(DownRope());
-            }
-        }
+        
+        /*
         if (Input.GetKeyUp(KeySetting.Keys[KeyAction.UP]) && rb.velocity.y > 0f)
         {
             //rb.velocity += new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+<<<<<<< Updated upstream
         }
         if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown)
+=======
+        }*/
+
+
+
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown )//대쉬
         {
             //StartCoroutine(dash());
             StartDash();
@@ -124,14 +119,32 @@ public class PlayerMove : MonoBehaviour
         {
             EndDash();
         }
-        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.INTERACTION]) && isOnRope)
+
+
+        if (Input.GetKey(KeySetting.Keys[KeyAction.UP]) && isOnRope)//로프 올라가기
+        {
+            if (!ableRope)
+            {
+                StartCoroutine(UpRope());
+            }
+        }
+        if (Input.GetKey(KeySetting.Keys[KeyAction.DOWN]) && isOnRope)//로프 내려가기
+        {
+            if (!ableRope)
+            {
+                StartCoroutine(DownRope());
+            }
+        }
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.INTERACTION]) && isOnRope)//로프 나오기
         {
             isOnRope = false;
             joint.enabled = false;
             //rb.velocity+=new Vector2(rb.velocity.x, rb.velocity.y);
             rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.5f;//1.5f는 반동 계수
+
         }
-        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.PARRYING]) && !isparrying)
+
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.PARRYING]) && !isparrying) //패링
         {
 
             StartCoroutine(Parrying());
@@ -262,7 +275,6 @@ public class PlayerMove : MonoBehaviour
             if (moveInput != 0)
             {
                 rb.velocity += new Vector2(moveInput * speed / 8, 0);
-                Debug.Log(rb.velocity.x);
             }
         }
 
