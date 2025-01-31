@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2901389709827423076}
   - component: {fileID: 2696660487298181403}
   - component: {fileID: 5709447135840133875}
-  m_Layer: 0
+  - component: {fileID: 4728056641417843461}
+  m_Layer: 3
   m_Name: LongRange(NER)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -174,14 +175,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigid: {fileID: 2696660487298181403}
   render: {fileID: 7799422162133055052}
+  boxCollider: {fileID: 0}
   speed: 2.5
   followDistance: 1
   stopChaseRange: 2
   Hp: 2
+  knockbackForce: 10
   attackSpeed: 2
   attackRange: {fileID: 5550329177433008112}
   NER_bullet: {fileID: 2098952004656492760, guid: 8a8a31fb43a90774982b8da6cd0baa78, type: 3}
   target: {fileID: 2118907595196681, guid: 504feaa0f0be6f74ab7477dd55cc392e, type: 3}
+--- !u!95 &4728056641417843461
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6103336930426469186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71087215622889f4fb022747555668e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &3956249916972947221
 PrefabInstance:
   m_ObjectHideFlags: 0
