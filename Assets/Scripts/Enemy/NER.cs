@@ -34,6 +34,7 @@ public class NER : EnemyMove
     {
         if (collision.tag == "Player")
         {
+            StopMoving();
             speed = 0;
             StartCoroutine("Aim");
         }
@@ -43,6 +44,8 @@ public class NER : EnemyMove
     {
         if (collision.tag == "Player")
         {
+            StopAttack();
+            StartMoving();
             canAttack = false;
             speed = 2.5f;
             StopCoroutine("Aim");
@@ -64,6 +67,8 @@ public class NER : EnemyMove
     //실제 공격
     private void Attack()
     {
+        StopMoving();
+        StartAttack();
         Vector3 directionToPlayer = target.transform.position - transform.position;
         directionToPlayer.z = 0f;
 
@@ -72,5 +77,35 @@ public class NER : EnemyMove
 
         NER_bullet bulletComponent = cpy_bullet.GetComponent<NER_bullet>();
         bulletComponent.SetDirection(directionToPlayer);
+    }
+
+    //이동 애니메이션 관리
+    protected override void StartMoving()
+    {
+        if (anim != null)
+        {
+            anim.SetBool("isMoving", true);
+        }
+    }
+
+    protected override void StopMoving()
+    {
+        if (anim != null)
+        {
+            anim.SetBool("isMoving", false);
+        }
+    }
+
+    //공격 애니메이션 관리
+    private void StartAttack()
+    {
+        if (anim != null)
+            anim.SetBool("isAttacking", true); // 공격 애니메이션 실행
+    }
+
+    private void StopAttack()
+    {
+        if (anim != null)
+            anim.SetBool("isAttacking", false); // 공격 애니메이션 중지
     }
 }
