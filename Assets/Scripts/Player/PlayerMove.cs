@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     private float moveInput = 0f;//플레이어 좌우이동 input
     private bool isFacingRight = true;//좌우 처다보는것
     //플레이어 점프
-    private float jumpingPower = 15f;//점프 높이
+    private float jumpingPower = 25f;//점프 높이
 
     //플레이어 로프 이동
     private HingeJoint2D joint;
@@ -262,7 +262,6 @@ public class PlayerMove : MonoBehaviour
             if (moveInput != 0)
             {
                 rb.velocity += new Vector2(moveInput * speed / 8, 0);
-                Debug.Log(rb.velocity.x);
             }
         }
 
