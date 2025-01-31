@@ -18,6 +18,7 @@ public class EnemyMove : MonoBehaviour
     protected bool isPlayerOnSamePlatform;
     protected bool isChasing;
     protected int nextMove;
+    protected Animator anim; // 애니메이션 추가
 
     protected virtual void Awake()
     {
@@ -25,6 +26,7 @@ public class EnemyMove : MonoBehaviour
         render = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>(); // BoxCollider2D 컴포넌트 가져오기
         player = GameObject.FindWithTag("Player").transform;
+        anim = GetComponent<Animator>(); // Animator 가져오기
         Think(); // 초기 이동 방향 설정
     }
 
@@ -55,6 +57,7 @@ public class EnemyMove : MonoBehaviour
 
     protected virtual void Patrol()
     {
+        StartMoving();
         rigid.velocity = new Vector2(nextMove * speed, rigid.velocity.y);
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
         Debug.DrawRay(frontVector, Vector3.down, Color.green);
@@ -70,6 +73,8 @@ public class EnemyMove : MonoBehaviour
     protected void ChasePlayer()
     {
         isChasing = true;
+        StartMoving();
+        anim.SetBool("isMoving", true);
         Vector2 direction = (player.position - transform.position).normalized;
         rigid.velocity = new Vector2(direction.x * speed, rigid.velocity.y);
         render.flipX = direction.x < 0;
@@ -78,6 +83,8 @@ public class EnemyMove : MonoBehaviour
     protected void StopChasing()
     {
         isChasing = false;
+        StopMoving();
+        anim.SetBool("isMoving", false);
         Think(); // 정찰 상태로 전환
     }
 
@@ -161,5 +168,18 @@ public class EnemyMove : MonoBehaviour
         speed = 6f;
         yield return new WaitForSeconds(3f);
         speed = 2.5f;
+    }
+
+    //이동 애니메이션 관리
+    protected virtual void StartMoving()
+    {
+        if (anim != null)
+            anim.SetBool("isMoving", true);
+    }
+
+    protected virtual void StopMoving()
+    {
+        if (anim != null)
+            anim.SetBool("isMoving", false);
     }
 }
