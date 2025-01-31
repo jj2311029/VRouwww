@@ -102,10 +102,6 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyUp(KeySetting.Keys[KeyAction.UP]) && rb.velocity.y > 0f)
         {
             //rb.velocity += new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-<<<<<<< Updated upstream
-        }
-        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown)
-=======
         }*/
 
 
@@ -143,7 +139,6 @@ public class PlayerMove : MonoBehaviour
             rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.5f;//1.5f는 반동 계수
 
         }
-
         if (Input.GetKeyDown(KeySetting.Keys[KeyAction.PARRYING]) && !isparrying) //패링
         {
 

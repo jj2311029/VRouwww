@@ -226,12 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d21d7b14cd9c1c43adc84d3edf5e0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bk_source: {fileID: 0}
-  ef_source: {fileID: 0}
-  bk_music: []
-  ef_music: []
-  bkSlider: {fileID: 1014560128}
-  efSlider: {fileID: 1967559821}
 --- !u!4 &78415986
 Transform:
   m_ObjectHideFlags: 0
@@ -732,11 +726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95535eca4945d5c40b57a4e7754b36f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingPanel: {fileID: 317244145}
-  soundPanel: {fileID: 2061309062}
-  keyPanel: {fileID: 334049417}
-  beforeMainPanel: {fileID: 1448163462}
-  Pause: 0
 --- !u!4 &224266644
 Transform:
   m_ObjectHideFlags: 0
@@ -1232,7 +1221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5382cc9f77d0fdc4ea58d06f51275fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyPanel: {fileID: 334049417}
 --- !u!4 &358511767
 Transform:
   m_ObjectHideFlags: 0
