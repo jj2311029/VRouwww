@@ -10,9 +10,13 @@ public class NER : EnemyMove
     public GameObject NER_bullet;
     public GameObject target;
     private CircleCollider2D rangeCollider;
+    private BoxCollider2D takeDamageCollider;
 
+    private float attackTurm = 0f;
     private bool canAttack;
     private bool Wait = true;
+
+    private Vector2 lastPosition;
 
     //명령
     private void Update()
@@ -28,12 +32,14 @@ public class NER : EnemyMove
     {
         rangeCollider = attackRange.GetComponent<CircleCollider2D>();
         rangeCollider.isTrigger = true;
+        takeDamageCollider = GetComponent<BoxCollider2D>();
     }
     //플레이어 감지
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            anim.SetBool("isReady", true);
             StopMoving();
             speed = 0;
             StartCoroutine("Aim");
@@ -44,8 +50,9 @@ public class NER : EnemyMove
     {
         if (collision.tag == "Player")
         {
-            StopAttack();
-            StartMoving();
+            StopMoving();
+            anim.SetBool("isAttacking", false);
+            anim.SetBool("isReady", false);
             canAttack = false;
             speed = 2.5f;
             StopCoroutine("Aim");
@@ -67,8 +74,7 @@ public class NER : EnemyMove
     //실제 공격
     private void Attack()
     {
-        StopMoving();
-        StartAttack();
+        anim.SetBool("isAttacking", true);
         Vector3 directionToPlayer = target.transform.position - transform.position;
         directionToPlayer.z = 0f;
 
@@ -78,7 +84,15 @@ public class NER : EnemyMove
         NER_bullet bulletComponent = cpy_bullet.GetComponent<NER_bullet>();
         bulletComponent.SetDirection(directionToPlayer);
     }
-
+    //위치가 변하지 않으면 idle로 출력
+    private void CheckIdleState()
+    {
+        if (Vector2.Distance(transform.position, lastPosition) < 0.01f)
+        {
+            StopMoving();
+        }
+        lastPosition = transform.position;
+    }
     //이동 애니메이션 관리
     protected override void StartMoving()
     {
@@ -94,18 +108,5 @@ public class NER : EnemyMove
         {
             anim.SetBool("isMoving", false);
         }
-    }
-
-    //공격 애니메이션 관리
-    private void StartAttack()
-    {
-        if (anim != null)
-            anim.SetBool("isAttacking", true); // 공격 애니메이션 실행
-    }
-
-    private void StopAttack()
-    {
-        if (anim != null)
-            anim.SetBool("isAttacking", false); // 공격 애니메이션 중지
     }
 }
