@@ -38,6 +38,7 @@ public class EnemyMove : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, player.position) > stopChaseRange)
             {
+                StartMoving();
                 ChasePlayer(); // 공격 거리 이상일 때 추격
             }
             else
@@ -48,16 +49,17 @@ public class EnemyMove : MonoBehaviour
         else if (isChasing && Vector2.Distance(transform.position, player.position) > followDistance)
         {
             StopChasing(); // 추적 중지
+            StopMoving();
         }
         else if (!isChasing)
         {
+            StartMoving();
             Patrol(); // 정찰 상태
         }
     }
 
     protected virtual void Patrol()
     {
-        StartMoving();
         rigid.velocity = new Vector2(nextMove * speed, rigid.velocity.y);
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
         Debug.DrawRay(frontVector, Vector3.down, Color.green);
@@ -73,8 +75,6 @@ public class EnemyMove : MonoBehaviour
     protected void ChasePlayer()
     {
         isChasing = true;
-        StartMoving();
-        anim.SetBool("isMoving", true);
         Vector2 direction = (player.position - transform.position).normalized;
         rigid.velocity = new Vector2(direction.x * speed, rigid.velocity.y);
         render.flipX = direction.x < 0;
@@ -83,8 +83,6 @@ public class EnemyMove : MonoBehaviour
     protected void StopChasing()
     {
         isChasing = false;
-        StopMoving();
-        anim.SetBool("isMoving", false);
         Think(); // 정찰 상태로 전환
     }
 
@@ -107,6 +105,7 @@ public class EnemyMove : MonoBehaviour
 
     protected void Think()
     {
+        StopMoving();
         nextMove = Random.Range(-1, 2);
         render.flipX = nextMove == -1;
         float nextThinkTime = Random.Range(2f, 5f);
