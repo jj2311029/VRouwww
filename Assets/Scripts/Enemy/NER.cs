@@ -8,15 +8,15 @@ public class NER : EnemyMove
 
     public GameObject attackRange;
     public GameObject NER_bullet;
-    public GameObject target;
+    private GameObject target;
+
     private CircleCollider2D rangeCollider;
     private BoxCollider2D takeDamageCollider;
+    private SpriteRenderer spriteRenderer;
 
     private float attackTurm = 0f;
     private bool canAttack;
     private bool Wait = true;
-
-    private Vector2 lastPosition;
 
     //명령
     private void Update()
@@ -26,6 +26,10 @@ public class NER : EnemyMove
             Attack();
             StartCoroutine("WaitAttack");
         }
+        if (target != null)
+        {
+            spriteRenderer.flipX = target.transform.position.x < transform.position.x;
+        }
     }
     //사거리 받기
     void Start()
@@ -33,12 +37,14 @@ public class NER : EnemyMove
         rangeCollider = attackRange.GetComponent<CircleCollider2D>();
         rangeCollider.isTrigger = true;
         takeDamageCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     //플레이어 감지
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            target = collision.gameObject;
             anim.SetBool("isReady", true);
             StopMoving();
             speed = 0;
@@ -50,6 +56,7 @@ public class NER : EnemyMove
     {
         if (collision.tag == "Player")
         {
+            target = null;
             StopMoving();
             anim.SetBool("isAttacking", false);
             anim.SetBool("isReady", false);
@@ -83,15 +90,6 @@ public class NER : EnemyMove
 
         NER_bullet bulletComponent = cpy_bullet.GetComponent<NER_bullet>();
         bulletComponent.SetDirection(directionToPlayer);
-    }
-    //위치가 변하지 않으면 idle로 출력
-    private void CheckIdleState()
-    {
-        if (Vector2.Distance(transform.position, lastPosition) < 0.01f)
-        {
-            StopMoving();
-        }
-        lastPosition = transform.position;
     }
     //이동 애니메이션 관리
     protected override void StartMoving()
