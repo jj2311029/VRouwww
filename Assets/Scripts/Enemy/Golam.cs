@@ -49,6 +49,7 @@ public class Golam : EnemyMove
     // Patrol 메서드는 필요하면 Golam에서만 커스터마이징
     protected override void Patrol()
     {
+        StartMoving();
         rigid.velocity = new Vector2(nextMove * speed, rigid.velocity.y);
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
         Debug.DrawRay(frontVector, Vector3.down, Color.green);
@@ -64,6 +65,7 @@ public class Golam : EnemyMove
     // StopAndPrepareAttack 메서드는 Golam만의 공격 준비 로직을 추가
     protected override void StopAndPrepareAttack()
     {
+        anim.SetBool("isReady", true);
         rigid.velocity = Vector2.zero; // 적을 멈추게 함
         render.flipX = player.position.x < transform.position.x; // 플레이어 방향으로 바라보기
 
@@ -93,6 +95,8 @@ public class Golam : EnemyMove
 
     private void Attack()
     {
+        anim.SetTrigger("isAttack");
+        anim.SetBool("isReady", false);
         Debug.Log("골렘이 플레이어를 공격합니다!");
 
         // 플레이어에 데미지를 입힘
@@ -120,5 +124,4 @@ public class Golam : EnemyMove
     {
         base.TakeDamage(damage);
     }
-
 }
