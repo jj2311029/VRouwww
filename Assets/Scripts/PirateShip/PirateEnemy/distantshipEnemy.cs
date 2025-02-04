@@ -17,25 +17,22 @@ public class distantshipEnemy : BasicEnemy
     {
         if (bulletPrefab == null || firePoint == null) return;
 
-        // �Ѿ� ����
+        
+
+        Vector3 playerPosition = FindPlayerPosition();
+        Vector3 fireDirection = (playerPosition - firePoint.position).normalized;
+
+
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
-        // ������ �Ѿ��� ShipBullet ��ũ��Ʈ�� ������
         ShipBullet bulletScript = bullet.GetComponent<ShipBullet>();
 
-        if (bulletScript != null)
-        {
-            // �÷��̾� ���� ���
-            Vector3 playerPosition = FindPlayerPosition();
-            Vector3 fireDirection = (playerPosition - firePoint.position).normalized;
+        bulletScript.SetDirection(fireDirection);
+        StartCoroutine(PlayAnimation());
 
-            // �Ѿ� ���� ����
-            bulletScript.SetDirection(fireDirection);
-        }
     }
 
 
-    // �÷��̾� ��ġ�� ã�� ���� �Լ�
     private Vector3 FindPlayerPosition()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

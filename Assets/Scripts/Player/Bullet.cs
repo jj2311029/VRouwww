@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 10f;
-    private Vector3 direction; // ÃÑ¾ËÀÇ ¹ß»ç ¹æÇâ
+    private Vector3 direction; // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     PlayerMove pm;
     float damage = 1f;
@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     {
         pm = FindObjectOfType<PlayerMove>();
     }
-    // ¹æÇâ ¼³Á¤ ¸Þ¼Òµå
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
     public void SetDirection(Vector3 dir)
     {
         direction = dir.normalized;
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.CompareTag("Enemy"))
         {
             EnemyMove EA = collision.GetComponent<EnemyMove>();
             Destroy(this.gameObject);
@@ -42,26 +42,16 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                BucklerStats BS = collision.gameObject.GetComponentInParent<BucklerStats>();
-                if (BS != null)
+                EnemyStats es = collision.gameObject.GetComponentInParent<EnemyStats>();
+                if (es != null)
                 {
                     if (pm.GetSuccessParrying())
-                        BS.TakeDamage(damage + 1f, pm.gameObject.transform);
+                        es.TakeDamage(damage + 1f, pm.gameObject.transform);
                     else
                     {
-                        BS.TakeDamage(damage, pm.gameObject.transform);
+                        es.TakeDamage(damage, pm.gameObject.transform);
                     }
 
-                }
-                else
-                {
-                    EnemyStats ES = collision.gameObject.GetComponentInParent<EnemyStats>();
-                    if (pm.GetSuccessParrying())
-                        ES.TakeDamage(damage + 1f, pm.gameObject.transform);
-                    else
-                    {
-                        ES.TakeDamage(damage, pm.gameObject.transform);
-                    }
                 }
                 EnemyBehavior EB = collision.GetComponentInParent<EnemyBehavior>();
                 EB.StartCoroutine(EB.Slow());

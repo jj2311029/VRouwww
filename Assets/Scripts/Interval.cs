@@ -37,7 +37,7 @@ public class Interval : MonoBehaviour
         if (stageClear && isPlayerInterval && !doorOpen) 
         {
             
-            Debug.Log("´ÙÀ½ ±¸°£À¸·Î ÀÌµ¿");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½");
             Destroy(door);
             doorOpen = true;
         }
@@ -49,7 +49,7 @@ public class Interval : MonoBehaviour
     {
         Collider2D[] colliders = Physics2D.OverlapBoxAll(Size.transform.position, Size.transform.localScale, 0f);
         int currentEnemy = 0;
-        // °Ë»öµÈ ÄÝ¶óÀÌ´õ¿¡¼­ ÅÂ±×°¡ ÀÏÄ¡ÇÏ´Â ¿ÀºêÁ§Æ® Ã£±â
+        // ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â±×°ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ã£ï¿½ï¿½
         isPlayerInterval = false;
         foreach (Collider2D collider in colliders)
         {

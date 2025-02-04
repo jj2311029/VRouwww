@@ -52,8 +52,8 @@ public class Obstacle : MonoBehaviour
         Destroy(this);
         if(collision.transform.CompareTag("Player"))
         {
-            PlayerShip playerScript =collision.collider.GetComponent<PlayerShip>();
-            //playerScript.TakeDamage(1f);
+            PirateManager playerScript = collision.collider.GetComponent<PirateManager>();
+            playerScript.DownTime(10f);
         }
     }
 }

@@ -10,7 +10,7 @@ public class EnemyBehavior : MonoBehaviour
     #region Inspector Variables    
     [SerializeField] protected float attackDistance;
     [SerializeField] protected float moveSpeed;
-    [SerializeField] protected Transform enemySprite;
+    [SerializeField] protected Transform PlayerTransform;
     [SerializeField] protected float timer;//attack cooltime
     public GameObject hotZone;
     public GameObject triggerArea;
@@ -81,7 +81,7 @@ public class EnemyBehavior : MonoBehaviour
     }
     protected void EnemyLogic()
     {
-        distance = Vector2.Distance(enemySprite.transform.position, target.transform.position);
+        distance = Vector2.Distance(this.transform.position, target.transform.position);
         if (distance > attackDistance)
         {
             StopAttack();
@@ -111,7 +111,6 @@ public class EnemyBehavior : MonoBehaviour
         attackMode=true;
         animator.SetBool("Attack", true);
         animator.SetBool("CanWalk", false);
-        
     }
 
     protected void StopAttack()
@@ -119,6 +118,7 @@ public class EnemyBehavior : MonoBehaviour
         cooling = false;
         attackMode =false;
         animator.SetBool("Attack",false);
+        animator.SetBool("CanWalk",true);
     }
     protected void Move()
     {
