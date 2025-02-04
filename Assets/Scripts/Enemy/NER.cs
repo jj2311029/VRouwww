@@ -8,9 +8,13 @@ public class NER : EnemyMove
 
     public GameObject attackRange;
     public GameObject NER_bullet;
-    public GameObject target;
-    private CircleCollider2D rangeCollider;
+    private GameObject target;
 
+    private CircleCollider2D rangeCollider;
+    private BoxCollider2D takeDamageCollider;
+    private SpriteRenderer spriteRenderer;
+
+    private float attackTurm = 0f;
     private bool canAttack;
     private bool Wait = true;
 
@@ -22,18 +26,26 @@ public class NER : EnemyMove
             Attack();
             StartCoroutine("WaitAttack");
         }
+        if (target != null)
+        {
+            spriteRenderer.flipX = target.transform.position.x < transform.position.x;
+        }
     }
     //사거리 받기
     void Start()
     {
         rangeCollider = attackRange.GetComponent<CircleCollider2D>();
         rangeCollider.isTrigger = true;
+        takeDamageCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     //플레이어 감지
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            target = collision.gameObject;
+            anim.SetBool("isReady", true);
             StopMoving();
             speed = 0;
             StartCoroutine("Aim");
@@ -44,8 +56,10 @@ public class NER : EnemyMove
     {
         if (collision.tag == "Player")
         {
-            StopAttack();
-            StartMoving();
+            target = null;
+            StopMoving();
+            anim.SetBool("isAttacking", false);
+            anim.SetBool("isReady", false);
             canAttack = false;
             speed = 2.5f;
             StopCoroutine("Aim");
@@ -67,8 +81,7 @@ public class NER : EnemyMove
     //실제 공격
     private void Attack()
     {
-        StopMoving();
-        StartAttack();
+        anim.SetBool("isAttacking", true);
         Vector3 directionToPlayer = target.transform.position - transform.position;
         directionToPlayer.z = 0f;
 
@@ -78,7 +91,6 @@ public class NER : EnemyMove
         NER_bullet bulletComponent = cpy_bullet.GetComponent<NER_bullet>();
         bulletComponent.SetDirection(directionToPlayer);
     }
-
     //이동 애니메이션 관리
     protected override void StartMoving()
     {
@@ -94,18 +106,5 @@ public class NER : EnemyMove
         {
             anim.SetBool("isMoving", false);
         }
-    }
-
-    //공격 애니메이션 관리
-    private void StartAttack()
-    {
-        if (anim != null)
-            anim.SetBool("isAttacking", true); // 공격 애니메이션 실행
-    }
-
-    private void StopAttack()
-    {
-        if (anim != null)
-            anim.SetBool("isAttacking", false); // 공격 애니메이션 중지
     }
 }

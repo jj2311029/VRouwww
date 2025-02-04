@@ -62,7 +62,7 @@ public class EnemyMove : MonoBehaviour
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
         Debug.DrawRay(frontVector, Vector3.down, Color.green);
 
-        RaycastHit2D rayHit = Physics2D.Raycast(frontVector, Vector3.down, 2f, LayerMask.GetMask("Ground"));
+        RaycastHit2D rayHit = Physics2D.Raycast(frontVector, Vector3.down, 6f, LayerMask.GetMask("Ground"));
 
         if (rayHit.collider == null)
         {
@@ -74,7 +74,6 @@ public class EnemyMove : MonoBehaviour
     {
         isChasing = true;
         StartMoving();
-        anim.SetBool("isMoving", true);
         Vector2 direction = (player.position - transform.position).normalized;
         rigid.velocity = new Vector2(direction.x * speed, rigid.velocity.y);
         render.flipX = direction.x < 0;
@@ -84,7 +83,6 @@ public class EnemyMove : MonoBehaviour
     {
         isChasing = false;
         StopMoving();
-        anim.SetBool("isMoving", false);
         Think(); // 정찰 상태로 전환
     }
 
@@ -107,6 +105,7 @@ public class EnemyMove : MonoBehaviour
 
     protected void Think()
     {
+        StopMoving();
         nextMove = Random.Range(-1, 2);
         render.flipX = nextMove == -1;
         float nextThinkTime = Random.Range(2f, 5f);

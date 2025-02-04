@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.Rendering.DebugUI;
 
 public class Bard : EnemyMove
 {
     public GameObject attackRange;
     public GameObject buffPrefab;    // 버프 범위
-    //public GameObject chargeBar;    // 차지 UI
+    private GameObject target;
 
     private CircleCollider2D rangeCollider;
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField] float Attackspeed = 10f;
     [SerializeField] private float increaseRate = 1f;  // 수치 증가 속도
@@ -19,6 +21,7 @@ public class Bard : EnemyMove
     private float chargeTime = 0;
     private bool isPlayerDetected = false;
     private bool Wait = true;
+    private bool isChargingAnimPlayed = false;
 
 
     //인식범위 받기
@@ -26,7 +29,6 @@ public class Bard : EnemyMove
     {
         rangeCollider = attackRange.GetComponent<CircleCollider2D>();
         rangeCollider.isTrigger = true;
-        //GameObject CB = Instantiate(chargeBar, transform.position, transform.rotation);
     }
     private void Update()
     {
@@ -34,6 +36,12 @@ public class Bard : EnemyMove
         if ( chargeTime >= 3f)
         {
             Music();
+        }
+        if (chargeTime >= 2.2f && !isChargingAnimPlayed)
+        {
+            anim.SetTrigger("isCharging");
+            anim.SetBool("isCollide", false);
+            isChargingAnimPlayed = true; // 애니메이션 실행됨
         }
         //비파 치는 시간
         if (isPlayerDetected)
@@ -46,6 +54,11 @@ public class Bard : EnemyMove
             if (chargeTime > 0)
                 chargeTime -= decreaseRate * Time.deltaTime; // 일정 시간마다 수치 감소
         }
+        //좌우 보기
+        if (target != null)
+        {
+            spriteRenderer.flipX = target.transform.position.x < transform.position.x;
+        }
     }
     //플레이어 감지
     private void OnTriggerStay2D(Collider2D collision)
@@ -53,7 +66,8 @@ public class Bard : EnemyMove
         if (collision.tag == "Player")
         {
             speed = 0;
-            Debug.Log("플레이어 감지");
+            target = collision.gameObject;
+            anim.SetBool("isCollide", true);
             isPlayerDetected = true;
         }
     }
@@ -63,6 +77,8 @@ public class Bard : EnemyMove
         if (collision.tag == "Player")
         {
             speed = 2.5f;
+            target = null;
+            anim.SetBool("isCollide", false);
             Debug.Log("플레이어 놓침");
             isPlayerDetected = false;
         }
@@ -82,5 +98,6 @@ public class Bard : EnemyMove
         chargeTime = 0;
         GameObject currentBuff = Instantiate(buffPrefab, transform.position, Quaternion.identity);
         Destroy(currentBuff, 1f);
+        isChargingAnimPlayed = false; // 애니메이션 실행됨
     }
 }
