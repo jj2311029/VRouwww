@@ -15,8 +15,8 @@ public class Heart : Object
         if (collision.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-            //PlayerShip playerScript = collision.GetComponent<PlayerShip>();
-            //playerScript.GetHeart();
+            PirateManager playerScript = collision.GetComponent<PirateManager>();
+            playerScript.UpTime(10f);
         }
     }
 }

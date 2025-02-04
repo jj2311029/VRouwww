@@ -15,8 +15,8 @@ public class OakBarrel : Object
         if (collision.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-            //PlayerShip playerScript = collision.GetComponent<PlayerShip>();
-            //playerScript.TakeDamage(2f);
+            PirateManager playerScript = collision.GetComponent<PirateManager>();
+            playerScript.DownTime(10f);
         }
     }
 }

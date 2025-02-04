@@ -40,8 +40,14 @@ public class PirateManager : MonoBehaviour
 
     public void ReStart()
     {
-        clearRate = 0f;
-        //or
-        //SceneManager.LoadScene("PirateScene");
+        SceneManager.LoadScene("PirateShip");
+    }
+    public void UpTime(float time)
+    {
+        clearRate += time;
+    }
+    public void DownTime(float time)
+    {
+        clearRate -= time;
     }
 }
