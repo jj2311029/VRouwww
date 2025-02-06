@@ -6,7 +6,7 @@ public class ObstacleEnemy : BasicEnemy
 {
     public GameObject obstacle;
     public Vector3 spawnPoint;
-    public float coolTime=4f;
+    public float coolTime = 4f;
 
     protected override void Attack()
     {
@@ -19,10 +19,6 @@ public class ObstacleEnemy : BasicEnemy
         {
             Instantiate(obstacle,transform.position,Quaternion.identity);
             StartCoroutine(PlayAnimation());
-            if (Hp <= 0)
-            {
-                StopCoroutine(ThrowObstacle() );   
-            }
             yield return new WaitForSeconds(coolTime);
         }
     }
