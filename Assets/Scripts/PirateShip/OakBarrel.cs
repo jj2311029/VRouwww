@@ -18,7 +18,7 @@ public class OakBarrel : Object//Rock
         if (collision.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-            pirateManager.DownTime(10f);
+            pirateManager.DownHeart();
         }
     }
 }

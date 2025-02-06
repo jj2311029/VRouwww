@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    float screenMinX, screenMaxX, screenMinY, screenMaxY;
 
     [SerializeField] protected float speed = 1f;
     PirateManager pirateManager;
@@ -32,7 +31,7 @@ public class Obstacle : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-            pirateManager.DownTime(10f);
+            pirateManager.DownHeart();
         }
     }
 }

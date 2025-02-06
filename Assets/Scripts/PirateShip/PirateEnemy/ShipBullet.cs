@@ -31,7 +31,7 @@ public class ShipBullet : MonoBehaviour//ÀûÀÌ ½î´Â ÃÑ¾Ë
         if (collision.CompareTag("Player"))
         {
             Destroy(this.gameObject); // Ãæµ¹ ½Ã ÃÑ¾Ë ÆÄ±«
-            pirateManager.DownTime(10f);
+            pirateManager.DownHeart();
         }
     }
 }
