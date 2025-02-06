@@ -23,15 +23,18 @@ public class Bard : EnemyMove
     private bool Wait = true;
     private bool isChargingAnimPlayed = false;
 
-
     //인식범위 받기
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rangeCollider = attackRange.GetComponent<CircleCollider2D>();
         rangeCollider.isTrigger = true;
     }
     private void Update()
     {
+        Debug.Log(isHoldingPosition);
+
+        if (isStunned) return;
         //공격 가능 유무
         if ( chargeTime >= 3f)
         {
