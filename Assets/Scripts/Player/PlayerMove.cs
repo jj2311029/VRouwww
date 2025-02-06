@@ -40,6 +40,8 @@ public class PlayerMove : MonoBehaviour
     public float dashCooldown = 1f; // 대시 재사용 대기 시간
     private Vector2 dashDirection;
 
+    private int skillUnlock = 1;
+
     private bool isDashing = false;
     private float dashTime;
     private float lastDashTime;
@@ -55,7 +57,10 @@ public class PlayerMove : MonoBehaviour
     //HP 설정
     private PlayerHP playerHP; // PlayerHP 참조 변수 추가
     Rigidbody2D rigid;
-   
+
+    //동료스킬
+    public GameObject SkillRange;
+    private float skillCoolDown = 0f; 
 
     //패링
     bool isparrying = false;
@@ -103,7 +108,20 @@ public class PlayerMove : MonoBehaviour
         {
             //rb.velocity += new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }*/
-
+        
+        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.SKILL_1]))
+        {
+            skillCoolDown -= Time.deltaTime;
+            if (skillUnlock >= 1 && skillCoolDown <= 0f)
+            {
+                CompanySkill();
+                skillCoolDown = 20f;
+            }
+            else
+            {
+                Debug.Log("기다리");
+            }
+        }
 
 
         if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown )//대쉬
@@ -180,6 +198,12 @@ public class PlayerMove : MonoBehaviour
         rigid.velocity -= new Vector2(dashDirection.x * dashSpeed * 3f, 0); // 대시 종료 시 속도 감소
         rigid.gravityScale = originalGravityScale; // 원래 중력값 복구
         IgnoreEnemyCollision(false); // Enemy와의 충돌 활성화
+    }
+
+    private void CompanySkill()
+    {
+        GameObject skill = Instantiate(SkillRange, transform.position, Quaternion.identity);
+        Destroy(skill, 0.1f);
     }
 
     private void IgnoreEnemyCollision(bool ignore)
