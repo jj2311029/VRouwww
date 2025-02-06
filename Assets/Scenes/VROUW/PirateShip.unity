@@ -1067,14 +1067,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.11372549}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3990cf55f39815047a843680701355a7, type: 3}
+  m_Sprite: {fileID: -935507878, guid: d223247de50c5b74d87824890fd84b70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2054,8 +2054,8 @@ SceneRoots:
   - {fileID: 1602608070}
   - {fileID: 905253857}
   - {fileID: 1506357050}
-  - {fileID: 1245942754}
   - {fileID: 320882361}
+  - {fileID: 1245942754}
   - {fileID: 123315873}
   - {fileID: 1389231746}
   - {fileID: 331522220}
