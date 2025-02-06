@@ -7,26 +7,12 @@ public class Obstacle : MonoBehaviour
     float screenMinX, screenMaxX, screenMinY, screenMaxY;
 
     [SerializeField] protected float speed = 1f;
-
+    PirateManager pirateManager;
     void Awake()
     {
-        Camera cam = Camera.main;
-        float height = cam.orthographicSize * 2.0f;
-        float width = height * cam.aspect;
-
-        screenMinX = -width / 2.0f;
-        StartCoroutine(CallCheckBounds());
+        pirateManager = GameObject.Find("GameManager").GetComponent<PirateManager>();
+        Destroy(this.gameObject, 5f);
     }
-
-    void CheckBounds()
-    {
-        if (transform.position.x < screenMinX - 1)
-        {
-            Destroy(this.gameObject);
-        }
-
-    }
-
 
     private void FixedUpdate()
     {
@@ -39,21 +25,14 @@ public class Obstacle : MonoBehaviour
         transform.Translate(speed * Time.deltaTime * Vector3.left);
     }
 
-    IEnumerator CallCheckBounds()
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        while (true)
+        
+        if (collision.CompareTag("Player"))
         {
-            CheckBounds();
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(this);
-        if(collision.transform.CompareTag("Player"))
-        {
-            PirateManager playerScript = collision.collider.GetComponent<PirateManager>();
-            playerScript.DownTime(10f);
+            Destroy(this.gameObject);
+            pirateManager.DownTime(10f);
         }
     }
 }

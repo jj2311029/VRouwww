@@ -5,7 +5,8 @@ using UnityEngine;
 public class ShipBullet : MonoBehaviour//적이 쏘는 총알
 {
     private Vector3 direction; // 총알의 이동 방향
-    [SerializeField] private float speed = 20f; // 기본 속도
+    [SerializeField] private float speed = 10f; // 기본 속도
+    PirateManager pirateManager;
 
     public void SetDirection(Vector3 dir)
     {
@@ -15,6 +16,7 @@ public class ShipBullet : MonoBehaviour//적이 쏘는 총알
     private void Awake()
     {
         Destroy(this.gameObject, 5f);
+        pirateManager = GameObject.Find("GameManager").GetComponent<PirateManager>();
     }
 
     private void Update()
@@ -28,11 +30,8 @@ public class ShipBullet : MonoBehaviour//적이 쏘는 총알
         // 플레이어나 다른 오브젝트와 충돌 시 처리
         if (collision.CompareTag("Player"))
         {
-            // 플레이어에게 데미지를 줄 수 있는 로직 추가
-            Debug.Log("Player Hit!");
-            Destroy(gameObject); // 충돌 시 총알 파괴
-            PirateManager playerScript = collision.GetComponent<PirateManager>();
-            playerScript.DownTime(10f);
+            Destroy(this.gameObject); // 충돌 시 총알 파괴
+            pirateManager.DownTime(10f);
         }
     }
 }
