@@ -114,7 +114,7 @@ public class PlayerShip : MonoBehaviour
     [SerializeField] float cannonSpeed = 15f;
     private Quaternion originalRotation;
     private float maxY = 3.3f;
-    private float maxRotationAngle = 35f;
+    private float maxRotationAngle = 25f;
     private bool Wait = true;
 
     Vector2 currentPos;
@@ -136,7 +136,7 @@ public class PlayerShip : MonoBehaviour
                 float currentZAngle = transform.rotation.eulerAngles.z;
                 currentZAngle = currentZAngle > 180 ? currentZAngle - 360 : currentZAngle;
 
-                if (currentZAngle > -35)
+                if (currentZAngle < 35 && currentZAngle > -35)
                 {
                     transform.Rotate(new Vector3(0, 0, 30) * rotationSpeed * Time.deltaTime);
                 }
@@ -150,7 +150,7 @@ public class PlayerShip : MonoBehaviour
                 float currentZAngle = transform.rotation.eulerAngles.z;
                 currentZAngle = currentZAngle > 180 ? currentZAngle - 360 : currentZAngle;
 
-                if (currentZAngle < 35)
+                if (currentZAngle < 35 && currentZAngle > -35) 
                 {
                     transform.Rotate(new Vector3(0, 0, -30) * rotationSpeed * Time.deltaTime);
                 }

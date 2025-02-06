@@ -128,6 +128,13 @@ public class EnemyBehavior : MonoBehaviour
     {
         animator.SetBool("CanWalk", true);
 
+        Vector2 direction = new Vector2((target.transform.position.x - transform.position.x),0).normalized; // target으로 향하는 방향 계산
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 3.5f,6);
+        if (hit.collider != null)
+        {
+            SelectTarget();
+        }
+
         // 현재 애니메이션이 "Enemy_Faint" 상태일 경우 이동하지 않음
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Attack") &&
             !animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Faint")) // 추가!
@@ -136,7 +143,7 @@ public class EnemyBehavior : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
         }
     }
-     protected void CoolDown()
+    protected void CoolDown()
     {
         timer -= Time.deltaTime;
         if (timer <= 0 && cooling && attackMode)
@@ -170,14 +177,12 @@ public class EnemyBehavior : MonoBehaviour
         
         Flip();
 
-
     }
     public void Flip()
     {
-        StartCoroutine( waitFlip());
-        
+        StartCoroutine( WaitFlip());
     }
-    IEnumerator waitFlip()
+    IEnumerator WaitFlip()
     {
         yield return new WaitForSeconds(curveTime);
         Vector3 rotation = transform.eulerAngles;
@@ -190,11 +195,11 @@ public class EnemyBehavior : MonoBehaviour
             rotation.y = 0f;
         }
         transform.eulerAngles = rotation;
-        StopCoroutine(waitFlip());
+        StopCoroutine(WaitFlip());
     }
     public bool GetAttackMode()
     {
-        return attackMode;  
+        return attackMode;
     }
     public IEnumerator Slow()
     {
