@@ -10,6 +10,7 @@ public class EnemyBehavior : MonoBehaviour
     #region Inspector Variables    
     [SerializeField] protected float attackDistance;
     [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float attackSpeed;
     [SerializeField] protected Transform PlayerTransform;
     [SerializeField] protected float timer;//attack cooltime
     public GameObject hotZone;
@@ -18,7 +19,6 @@ public class EnemyBehavior : MonoBehaviour
     #endregion
 
     #region unvisible Variables
-
     protected Transform leftLimit;
     protected Transform rightLimit;
     [HideInInspector] public Transform target;
@@ -29,6 +29,7 @@ public class EnemyBehavior : MonoBehaviour
     protected GameObject Ground;
     [HideInInspector] public bool cooling;
     protected float intTimer;
+    protected bool isStunned;
     #endregion
 
 
@@ -38,18 +39,21 @@ public class EnemyBehavior : MonoBehaviour
         GameObject rightObj = new GameObject("RightLimit");
         leftLimit = leftObj.transform;
         rightLimit = rightObj.transform;
-
         SelectTarget();
         intTimer=timer;
         animator = GetComponent<Animator>();
     }
     protected void Update()
     {
-        if(!attackMode)
+        if (isStunned == true)
+        {
+            moveSpeed = 0f;
+            return;
+        }
+        if (!attackMode)
         { 
             Move();
         }
-
         if (!InsideOfLimits() && !inRange )
         {
             SelectTarget();
@@ -77,10 +81,10 @@ public class EnemyBehavior : MonoBehaviour
             leftLimit.transform.position = new Vector2(bounds.min.x, bounds.max.y);
             rightLimit.transform.position= new Vector2(bounds.max.x, bounds.max.y);
         }
-        
     }
     protected void EnemyLogic()
     {
+        if (isStunned) return;
         distance = Vector2.Distance(this.transform.position, target.transform.position);
         if (distance > attackDistance)
         {
@@ -122,12 +126,14 @@ public class EnemyBehavior : MonoBehaviour
     }
     protected void Move()
     {
-        animator.SetBool("CanWalk",true);
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Attack"))
+        animator.SetBool("CanWalk", true);
+
+        // 현재 애니메이션이 "Enemy_Faint" 상태일 경우 이동하지 않음
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Attack") &&
+            !animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Faint")) // 추가!
         {
             Vector2 targetPos = new Vector2(target.transform.position.x, transform.position.y);
-
-            transform.position = Vector2.MoveTowards(transform.position,targetPos,moveSpeed*Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
         }
     }
      protected void CoolDown()
@@ -195,5 +201,41 @@ public class EnemyBehavior : MonoBehaviour
         moveSpeed =1f;
         yield return new WaitForSeconds(1.5f);
         moveSpeed =2f;
+    }
+
+    // 버프 효과
+    public IEnumerator Buff()
+    {
+        moveSpeed = 6f;
+        timer /= 5f;
+        intTimer /= 5f;
+        yield return new WaitForSeconds(3f);
+        moveSpeed = 2.5f;
+        intTimer *= 5f;
+    }
+    public void Stun(float duration)
+    {
+        Debug.Log("기절");
+        isStunned = true;
+        animator.SetBool("isFaint", true); // 기절 애니메이션 재생
+
+        Invoke(nameof(EndStun), duration);
+    }
+
+    private void EndStun()
+    {
+        moveSpeed = 2f;
+        isStunned = false;
+        animator.SetBool("isFaint", false);
+
+        // 만약 공격 중이었다면 공격 상태로 전환
+        if (attackMode)
+        {
+            animator.SetBool("Attack", true);
+        }
+        else
+        {
+            animator.SetBool("CanWalk", true);
+        }
     }
 }

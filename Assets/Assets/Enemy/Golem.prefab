@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.78, y: -2.17, z: 0}
-  m_LocalScale: {x: 0.18910001, y: 0.18910001, z: 0.18910001}
+  m_LocalScale: {x: 0.19549973, y: 0.19549973, z: 0.19549973}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6444387565322836574}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 72cc6e92b8dc4954b905c5f14987e357, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -148,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.99278355, y: 0.49639058}
+  m_Offset: {x: -0.8360932, y: 0.07108688}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20.732664, y: 16.671278}
+  m_Size: {x: 17.374998, y: 15.820669}
   m_EdgeRadius: 0
 --- !u!114 &2836302640175814669
 MonoBehaviour:
@@ -216,15 +216,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5091966983027694525, guid: b1c1e0bb87c20bd41befa97c90854883, type: 3}
       propertyPath: m_LocalScale.x
-      value: 35
+      value: 42.5845
       objectReference: {fileID: 0}
     - target: {fileID: 5091966983027694525, guid: b1c1e0bb87c20bd41befa97c90854883, type: 3}
       propertyPath: m_LocalScale.y
-      value: 35
+      value: 29.45442
       objectReference: {fileID: 0}
     - target: {fileID: 5091966983027694525, guid: b1c1e0bb87c20bd41befa97c90854883, type: 3}
       propertyPath: m_LocalScale.z
-      value: 35
+      value: 42.5845
       objectReference: {fileID: 0}
     - target: {fileID: 5091966983027694525, guid: b1c1e0bb87c20bd41befa97c90854883, type: 3}
       propertyPath: m_LocalPosition.x
@@ -264,6 +264,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5091966983027694525, guid: b1c1e0bb87c20bd41befa97c90854883, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091966983027694525, guid: b1c1e0bb87c20bd41befa97c90854883, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8926651971733434597, guid: b1c1e0bb87c20bd41befa97c90854883, type: 3}
