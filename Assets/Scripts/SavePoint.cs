@@ -15,7 +15,7 @@ public class SavePoint : MonoBehaviour
         {
             if (!usedSave)
             {
-                SaveLoad.savePointIndex += 1;
+                SaveLoad.savePointIndex = savePos;
                 usedSave = true;
                 Debug.Log(SaveLoad.savePointIndex);
             }
