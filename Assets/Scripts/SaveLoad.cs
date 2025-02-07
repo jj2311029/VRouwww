@@ -7,13 +7,12 @@ using UnityEngine.SceneManagement;
 public class SaveLoad : MonoBehaviour
 {
     public Button[] saveSlots; // 10개의 슬롯 버튼 배열
-    public static int savePointIndex = 0; // 세이브 포인트 수치 (게임플레이에서 증가)
+    public static int savePointIndex = 1; // 세이브 포인트 수치 (게임플레이에서 증가)
     public static int currentSavePoint;
     public static int currentSelectedSlot; 
     public GameObject slotPrefab;
     public GameObject currentSlot;
     public Transform SaveSlotCanvas;
-
 
     float[,] uiPos = {
         { -400f,  100f },
@@ -62,7 +61,7 @@ public class SaveLoad : MonoBehaviour
         {
             currentSelectedSlot = slotIndex;
             Debug.Log($"Slot {slotIndex} 선택됨. 세이브 데이터를 로드합니다.");
-            SceneManager.LoadScene("LevelDesign");
+            SceneManager.LoadScene("1LevelDesign");
         }
         else
         {
