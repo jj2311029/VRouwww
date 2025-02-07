@@ -21,6 +21,7 @@ public class EnemyMove : MonoBehaviour
     protected bool isStunned;
     protected bool isHoldingPosition;
     protected int nextMove;
+    protected float fadeDuration = 0.5f;
     protected Animator anim; // 애니메이션 추가
     protected Vector2 previousPosition;
     
@@ -36,7 +37,7 @@ public class EnemyMove : MonoBehaviour
     }
     protected virtual void FixedUpdate()
     {
-        if (isStunned == true) return;
+        if (isStunned == true || Hp <= 0) return;
         StartMoving();
         CheckPlatform(); // 플레이어와 같은 플랫폼에 있는지 확인
 
@@ -154,10 +155,26 @@ public class EnemyMove : MonoBehaviour
         if (Hp <= 0)
         {
             Debug.Log("적이 사망했습니다.");
-            Destroy(this.gameObject);
+            StartCoroutine("FadeOutAndDestroy");
         }
     }
 
+    // 사망시 투명도 줄이고 삭제
+    IEnumerator FadeOutAndDestroy()
+    {
+        float elapsedTime = 0f;
+        Color originalColor = render.color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+            render.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+
+        Destroy(gameObject);
+    }
     // 슬로우 효과
     public IEnumerator Slow()
     {

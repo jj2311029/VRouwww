@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 5622830427166826697}
   - component: {fileID: 6875327881394614987}
   - component: {fileID: 8694904680161818953}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -360,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
+  attackSpeed: 0
   PlayerTransform: {fileID: 0}
   timer: 2
   hotZone: {fileID: 9062179326721024029}
@@ -423,7 +424,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_Sprite: {fileID: -235796220, guid: 74931edd50b33bf44930873be0b89674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

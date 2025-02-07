@@ -11,7 +11,7 @@ public class Interval : MonoBehaviour
     public bool isPlayerInterval=false;
     public bool stageClear=false;
     public bool doorOpen=false;
-    public GameObject door;
+    public GameObject[] door;
 
 
    void Start()
@@ -38,7 +38,14 @@ public class Interval : MonoBehaviour
         {
             
             Debug.Log("���� �������� �̵�");
-            Destroy(door);
+            // 많은 문 부수기
+            foreach (GameObject d in door)
+            {
+                if (d != null)
+                {
+                    Destroy(d);
+                }
+            }
             doorOpen = true;
         }
 

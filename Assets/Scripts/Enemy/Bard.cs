@@ -32,8 +32,6 @@ public class Bard : EnemyMove
     }
     private void Update()
     {
-        Debug.Log(isHoldingPosition);
-
         if (isStunned) return;
         //공격 가능 유무
         if ( chargeTime >= 3f)

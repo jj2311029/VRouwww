@@ -68,13 +68,15 @@ public class PlayerMove : MonoBehaviour
     bool successParrying = false;
     float DamageUpTime = 1f;
     public GameObject shield;//임시 모션
-
+    public GameObject SkillPanel;
+    private SkillEffect skillEffect;
     private SpriteRenderer spriteRenderer;
 
     private float originalGravityScale; //대시 중력
 
     private void Start()
     {
+        skillEffect = SkillPanel.GetComponent<SkillEffect>();
         joint = GetComponent<HingeJoint2D>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // SpriteRenderer 초기화
         rigid = GetComponent<Rigidbody2D>(); // Rigidbody2D 초기화
@@ -203,6 +205,11 @@ public class PlayerMove : MonoBehaviour
     private void CompanySkill()
     {
         GameObject skill = Instantiate(SkillRange, transform.position, Quaternion.identity);
+        if (skillEffect == null)
+        {
+            Debug.Log("effect없음");
+        }
+        skillEffect.PlaySkillEffect();
         Destroy(skill, 0.1f);
     }
 
