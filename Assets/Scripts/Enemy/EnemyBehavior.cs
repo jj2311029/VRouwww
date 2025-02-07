@@ -220,7 +220,6 @@ public class EnemyBehavior : MonoBehaviour
     }
     public void Stun(float duration)
     {
-        Debug.Log("기절");
         isStunned = true;
         animator.SetBool("isFaint", true); // 기절 애니메이션 재생
 

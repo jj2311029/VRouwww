@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VROUW/MakeRope.unity
     guid: 919ff300b59c5204bbd6742668dd9bbb
+  - enabled: 1
+    path: Assets/Scenes/VROUW/SaveLoad.unity
+    guid: 943a5c30294159849baa98d89a6683c7
   m_configObjects: {}

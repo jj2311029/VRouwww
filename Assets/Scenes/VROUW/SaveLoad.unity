@@ -339,7 +339,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!224 &1455702567
 RectTransform:
@@ -459,6 +459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSlots: []
   slotPrefab: {fileID: 244556392790986655, guid: 0eb2a848eb0dcf742a60c1460d8f700e, type: 3}
+  currentSlot: {fileID: 4353646357001814446, guid: a9fe0772ac12ca842a4ab8eac7232dfa, type: 3}
   SaveSlotCanvas: {fileID: 1455702567}
 --- !u!4 &2130802948
 Transform:

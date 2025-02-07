@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private float bulletSpeed = 20f;
     private Vector3 direction; // �Ѿ��� �߻� ����
 
     PlayerMove pm;
@@ -29,7 +29,6 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             EnemyMove EA = collision.GetComponent<EnemyMove>();
-            Destroy(this.gameObject);
 
             if (EA != null)
             {
@@ -56,6 +55,10 @@ public class Bullet : MonoBehaviour
                 EnemyBehavior EB = collision.GetComponentInParent<EnemyBehavior>();
                 EB.StartCoroutine(EB.Slow());
             }
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Destroy(this.gameObject);
         }
     }
 }

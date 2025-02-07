@@ -23,7 +23,8 @@ public class NER : EnemyMove
         anim.speed = 1f * 2f / attackSpeed;
         if (canAttack && Wait)
         {
-            Attack();
+            anim.SetTrigger("isTrigger");
+            Invoke("Attack", 0.1f);
             StartCoroutine("WaitAttack");
         }
         if (target != null)
@@ -81,7 +82,6 @@ public class NER : EnemyMove
     //실제 공격
     private void Attack()
     {
-        anim.SetTrigger("isTrigger");
         Vector3 directionToPlayer = target.transform.position - transform.position;
         directionToPlayer.z = 0f;
 

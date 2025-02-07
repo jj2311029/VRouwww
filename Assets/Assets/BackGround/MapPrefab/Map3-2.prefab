@@ -344,14 +344,13 @@ MonoBehaviour:
   render: {fileID: 4203234210528373470}
   boxCollider: {fileID: 0}
   speed: 2.5
+  attackSpeed: 2
   followDistance: 1
   stopChaseRange: 2
   Hp: 2
   knockbackForce: 10
-  attackSpeed: 2
   attackRange: {fileID: 1976874517515909986}
   NER_bullet: {fileID: 2098952004656492760, guid: 8a8a31fb43a90774982b8da6cd0baa78, type: 3}
-  target: {fileID: 2118907595196681, guid: 504feaa0f0be6f74ab7477dd55cc392e, type: 3}
 --- !u!1 &209656786758954705
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +804,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 9022938326945128681}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 2
   hotZone: {fileID: 2337125267698094507}
   triggerArea: {fileID: 7113042127145859725}
@@ -2225,7 +2225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 7890037679969330419}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 1.5
   hotZone: {fileID: 3914856028749412039}
   triggerArea: {fileID: 8398621751955774945}
@@ -2898,7 +2899,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 7292802726269704622}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 1.5
   hotZone: {fileID: 4476132552564607898}
   triggerArea: {fileID: 8991388259942391996}
@@ -3023,7 +3025,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 7081616097335274422}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 1.5
   hotZone: {fileID: 4138143907604609410}
   triggerArea: {fileID: 8913779082428076708}
@@ -3389,14 +3392,13 @@ MonoBehaviour:
   render: {fileID: 1757057157583778312}
   boxCollider: {fileID: 0}
   speed: 2.5
+  attackSpeed: 2
   followDistance: 1
   stopChaseRange: 2
   Hp: 2
   knockbackForce: 10
-  attackSpeed: 2
   attackRange: {fileID: 4132604561737655220}
   NER_bullet: {fileID: 2098952004656492760, guid: 8a8a31fb43a90774982b8da6cd0baa78, type: 3}
-  target: {fileID: 2118907595196681, guid: 504feaa0f0be6f74ab7477dd55cc392e, type: 3}
 --- !u!1 &2511905869283087663
 GameObject:
   m_ObjectHideFlags: 0
@@ -4514,7 +4516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 6309402370838064848}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 1.5
   hotZone: {fileID: 911090109341514980}
   triggerArea: {fileID: 5655798255594428354}
@@ -4639,7 +4642,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 5964405319832474844}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 2
   hotZone: {fileID: 1125084754505295262}
   triggerArea: {fileID: 5567755029104299704}
@@ -5537,7 +5541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 5482504954856112998}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 2
   hotZone: {fileID: 1246666567528935972}
   triggerArea: {fileID: 6022638231692777730}
@@ -7678,7 +7683,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 3907253994538357659}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 1.5
   hotZone: {fileID: 7859359048377565615}
   triggerArea: {fileID: 3444044550054275721}
@@ -9220,14 +9226,13 @@ MonoBehaviour:
   render: {fileID: 7781033425002335258}
   boxCollider: {fileID: 0}
   speed: 2.5
+  attackSpeed: 2
   followDistance: 1
   stopChaseRange: 2
   Hp: 2
   knockbackForce: 10
-  attackSpeed: 2
   attackRange: {fileID: 5386427699934404006}
   NER_bullet: {fileID: 2098952004656492760, guid: 8a8a31fb43a90774982b8da6cd0baa78, type: 3}
-  target: {fileID: 2118907595196681, guid: 504feaa0f0be6f74ab7477dd55cc392e, type: 3}
 --- !u!1 &6022638231692777730
 GameObject:
   m_ObjectHideFlags: 0
@@ -9494,6 +9499,7 @@ MonoBehaviour:
   render: {fileID: 7027556870721225613}
   boxCollider: {fileID: 0}
   speed: 2.5
+  attackSpeed: 2
   followDistance: 1
   stopChaseRange: 2
   Hp: 5
@@ -10525,7 +10531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 1332926084486490595}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 1.5
   hotZone: {fileID: 5284084184137612247}
   triggerArea: {fileID: 832444364119527665}
@@ -11084,7 +11091,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
-  enemySprite: {fileID: 1176966664984938553}
+  attackSpeed: 0
+  PlayerTransform: {fileID: 0}
   timer: 1.5
   hotZone: {fileID: 5439850639079512589}
   triggerArea: {fileID: 695668123685286187}
@@ -11711,6 +11719,7 @@ MonoBehaviour:
   render: {fileID: 4917008478285192373}
   boxCollider: {fileID: 0}
   speed: 2.5
+  attackSpeed: 2
   followDistance: 1
   stopChaseRange: 2
   Hp: 5
@@ -13209,11 +13218,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 362643384558087454, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 186.56952
+      value: 4.4529314
       objectReference: {fileID: 0}
     - target: {fileID: 362643384558087454, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -58.89249
+      value: 0.387008
       objectReference: {fileID: 0}
     - target: {fileID: 6803041955247524725, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13283,11 +13292,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 362643384558087454, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 239.87952
+      value: 57.76293
       objectReference: {fileID: 0}
     - target: {fileID: 362643384558087454, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -61.27249
+      value: -1.9929919
       objectReference: {fileID: 0}
     - target: {fileID: 6803041955247524725, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13357,11 +13366,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 362643384558087454, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 231.70953
+      value: 49.592934
       objectReference: {fileID: 0}
     - target: {fileID: 362643384558087454, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -64.392494
+      value: -5.1129923
       objectReference: {fileID: 0}
     - target: {fileID: 6803041955247524725, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_LocalPosition.x
