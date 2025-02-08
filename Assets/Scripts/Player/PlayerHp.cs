@@ -6,15 +6,18 @@ using UnityEngine.SceneManagement;
 public class PlayerHP : MonoBehaviour
 {
     public GameObject heartPrefab;  // 하트 프리팹
+    public GameObject diePanel;
     public int maxHP = 5;  // 최대 체력
     public int currentHP = 5;  // 현재 체력
     public List<GameObject> heartObjects = new List<GameObject>();  // 하트 GameObject 리스트
 
     private bool isInvincible = false;  // 무적 상태 여부
     public float invincibilityDuration = 1f;  // 무적 상태 지속 시간
+    private DiePanel dP;
 
     void Start()
     {
+        dP = diePanel.GetComponent<DiePanel>();
         CreateHearts();  // 게임 시작 시 하트 객체 생성
         UpdateHearts();  // 초기 하트 이미지 업데이트
     }
@@ -40,7 +43,8 @@ public class PlayerHP : MonoBehaviour
         if (currentHP <= 0)
         {
             currentHP = 0;
-            Die();
+            dP.Bravo6();
+            Invoke("Die", 1f);
         }
 
         // 하트 업데이트

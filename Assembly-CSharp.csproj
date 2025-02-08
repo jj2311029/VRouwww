@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Enemy\BossPatern2.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\ObstacleEnemy.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\CannonField.cs" />
+    <Compile Include="Assets\Scripts\DiePanel.cs" />
     <Compile Include="Assets\Scripts\CameraMove.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
@@ -110,9 +111,11 @@
     <Compile Include="Assets\Scripts\PirateShip\SpawnObject.cs" />
     <Compile Include="Assets\Scripts\Manager\Find.cs" />
     <Compile Include="Assets\Scripts\Player\Sword.cs" />
+    <Compile Include="Assets\Scripts\Sky.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossEyePattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\NER_bullet.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\UiManager.cs" />
+    <Compile Include="Assets\Scripts\TextStart.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Bard.cs" />
     <Compile Include="Assets\Scripts\Player\swordStrike.cs" />

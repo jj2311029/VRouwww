@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
+    private CameraMove cameraMove; // 카메라 흔들기용 변수 추가
+
+    private void Start()
+    {
+        // 카메라 찾기
+        cameraMove = FindObjectOfType<CameraMove>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -23,7 +31,17 @@ public class Skill : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log($"적 {collision.gameObject.name}에는 EnemyMove 또는 EnemyBehavior가 없습니다.");
+                    Debug.Log("없어시발");
+                }
+
+                // 적을 맞췄을 때 화면 흔들기 실행
+                if (cameraMove != null)
+                {
+                    cameraMove.StartShake();
+                }
+                else
+                {
+                    Debug.LogWarning("카메라 못 찾음");
                 }
             }
         }
