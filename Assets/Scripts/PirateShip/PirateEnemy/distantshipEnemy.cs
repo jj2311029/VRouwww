@@ -6,7 +6,7 @@ public class distantshipEnemy : BasicEnemy
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float fireInterval = 1f; // �߻� ����
+    [SerializeField] private float fireInterval = 2f; // �߻� ����
     [SerializeField] private float bulletSpeed = 10f;
     protected override void Attack()
     {

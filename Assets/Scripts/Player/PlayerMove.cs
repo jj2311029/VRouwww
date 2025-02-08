@@ -104,20 +104,20 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity += new Vector2(0, jumpingPower);
         }
-        
+
         /*
         if (Input.GetKeyUp(KeySetting.Keys[KeyAction.UP]) && rb.velocity.y > 0f)
         {
             //rb.velocity += new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }*/
-        
+        skillCoolDown -= Time.deltaTime;
+
         if (Input.GetKeyDown(KeySetting.Keys[KeyAction.SKILL_1]))
         {
-            skillCoolDown -= Time.deltaTime;
             if (skillUnlock >= 1 && skillCoolDown <= 0f)
             {
                 CompanySkill();
-                skillCoolDown = 20f;
+                skillCoolDown = 2f;
             }
             else
             {
