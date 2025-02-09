@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Manager\KeyManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Assets\SaveLoad\SaveLoadCamera.cs" />
     <Compile Include="Assets\Scripts\Enemy\NER.cs" />
     <Compile Include="Assets\Scripts\Enemy\Golam.cs" />
     <Compile Include="Assets\Scripts\Manager\KeyControlManager.cs" />
@@ -112,10 +113,12 @@
     <Compile Include="Assets\Scripts\Manager\Find.cs" />
     <Compile Include="Assets\Scripts\Player\Sword.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
+    <Compile Include="Assets\BackManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossEyePattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\NER_bullet.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\UiManager.cs" />
     <Compile Include="Assets\Scripts\TextStart.cs" />
+    <Compile Include="Assets\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Bard.cs" />
     <Compile Include="Assets\Scripts\Player\swordStrike.cs" />
