@@ -6,51 +6,87 @@ using UnityEngine.SceneManagement;
 
 public class SaveLoad : MonoBehaviour
 {
-    public Button[] saveSlots; // 10개의 슬롯 버튼 배열
-    public static int savePointIndex = 1; // 세이브 포인트 수치 (게임플레이에서 증가)
+    public static int savePointIndex = 10; // 세이브 포인트 수치 (게임플레이에서 증가)
     public static int currentSavePoint;
-    public static int currentSelectedSlot; 
-    public GameObject slotPrefab;
+    public static int currentSelectedSlot;
+    public GameObject[] slotPrefab;
     public GameObject currentSlot;
     public Transform SaveSlotCanvas;
+    private GameObject selectMark;
 
     float[,] uiPos = {
-        { -400f,  100f },
-        { -200f, 100f },
-        { 0f, 100f },
-        { 200f,  100f },
-        { 400f, 100f },
-        { -400f,  -100f },
-        { -200f, -100f },
-        { 0f, -100f },
-        { 200f,  -100f },
-        { 400f, -100f }
+        { -235.8f,  323.3f },
+        { 45.2f, 224.7f },
+        { -182.5f, 149.1f },
+        { -64.5f,  8.5f },
+        { -349.9f, -179.8f },
+        { -188.7f,  -304.1f },
+        { -159.2f, -200.5f },
+        { 121.6f, -209.1f },
+        { 271f,  -59.6f },
+        { 513f, 147f }
     };
+
     void Start()
     {
-        Debug.Log($"최근 지점 : {currentSavePoint}");
-        GenerateSaveSlots(savePointIndex);
+        for (int i = 0; i < slotPrefab.Length; i++)
+        {
+            slotPrefab[i].gameObject.SetActive(false);
+        }
+        currentSlot.SetActive(false);
+        Invoke("StartSlotFadeIn", 0.3f);
     }
 
-    void GenerateSaveSlots(int slotCount)
+    void StartSlotFadeIn()
     {
-        saveSlots = new Button[slotCount];
+        StartCoroutine(FadeInSaveSlots());
+    }
 
-        for (int i = 0; i < slotCount; i++)
+    IEnumerator FadeInSaveSlots()
+    {
+        for (int i = 0; i < slotPrefab.Length; i++)
         {
-            Vector3 uiPosition = new Vector3(uiPos[i,0], uiPos[i, 1], 0f);
-            GameObject newSlot = Instantiate(slotPrefab, uiPosition, transform.rotation); // 슬롯 생성
-            saveSlots[i] = newSlot.GetComponent<Button>();
-            newSlot.transform.SetParent(SaveSlotCanvas.transform, false); // 캔버스의 Transform 지정
-            newSlot.GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPos[i, 0], uiPos[i, 1]);
-            // 슬롯의 버튼 클릭 이벤트 설정
-            int slotIndex = i; // 클로저 문제 방지
-            saveSlots[i].onClick.AddListener(() => OnSlotClicked(slotIndex));
-
-            if (currentSelectedSlot == i)
+            if (i < savePointIndex)
             {
-                Instantiate(currentSlot, saveSlots[i].transform.position, Quaternion.identity);
+                slotPrefab[i].gameObject.SetActive(true);
+                slotPrefab[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPos[i, 0], uiPos[i, 1]);
+
+                // CanvasGroup이 없으면 추가
+                CanvasGroup canvasGroup = slotPrefab[i].GetComponent<CanvasGroup>();
+                if (canvasGroup == null)
+                {
+                    canvasGroup = slotPrefab[i].AddComponent<CanvasGroup>();
+                }
+                canvasGroup.alpha = 0f;
+
+                // 투명도를 천천히 증가
+                float duration = 0.5f; // 페이드인 지속 시간
+                float elapsedTime = 0f;
+
+                while (elapsedTime < duration)
+                {
+                    canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsedTime / duration);
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+
+                canvasGroup.alpha = 1f;
             }
+            yield return new WaitForSeconds(0.02f); // 버튼이 순차적으로 나타나는 간격
+        }
+    }
+
+    public void Selecting(int slotIndex)
+    {
+        currentSlot.SetActive(true);
+        currentSlot.transform.position = slotPrefab[slotIndex].transform.position;
+    }
+
+    public void NotSelecting()
+    {
+        if (currentSlot != null)
+        {
+            currentSlot.SetActive(false);
         }
     }
 
@@ -67,5 +103,20 @@ public class SaveLoad : MonoBehaviour
         {
             Debug.Log("이 슬롯은 아직 잠겨 있습니다.");
         }
+    }
+
+    public void PriateCalls()
+    {
+        SceneManager.LoadScene("PirateShip");
+    }
+
+    public void BossMab()
+    {
+        SceneManager.LoadScene("");
+    }
+
+    public void GoBack()
+    {
+        SceneManager.LoadScene("LobbyScene");
     }
 }
