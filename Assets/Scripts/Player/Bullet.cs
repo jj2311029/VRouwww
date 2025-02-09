@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed = 20f;
-    private Vector3 direction; // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] private float bulletSpeed = 10f;
+    private Vector3 direction; // ÃÑ¾ËÀÇ ¹ß»ç ¹æÇâ
 
     PlayerMove pm;
     float damage = 1f;
@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     {
         pm = FindObjectOfType<PlayerMove>();
     }
-    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
+    // ¹æÇâ ¼³Á¤ ¸Þ¼Òµå
     public void SetDirection(Vector3 dir)
     {
         direction = dir.normalized;
@@ -26,9 +26,10 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.tag == "Enemy")
         {
             EnemyMove EA = collision.GetComponent<EnemyMove>();
+            Destroy(this.gameObject);
 
             if (EA != null)
             {
@@ -41,24 +42,30 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                EnemyStats es = collision.gameObject.GetComponentInParent<EnemyStats>();
-                if (es != null)
+                BucklerStats BS = collision.gameObject.GetComponentInParent<BucklerStats>();
+                if (BS != null)
                 {
                     if (pm.GetSuccessParrying())
-                        es.TakeDamage(damage + 1f, pm.gameObject.transform);
+                        BS.TakeDamage(damage + 1f, pm.gameObject.transform);
                     else
                     {
-                        es.TakeDamage(damage, pm.gameObject.transform);
+                        BS.TakeDamage(damage, pm.gameObject.transform);
                     }
 
+                }
+                else
+                {
+                    EnemyStats ES = collision.gameObject.GetComponentInParent<EnemyStats>();
+                    if (pm.GetSuccessParrying())
+                        ES.TakeDamage(damage + 1f, pm.gameObject.transform);
+                    else
+                    {
+                        ES.TakeDamage(damage, pm.gameObject.transform);
+                    }
                 }
                 EnemyBehavior EB = collision.GetComponentInParent<EnemyBehavior>();
                 EB.StartCoroutine(EB.Slow());
             }
-        }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            Destroy(this.gameObject);
         }
     }
 }

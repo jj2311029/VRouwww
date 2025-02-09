@@ -19,19 +19,19 @@ public class Boss : MonoBehaviour
     bool eyeattack = false;
 
     private float groggyTime = 10f;
-    //ë³´ìŠ¤ ìŠ¤í¬ë¦½íŠ¸
+    
 
 
     private GameObject fixedLeg1;
     private GameObject fixedLeg2;
     //private FixedLegScript fLeg1;
-    //private FixedLegScript fLeg2;--------------------------------------------------------------------------ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®
+    //private FixedLegScript fLeg2;--------------------------------------------------------------------------°íÁ¤´Ù¸® ½ºÅ©¸³Æ®
 
     [SerializeField] private GameObject FixedLegPrefab;
 
     [SerializeField] private GameObject bossHead;
 
-    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ® ï¿½Ş±ï¿½
+    //ÆĞÅÏ ½ºÅ©¸³Æ® ¹Ş±â
     BossPatern2 legAttack;
     [SerializeField] private BossEyePattern eyeAttack;
 
@@ -40,7 +40,7 @@ public class Boss : MonoBehaviour
     {
         legAttack = patern2.GetComponent<BossPatern2>();
     }
-    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //°ø°İ ¸í·É
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -52,7 +52,7 @@ public class Boss : MonoBehaviour
             Patern();
             StartCoroutine("CanAttack");
         }
-        /*//ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ Hpï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½×·Î±ï¿½ ï¿½ï¿½ï¿½ï¿½
+        /*//µÎ ´Ù¸® ¸ğµÎ Hp°¡ 0º¸´Ù ÀÛÀ» °æ¿ì ±×·Î±â »óÅÂ
         if (fLeg1.GetHp() <= 0 && fLeg2.GetHp()<=0&&page==1)-------------------------------------------------------------------
         {
             Groggy();
@@ -60,20 +60,20 @@ public class Boss : MonoBehaviour
         */
         
     }
-    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //ÆĞÅÏ °í¸£±â
     private void Patern()
     {
         attackPatern = 2;//Random.Range(1, 5);
         if(page==1)
         {
-            attackPatern = Random.Range(1, 4);//1~3ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            attackPatern = Random.Range(1, 4);//1~3±îÁö Æ÷ÇÔ
             switch (attackPatern)
             {
-                case 1://ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½ 
-                case 2://ï¿½Ï¹ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½//case1ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï¹ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ï¿½Ï´ï¿½.
+                case 1://°íÁ¤´Ù¸® ÆĞÅÏÀÎµ¥ 
+                case 2://ÀÏ¹İ ´Ù¸® ÆĞÅÏ//case1°ú 2ÀÏ ¶§ ÀÏ¹İ ´Ù¸® ÆĞÅÏÀÌ ³ª°¡°Ô ¼³Á¤ Çß½À´Ï´Ù.
                     legAttack.Attack();
                     break;
-                case 3://ï¿½ï¿½ï¿½Ç»ï¿½ 5ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                case 3://ÆíÀÇ»ó 5¹øÂ° ³»·ÁÄ¡±â ÆĞÅÏÀ» 3¹øÀ¸·Î ÁöÁ¤
                     //B5.Attack();
                     break;
                 default:
@@ -85,24 +85,24 @@ public class Boss : MonoBehaviour
         {
             if(attackStack==2)
             {
-                attackPatern = Random.Range(0, 3);//0~2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                attackPatern = Random.Range(0, 3);//0~2±îÁö Æ÷ÇÔ
                 attackStack = 0;
-                if (eyeattack) attackPatern = 2;//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½İ¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+                if (eyeattack) attackPatern = 2;//°¢¼º ÆĞÅÏ Áß¿¡´Â ³»·ÁÄ¡±â¿Í ±âº»°ø°İ¸¸ ½ÇÇà
 
                 switch(attackPatern)
                 {
                     case 0:
-                        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                        //°¢¼º ÆĞÅÏ
                         eyeAttack.SpawnEye(this.gameObject);
                         StartCoroutine(ReinforceAttack());
                         break;
                         
                     case 1:
-                        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                        //ÈíÀÔ ÆĞÅÏ
                         break;
 
                     case 2:
-                        //ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½
+                        //³»·ÁÄ¡±â
                         break;
                 }
             }
@@ -129,11 +129,11 @@ public class Boss : MonoBehaviour
         }*/
 
     }
-    //ï¿½Ç°ï¿½
+    //ÇÇ°İ
     public virtual void TakeDamage(float damage)
     {
-        /*if (page == 2)//ï¿½ï¿½ï¿½ï¿½ ï¿½Ş´ï¿½ ï¿½ï¿½ï¿½ 1. ï¿½×·Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 2. 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ colliderï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
-            //bossHeadï¿½ï¿½ colliderï¿½ï¿½ ï¿½Ú¾Æ³ï¿½ï¿½ï¿½ ï¿½×·Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¶ï¿½ setActiveï¿½ï¿½ ï¿½Ø¼ï¿½ ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½
+        /*if (page == 2)//°ø°İ ¹Ş´Â °æ¿ì 1. ±×·Î±â »óÅÂÀÏ ¶§ 2. 2ÆäÀÌÁîÀÏ ¶§ ÇÃ·¹ÀÌ¾îÀÇ °ø°İÀÌ collider¿Í °ãÃÆÀ» ¶§
+            //bossHead¿¡ collider¸¦ ¹Ú¾Æ³õ°í ±×·Î±â »óÅÂ ¶Ç´Â 2ÆäÀÌÁî ÀÏ¶§ setActive¸¦ ÇØ¼­ ÇÏ°Ô ¼³Á¤
         {
             hp -= damage;
             if (hp <= 0)
@@ -154,7 +154,7 @@ public class Boss : MonoBehaviour
         }
            
     }
-    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    //°ø°İ ÅÒ
     private IEnumerator CanAttack()
     {
         canAttack = false;
@@ -162,7 +162,7 @@ public class Boss : MonoBehaviour
         canAttack = true;
     }
 
-    public IEnumerator Groggy()//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½// ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ÎºĞ¿ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ßµï¿½
+    public IEnumerator Groggy()//°¢ °íÁ¤ ´Ù¸®°¡ »ç¶óÁ³À» °æ¿ì ÀÌ°Å ½ÇÇàµÊ// °íÁ¤´Ù¸® ºÎºĞ¿¡¼­ ÀÌ°Å ½ÇÇà½ÃÄÑ¾ßµÊ
     {
         bossHead.SetActive(true);
         canAttack=false;
@@ -178,11 +178,11 @@ public class Boss : MonoBehaviour
     private void InstantiateFixedLeg()
     {
         Vector3 randomPos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width / 2), Camera.main.WorldToScreenPoint(transform.position).y, 0));
-        randomPos.z = 0;  // zï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        randomPos.z = 0;  // z°ª °íÁ¤
         fixedLeg1 = Instantiate(FixedLegPrefab, randomPos, Quaternion.identity);
 
         randomPos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(Screen.width / 2, Screen.width), Camera.main.WorldToScreenPoint(transform.position).y, 0));
-        randomPos.z = 0;  // zï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        randomPos.z = 0;  // z°ª °íÁ¤
         fixedLeg2 = Instantiate(FixedLegPrefab, randomPos, Quaternion.identity);
         
         //fLeg1 = fixedLeg1.GetComponent<FixedLegScript>;-----------------------------------------------------------------------------
@@ -191,7 +191,7 @@ public class Boss : MonoBehaviour
 
     public IEnumerator ReinforceAttack()
     {
-        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­");
+        Debug.Log("º¸½º °ø°İ °­È­");
         float prevAtkSpeed = attackSpeed;
         attackSpeed = 3f;
         yield return new WaitForSeconds(prevAtkSpeed);

@@ -12,7 +12,6 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private List<AudioClip> bk_music;
     [SerializeField] private List<AudioClip> ef_music;
 
-
     public Slider bkSlider;
     public Slider efSlider;
 

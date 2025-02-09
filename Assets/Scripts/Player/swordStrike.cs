@@ -14,35 +14,50 @@ public class SwordStrike : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.tag == "Enemy")
         {
-            EnemyMove ea = collision.GetComponent<EnemyMove>();
-            if (ea != null)
+            EnemyMove EA = collision.GetComponent<EnemyMove>();
+            if (EA != null)
             {
                 if(pm.GetSuccessParrying())
-                    ea.TakeDamage((int)damage+1);
+                    EA.TakeDamage((int)damage+1);
                 else
-                    ea.TakeDamage((int)damage);
+                    EA.TakeDamage((int)damage);
             }
             else
             {
-                EnemyStats es = collision.gameObject.GetComponentInParent<EnemyStats>();
-                if (es != null)
+                BucklerStats BS = collision.gameObject.GetComponentInParent<BucklerStats>();
+
+
+                if (BS != null)
                 {
                     if (pm.GetSuccessParrying())
-                        es.TakeDamage(damage + 1f, pm.gameObject.transform);
+                        BS.TakeDamage(damage + 1f, pm.gameObject.transform);
                     else
                     {
-                        es.TakeDamage(damage, pm.gameObject.transform);
+                        BS.TakeDamage(damage, pm.gameObject.transform);
                     }
 
                 }
+                else
+                {
+                    EnemyStats ES = collision.gameObject.GetComponentInParent<EnemyStats>();
+                    if (pm.GetSuccessParrying())
+                        ES.TakeDamage(damage + 1f, pm.gameObject.transform);
+                    else
+                    {
+                        ES.TakeDamage(damage, pm.gameObject.transform);
+                    }
+                }
+
+
+
             }
         }
-        if (collision.CompareTag("Boss"))
+        if (collision.tag == "Boss")
         {
-            EnemyMove ea = collision.GetComponent<EnemyMove>();
-            ea.TakeDamage(2);
+            EnemyMove EA = collision.GetComponent<EnemyMove>();
+            EA.TakeDamage(2);
 
             Boss bossScript = collision.GetComponent<Boss>();
             if (bossScript != null)

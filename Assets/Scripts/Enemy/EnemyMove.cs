@@ -9,7 +9,6 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] protected BoxCollider2D boxCollider;
 
     [SerializeField] protected float speed = 2.5f;
-    [SerializeField] protected float attackSpeed = 2f;
     [SerializeField] protected float followDistance = 5f;    // 추격 시작 거리
     [SerializeField] protected float stopChaseRange = 2f;    // 추적 멈출 거리 (공격 준비 거리)
     [SerializeField] protected int Hp = 3;
@@ -18,13 +17,9 @@ public class EnemyMove : MonoBehaviour
     protected Transform player;
     protected bool isPlayerOnSamePlatform;
     protected bool isChasing;
-    protected bool isStunned;
-    protected bool isHoldingPosition;
     protected int nextMove;
-    protected float fadeDuration = 0.5f;
     protected Animator anim; // 애니메이션 추가
-    protected Vector2 previousPosition;
-    
+
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -33,18 +28,17 @@ public class EnemyMove : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>(); // Animator 가져오기
         Think(); // 초기 이동 방향 설정
-        previousPosition = transform.position;
     }
+
     protected virtual void FixedUpdate()
     {
-        if (isStunned == true || Hp <= 0) return;
-        StartMoving();
         CheckPlatform(); // 플레이어와 같은 플랫폼에 있는지 확인
 
         if (isPlayerOnSamePlatform && Vector2.Distance(transform.position, player.position) <= followDistance)
         {
             if (Vector2.Distance(transform.position, player.position) > stopChaseRange)
             {
+                StartMoving();
                 ChasePlayer(); // 공격 거리 이상일 때 추격
             }
             else
@@ -55,9 +49,11 @@ public class EnemyMove : MonoBehaviour
         else if (isChasing && Vector2.Distance(transform.position, player.position) > followDistance)
         {
             StopChasing(); // 추적 중지
+            StopMoving();
         }
         else if (!isChasing)
         {
+            StartMoving();
             Patrol(); // 정찰 상태
         }
     }
@@ -68,7 +64,7 @@ public class EnemyMove : MonoBehaviour
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
         Debug.DrawRay(frontVector, Vector3.down, Color.green);
 
-        RaycastHit2D rayHit = Physics2D.Raycast(frontVector, Vector3.down, 6f, LayerMask.GetMask("Ground"));
+        RaycastHit2D rayHit = Physics2D.Raycast(frontVector, Vector3.down, 2f, LayerMask.GetMask("Ground"));
 
         if (rayHit.collider == null)
         {
@@ -78,7 +74,6 @@ public class EnemyMove : MonoBehaviour
 
     protected void ChasePlayer()
     {
-        if (isStunned == true) return;
         isChasing = true;
         Vector2 direction = (player.position - transform.position).normalized;
         rigid.velocity = new Vector2(direction.x * speed, rigid.velocity.y);
@@ -110,8 +105,8 @@ public class EnemyMove : MonoBehaviour
 
     protected void Think()
     {
-        if (isStunned == true) return;
-        nextMove = (Random.Range(0, 2) * 2) - 1; 
+        StopMoving();
+        nextMove = Random.Range(-1, 2);
         render.flipX = nextMove == -1;
         float nextThinkTime = Random.Range(2f, 5f);
         Invoke("Think", nextThinkTime); // 일정 시간 후 방향 변경
@@ -119,7 +114,6 @@ public class EnemyMove : MonoBehaviour
 
     protected void Turn()
     {
-        if (isStunned == true) return;
         nextMove *= -1;
         render.flipX = nextMove == -1;
     }
@@ -155,26 +149,10 @@ public class EnemyMove : MonoBehaviour
         if (Hp <= 0)
         {
             Debug.Log("적이 사망했습니다.");
-            StartCoroutine("FadeOutAndDestroy");
+            Destroy(this.gameObject);
         }
     }
 
-    // 사망시 투명도 줄이고 삭제
-    IEnumerator FadeOutAndDestroy()
-    {
-        float elapsedTime = 0f;
-        Color originalColor = render.color;
-
-        while (elapsedTime < fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
-            render.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
-            yield return null;
-        }
-
-        Destroy(gameObject);
-    }
     // 슬로우 효과
     public IEnumerator Slow()
     {
@@ -187,10 +165,8 @@ public class EnemyMove : MonoBehaviour
     public IEnumerator Buff()
     {
         speed = 6f;
-        attackSpeed /= 3f;
         yield return new WaitForSeconds(3f);
         speed = 2.5f;
-        attackSpeed *= 3f;
     }
 
     //이동 애니메이션 관리
@@ -204,19 +180,5 @@ public class EnemyMove : MonoBehaviour
     {
         if (anim != null)
             anim.SetBool("isMoving", false);
-    }
-
-    public void Stun(float duration)
-    {
-        isStunned = true;
-        anim.SetBool("isFaint", true); // 기절 애니메이션 재생
-
-        Invoke(nameof(EndStun), duration);
-    }
-
-    private void EndStun()
-    {
-        isStunned = false;
-        anim.SetBool("isFaint", false);
     }
 }

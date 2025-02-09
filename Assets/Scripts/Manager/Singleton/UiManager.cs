@@ -21,7 +21,6 @@ public class UiManager : Singleton<UiManager>
         settingPanel.SetActive(false);
         soundPanel.SetActive(false);
         keyPanel.SetActive(false);
-
     }
     private void Update()
     {

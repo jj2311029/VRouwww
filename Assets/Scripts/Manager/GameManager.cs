@@ -9,6 +9,5 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("MakeRope");
-
     }
 }

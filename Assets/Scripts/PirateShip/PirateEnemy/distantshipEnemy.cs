@@ -6,9 +6,10 @@ public class distantshipEnemy : BasicEnemy
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float fireInterval = 2f; // ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½
-    [SerializeField] private float bulletSpeed = 10f;
-    protected override void Attack()
+    [SerializeField] private float fireInterval = 1f; // ¹ß»ç °£°Ý
+    [SerializeField] private float bulletSpeed = 20f;
+
+    private void Start()
     {
         InvokeRepeating("Shoot", 0f, fireInterval);
     }
@@ -17,22 +18,25 @@ public class distantshipEnemy : BasicEnemy
     {
         if (bulletPrefab == null || firePoint == null) return;
 
-        
-
-        Vector3 playerPosition = FindPlayerPosition();
-        Vector3 fireDirection = (playerPosition - firePoint.position).normalized;
-
-
+        // ÃÑ¾Ë »ý¼º
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
+        // »ý¼ºµÈ ÃÑ¾ËÀÇ ShipBullet ½ºÅ©¸³Æ®¸¦ °¡Á®¿È
         ShipBullet bulletScript = bullet.GetComponent<ShipBullet>();
 
-        bulletScript.SetDirection(fireDirection);
-        StartCoroutine(PlayAnimation());
+        if (bulletScript != null)
+        {
+            // ÇÃ·¹ÀÌ¾î ¹æÇâ °è»ê
+            Vector3 playerPosition = FindPlayerPosition();
+            Vector3 fireDirection = (playerPosition - firePoint.position).normalized;
 
+            // ÃÑ¾Ë ¹æÇâ ¼³Á¤
+            bulletScript.SetDirection(fireDirection);
+        }
     }
 
 
+    // ÇÃ·¹ÀÌ¾î À§Ä¡¸¦ Ã£´Â ÇïÆÛ ÇÔ¼ö
     private Vector3 FindPlayerPosition()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

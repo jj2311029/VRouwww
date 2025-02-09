@@ -23,7 +23,6 @@ public class KeyManager : MonoBehaviour
     private void Awake()
     {
         InitializeKeyBindings();
-
     }
 
     private void InitializeKeyBindings()

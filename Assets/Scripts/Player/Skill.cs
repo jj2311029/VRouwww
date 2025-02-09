@@ -6,6 +6,34 @@ public class Skill : MonoBehaviour
 {
     private CameraMove cameraMove; // 카메라 흔들기용 변수 추가
 
+    public class EnemyBehavior : MonoBehaviour
+    {
+        public void Stun(float duration)
+        {
+            // 스턴 로직 구현
+            Debug.Log("EnemyBehavior stunned for " + duration + " seconds.");
+        }
+    }
+
+    public class CameraMove : MonoBehaviour
+    {
+        public void StartShake()
+        {
+            // 화면 흔들기 로직 구현
+            Debug.Log("Camera shaking!");
+        }
+    }
+
+    public class EnemyMove : MonoBehaviour
+    {
+        public void Stun(float duration)
+        {
+            // 스턴 로직 구현
+            Debug.Log("Enemy stunned for " + duration + " seconds.");
+        }
+    }
+
+
     private void Start()
     {
         // 카메라 찾기
