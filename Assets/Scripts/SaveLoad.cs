@@ -31,13 +31,8 @@ public class SaveLoad : MonoBehaviour
 
     void Start()
     {
-        // 모든 슬롯 비활성화
-        for (int i = 0; i < slotPrefab.Length; i++)
-        {
-            slotPrefab[i].SetActive(false);
-        }
-
         currentSlot.SetActive(false);
+        Debug.Log($"최근 지점 : {currentSavePoint}");
         StartCoroutine(ShowSaveSlotsWithFade());
     }
 
@@ -83,7 +78,8 @@ public class SaveLoad : MonoBehaviour
         if (currentSlot == null) return;
 
         currentSlot.SetActive(true);
-        currentSlot.transform.position = slotPrefab[slotIndex].transform.position;
+        currentSlot.transform.SetParent(slotPrefab[slotIndex].transform, false);
+        currentSlot.transform.localPosition = Vector3.zero; // 슬롯 중앙 정렬
     }
 
     public void NotSelecting()
@@ -110,7 +106,7 @@ public class SaveLoad : MonoBehaviour
 
     public void PriateCalls()
     {
-        SceneManager.LoadScene("PirateShip");
+        SceneManager.LoadScene("Pirate");
     }
 
     public void BossMab()
