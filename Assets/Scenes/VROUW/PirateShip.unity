@@ -353,7 +353,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.31879807, y: -1.8604448}
+  m_Offset: {x: -0.31879807, y: -1.9519031}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -364,7 +364,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.640146, y: 2.670302}
+  m_Size: {x: 5.640146, y: 2.4873853}
   m_EdgeRadius: 0
 --- !u!1 &320882359
 GameObject:
@@ -395,7 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c81414bdbd634499c5a5fb5b1d43ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyNum: 0
   enemyLimit: 3
   coolTime: 5
   stopLine: {fileID: 1506357047}
@@ -769,12 +768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a00de0eddc0494a9e249fad18e6531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heart1: {fileID: 1911963881}
-  heart2: {fileID: 1794915949}
-  heart3: {fileID: 52635958}
-  heart4: {fileID: 627564540}
-  heart5: {fileID: 1245801824}
-  clearRate: 0
   targetTime: 10
 --- !u!4 &905253857
 Transform:

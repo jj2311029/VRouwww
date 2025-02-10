@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("MakeRope");
+        SceneManager.LoadScene("1LevelDesign");
+    }
+    public void SaveLoad()
+    {
+        SceneManager.LoadScene("SaveLoad");
     }
 }

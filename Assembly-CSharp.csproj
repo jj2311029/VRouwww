@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8C64D68E-27CE-5C2F-E97B-2ED6CB902B67}</ProjectGuid>
+    <ProjectGuid>{321CDA38-2420-AA86-17B4-53BABA590971}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\PirateShip\PlayerShip.cs" />
     <Compile Include="Assets\Scripts\Player\Gun.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHp.cs" />
+    <Compile Include="Assets\Decoration.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\Singleton.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\Obstacle.cs" />

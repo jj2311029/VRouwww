@@ -64,7 +64,7 @@ public class EnemyMove : MonoBehaviour
         Vector2 frontVector = new Vector2(rigid.position.x + nextMove * 0.5f, rigid.position.y);
         Debug.DrawRay(frontVector, Vector3.down, Color.green);
 
-        RaycastHit2D rayHit = Physics2D.Raycast(frontVector, Vector3.down, 2f, LayerMask.GetMask("Ground"));
+        RaycastHit2D rayHit = Physics2D.Raycast(frontVector, Vector3.down, 6f, LayerMask.GetMask("Ground"));
 
         if (rayHit.collider == null)
         {

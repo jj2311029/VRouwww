@@ -3638,6 +3638,8 @@ MonoBehaviour:
   - {fileID: 1141402481}
   currentSlot: {fileID: 717169775}
   SaveSlotCanvas: {fileID: 1455702567}
+  fadeDuration: 0.5
+  delayBetweenSlots: 0.2
 --- !u!4 &2130802948
 Transform:
   m_ObjectHideFlags: 0
