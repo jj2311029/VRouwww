@@ -7,7 +7,8 @@ public class SavePoint : MonoBehaviour
     [SerializeField] int savePos = 0;
 
 
-    public static int currentSavePoint;
+    public static int savePointIndex = 0;
+    public static int currentSavePoint = 0;
     private bool usedSave = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,12 +17,11 @@ public class SavePoint : MonoBehaviour
         {
             if (!usedSave)
             {
-                SaveLoad.savePointIndex = savePos;
+                savePointIndex += 1;
                 usedSave = true;
-                Debug.Log(SaveLoad.savePointIndex);
+                Debug.Log(savePointIndex);
             }
-
-            SaveLoad.currentSavePoint = savePos;
+            currentSavePoint = savePos;
         }
     }
 }

@@ -68,7 +68,6 @@
     <Compile Include="Assets\Scripts\PirateShip\PlayerShip.cs" />
     <Compile Include="Assets\Scripts\Player\Gun.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHp.cs" />
-    <Compile Include="Assets\Decoration.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\Singleton.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\Obstacle.cs" />

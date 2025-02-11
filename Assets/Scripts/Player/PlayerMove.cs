@@ -171,11 +171,6 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(Parrying());
         }
 
-        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.SKILL_1])) //스킬
-        {
-
-        }
-
         Flip();
 
         if (rb.velocity.normalized.x == 0)
@@ -265,10 +260,6 @@ public class PlayerMove : MonoBehaviour
         //animator.SetBool("IsParrying",false);
         yield return new WaitForSeconds(DamageUpTime);
         successParrying = false;
-    }
-    public void CompanySkill()
-    {
-
     }
     IEnumerator UpRope()
     {
