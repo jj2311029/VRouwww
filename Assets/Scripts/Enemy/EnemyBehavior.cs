@@ -30,6 +30,7 @@ public class EnemyBehavior : MonoBehaviour
     [HideInInspector] public bool cooling;
     protected float intTimer;
     protected bool isStunned;
+    bool isDie=false;
     #endregion
 
 
@@ -180,7 +181,8 @@ public class EnemyBehavior : MonoBehaviour
     }
     public void Flip()
     {
-        StartCoroutine(WaitFlip());
+        if(isDie==true) return;
+        else StartCoroutine(WaitFlip());
     }
     IEnumerator WaitFlip()
     {
@@ -242,5 +244,12 @@ public class EnemyBehavior : MonoBehaviour
         {
             animator.SetBool("CanWalk", true);
         }
+    }
+    public void StopCor()
+    {
+        hotZone.SetActive(true);
+        hotZone.GetComponent<HotZoneCheck>().StopAllCoroutines();
+        isDie=true;
+        StopAllCoroutines();
     }
 }

@@ -25,8 +25,8 @@ public class PlayerHP : MonoBehaviour
     {
         for (int i = 0; i < maxHP; i++)
         {
-            GameObject heart = Instantiate(heartPrefab, transform); // 프리팹을 인스턴스화하여 부모로 설정
-            heartObjects.Add(heart);  // 하트 객체 리스트에 추가
+            //GameObject heart = Instantiate(heartPrefab, transform); // 프리팹을 인스턴스화하여 부모로 설정
+            //heartObjects.Add(heart);  // 하트 객체 리스트에 추가
         }
     }
 

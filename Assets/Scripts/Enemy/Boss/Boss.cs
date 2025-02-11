@@ -19,13 +19,14 @@ public class Boss : MonoBehaviour
     bool eyeattack = false;
 
     private float groggyTime = 10f;
-    
 
 
+    [Header("Fixed Leg")]
     private GameObject fixedLeg1;
     private GameObject fixedLeg2;
-    //private FixedLegScript fLeg1;
-    //private FixedLegScript fLeg2;--------------------------------------------------------------------------고정다리 스크립트
+    private FixedLeg fLeg1;
+    private FixedLeg fLeg2;//--------------------------------------------------------------------------고정다리 스크립트
+    [SerializeField] List<Vector2> fixedLegSpawnPoint;
 
     [SerializeField] private GameObject FixedLegPrefab;
 
@@ -36,29 +37,26 @@ public class Boss : MonoBehaviour
     [SerializeField] private BossEyePattern eyeAttack;
 
 
-    private void Start()
+    private void Awake()
     {
         legAttack = patern2.GetComponent<BossPatern2>();
+        InstantiateFixedLeg();
     }
     //공격 명령
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(5f);
-        }
         if (canAttack)
         {
             Patern();
             StartCoroutine("CanAttack");
         }
-        /*//두 다리 모두 Hp가 0보다 작을 경우 그로기 상태
-        if (fLeg1.GetHp() <= 0 && fLeg2.GetHp()<=0&&page==1)-------------------------------------------------------------------
+        //두 다리 모두 Hp가 0보다 작을 경우 그로기 상태
+        if (fLeg1== null && fLeg2== null && page == 1) //-------------------------------------------------------------------
         {
             Groggy();
         }
-        */
-        
+
+
     }
     //패턴 고르기
     private void Patern()
@@ -177,16 +175,21 @@ public class Boss : MonoBehaviour
 
     private void InstantiateFixedLeg()
     {
-        Vector3 randomPos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width / 2), Camera.main.WorldToScreenPoint(transform.position).y, 0));
-        randomPos.z = 0;  // z값 고정
-        fixedLeg1 = Instantiate(FixedLegPrefab, randomPos, Quaternion.identity);
+        int randomNum1 = Random.Range(0, fixedLegSpawnPoint.Count);
+        int randomNum2 = Random.Range(0, fixedLegSpawnPoint.Count);
+        Debug.Log(randomNum1 + " " + randomNum2);   
+        if(randomNum1==randomNum2)
+        {
+            if (randomNum2 == fixedLegSpawnPoint.Count - 1)
+                randomNum2--;
+            else
+                randomNum2++;
+        }
+        fixedLeg1 = Instantiate(FixedLegPrefab, fixedLegSpawnPoint[randomNum1], Quaternion.identity);
+        fixedLeg2 = Instantiate(FixedLegPrefab, fixedLegSpawnPoint[randomNum2], Quaternion.identity);
 
-        randomPos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(Screen.width / 2, Screen.width), Camera.main.WorldToScreenPoint(transform.position).y, 0));
-        randomPos.z = 0;  // z값 고정
-        fixedLeg2 = Instantiate(FixedLegPrefab, randomPos, Quaternion.identity);
-        
-        //fLeg1 = fixedLeg1.GetComponent<FixedLegScript>;-----------------------------------------------------------------------------
-        //fLeg2 = fixedLeg2.GetComponent<FixedLegScript>;
+        fLeg1 = fixedLeg1.GetComponent<FixedLeg>();
+        fLeg2 = fixedLeg2.GetComponent<FixedLeg>();
     }
 
     public IEnumerator ReinforceAttack()
