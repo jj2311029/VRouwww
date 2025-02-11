@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\PirateShip\PlayerShip.cs" />
     <Compile Include="Assets\Scripts\Player\Gun.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHp.cs" />
+    <Compile Include="Assets\Decoration.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\Singleton.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\Obstacle.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Assets\Scripts\Enemy\HotZoneCheck.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\SpawnEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\FixedLeg.cs" />
+    <Compile Include="Assets\Scripts\SaveCamera.cs" />
     <Compile Include="Assets\Scripts\Player\SkillEffect.cs" />
     <Compile Include="Assets\Scripts\PirateShip\Object.cs" />
     <Compile Include="Assets\Scripts\PirateShip\SpawnObject.cs" />
