@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Manager\BackgroundManager.cs" />
     <Compile Include="Assets\Scripts\Water.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Boss.cs" />
     <Compile Include="Assets\Scripts\Player\Bullet.cs" />
     <Compile Include="Assets\Scripts\PirateShip\Heart.cs" />
     <Compile Include="Assets\Scripts\saveButton.cs" />
@@ -75,11 +74,11 @@
     <Compile Include="Assets\Scripts\SaveLoad.cs" />
     <Compile Include="Assets\Scripts\Manager\KeyManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\BossEyePattern.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\NER.cs" />
     <Compile Include="Assets\Scripts\Enemy\Golam.cs" />
     <Compile Include="Assets\Scripts\Manager\KeyControlManager.cs" />
-    <Compile Include="Assets\Scripts\Enemy\BossPatern2.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\ObstacleEnemy.cs" />
     <Compile Include="Assets\Scripts\Image.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\CannonField.cs" />
@@ -100,6 +99,7 @@
     <Compile Include="Assets\Scripts\Enemy\TriggerAreaCheck.cs" />
     <Compile Include="Assets\Scripts\Enemy\Bard_Buff.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyWeapon.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\BossPatern2.cs" />
     <Compile Include="Assets\Scripts\Player\Skill.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\CannonEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\ShortRange.cs" />
@@ -108,14 +108,15 @@
     <Compile Include="Assets\Scripts\PirateShip\OakBarrel.cs" />
     <Compile Include="Assets\Scripts\Enemy\HotZoneCheck.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\SpawnEnemy.cs" />
-    <Compile Include="Assets\Scripts\Enemy\FixedLeg.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\Boss.cs" />
     <Compile Include="Assets\Scripts\Player\SkillEffect.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\FixedLeg.cs" />
     <Compile Include="Assets\Scripts\PirateShip\Object.cs" />
     <Compile Include="Assets\Scripts\PirateShip\SpawnObject.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\AttackCollider.cs" />
     <Compile Include="Assets\Scripts\Manager\Find.cs" />
     <Compile Include="Assets\Scripts\Player\Sword.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
-    <Compile Include="Assets\Scripts\Enemy\BossEyePattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\NER_bullet.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\UiManager.cs" />
     <Compile Include="Assets\Scripts\TextStart.cs" />

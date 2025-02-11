@@ -26,32 +26,21 @@ public class SwordStrike : MonoBehaviour
             }
             else
             {
-                BucklerStats BS = collision.gameObject.GetComponentInParent<BucklerStats>();
-
-
-                if (BS != null)
+                EnemyStats es = collision.gameObject.GetComponentInParent<EnemyStats>();
+                if (es != null)
                 {
                     if (pm.GetSuccessParrying())
-                        BS.TakeDamage(damage + 1f, pm.gameObject.transform);
+                        es.TakeDamage(damage + 1f, pm.gameObject.transform);
                     else
                     {
-                        BS.TakeDamage(damage, pm.gameObject.transform);
+                        es.TakeDamage(damage, pm.gameObject.transform);
                     }
-
                 }
                 else
                 {
-                    EnemyStats ES = collision.gameObject.GetComponentInParent<EnemyStats>();
-                    if (pm.GetSuccessParrying())
-                        ES.TakeDamage(damage + 1f, pm.gameObject.transform);
-                    else
-                    {
-                        ES.TakeDamage(damage, pm.gameObject.transform);
-                    }
+                    FixedLeg fixedLeg=collision.gameObject.GetComponent<FixedLeg>();
+                    fixedLeg.TakeDamage(1);
                 }
-
-
-
             }
         }
         if (collision.tag == "Boss")

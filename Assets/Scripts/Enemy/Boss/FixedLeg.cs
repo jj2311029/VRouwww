@@ -8,7 +8,6 @@ public class FixedLeg : MonoBehaviour
     [SerializeField] protected Rigidbody2D rigid;
     [SerializeField] protected SpriteRenderer render;
     [SerializeField] protected BoxCollider2D boxCollider;
-    [SerializeField] protected Transform foot;
     protected Animator anim; // 애니메이션 추가
     //[SerializeField] private int attackPower; // 공격력 설정
     //[SerializeField] private float pushBackForce = 5f;
@@ -43,7 +42,6 @@ public class FixedLeg : MonoBehaviour
     protected void FixedUpdate()
     {
         attackCooldown += Time.deltaTime;
-        CheckPlatform();
         if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCooldown > attackDelay&&isAttack==false) 
         {
             for (int i = 0;i<10;i++)
@@ -77,17 +75,25 @@ public class FixedLeg : MonoBehaviour
         }
     }
 
-    protected void CheckPlatform()
-    {
-        isPlayerOnSamePlatform = Mathf.Abs(player.position.y - foot.position.y) < 0.5f;
-    }
-
     // 충돌 처리 (플레이어의 공격)
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerAttack"))
         {
             TakeDamage(1); // 데미지 1
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")&&isAttack==false)
+        {
+            //TakeDamage(1); // 데미지 1
+            PlayerHP playerScript = collision.gameObject.GetComponent<PlayerHP>();
+            if (playerScript != null )
+            {
+                playerScript.TakeDamage(1, transform.position); // float을 int로 변환
+                Debug.Log("Enemy hit Player  Damage: 1" );
+            }
         }
     }
 
@@ -97,35 +103,14 @@ public class FixedLeg : MonoBehaviour
         Hp -= damage;
 
         Debug.Log("적이 데미지를 받음. 현재 HP: " + Hp);
-
-        // 넉백 방향 계산
-        Vector2 knockbackDirection = (transform.position - player.position).normalized;
-
-        // 넉백 적용
-        rigid.velocity = Vector2.zero; // 현재 속도 초기화
-        //rigid.AddForce(new Vector2(knockbackDirection.x * knockbackForce, rigid.velocity.y), ForceMode2D.Impulse);
-
         if (Hp <= 0)
         {
-            Debug.Log("적이 사망했습니다.");
+            Debug.Log("고정다리 사망.");
             Destroy(this.gameObject);
         }
     }
-
-    //이동 애니메이션 관리
-    protected virtual void StartMoving()
+    public bool GetIsAttack()
     {
-        if (anim != null)
-            anim.SetBool("isMoving", true);
+        return isAttack;
     }
-
-    protected virtual void StopMoving()
-    {
-        if (anim != null)
-            anim.SetBool("isMoving", false);
-    }
-
-    
-
-
 }
