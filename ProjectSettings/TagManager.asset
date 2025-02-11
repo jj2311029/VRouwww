@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - StopLine
   - PlayerAttack
+  - Obstacle
   layers:
   - Default
   - TransparentFX
