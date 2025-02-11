@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SkillEffect : MonoBehaviour
 {
     public Animator anim;
+    private Color color;
 
 
     void Start()
