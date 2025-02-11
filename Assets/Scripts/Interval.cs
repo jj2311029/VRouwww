@@ -11,7 +11,7 @@ public class Interval : MonoBehaviour
     public bool stageClear = false;
     public bool doorOpen = false;
     public GameObject[] door;
-    private float doorMoveTime = 1f; // 문이 올라가는 시간
+    private float doorMoveTime = 0.3f; // 문이 올라가는 시간
     private float fadeDuration = 1f; // 사라지는 시간
 
     void Start()
@@ -111,22 +111,68 @@ public class Interval : MonoBehaviour
     // 문을 서서히 사라지게 만든 후 삭제하는 함수
     IEnumerator FadeOutAndDestroy(GameObject door)
     {
-        SpriteRenderer sr = door.GetComponent<SpriteRenderer>(); // 문에서 SpriteRenderer 가져오기
-        if (sr == null) yield break; // SpriteRenderer 없으면 중단
+        if (door == null) yield break;
 
-        Color color = sr.color;
+        // 부모 오브젝트의 SpriteRenderer 가져오기
+        SpriteRenderer parentSR = door.GetComponent<SpriteRenderer>();
+
+        // 자식 오브젝트들의 모든 SpriteRenderer 가져오기
+        SpriteRenderer[] childSRs = door.GetComponentsInChildren<SpriteRenderer>();
+
+        if (parentSR == null && childSRs.Length == 0) yield break; // 아무것도 없으면 중단
+
         float elapsedTime = 0f;
+        float startAlpha = parentSR != null ? parentSR.color.a : 1f; // 부모 알파값
 
         while (elapsedTime < fadeDuration)
         {
-            color.a = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
-            sr.color = color;
+            float newAlpha = Mathf.Lerp(startAlpha, 0f, elapsedTime / fadeDuration);
+
+            // 부모 페이드 아웃
+            if (parentSR != null)
+            {
+                Color parentColor = parentSR.color;
+                parentColor.a = newAlpha;
+                parentSR.color = parentColor;
+            }
+
+            // 자식들도 페이드 아웃
+            foreach (SpriteRenderer sr in childSRs)
+            {
+                if (sr != null)
+                {
+                    Color childColor = sr.color;
+                    childColor.a = newAlpha;
+                    sr.color = childColor;
+                }
+            }
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        color.a = 0f;
-        sr.color = color;
-        Destroy(door); // 최종적으로 문 삭제
+        // 마지막 알파값 0으로 확정 후 삭제
+        if (door != null)
+        {
+            if (parentSR != null)
+            {
+                Color parentColor = parentSR.color;
+                parentColor.a = 0f;
+                parentSR.color = parentColor;
+            }
+
+            foreach (SpriteRenderer sr in childSRs)
+            {
+                if (sr != null)
+                {
+                    Color childColor = sr.color;
+                    childColor.a = 0f;
+                    sr.color = childColor;
+                }
+            }
+
+            door.SetActive(false); // 자연스럽게 사라지게 하기 위해 비활성화
+            Destroy(door, 0.5f); // 0.5초 후 삭제 (바로 사라지는 느낌 방지)
+        }
     }
 }
