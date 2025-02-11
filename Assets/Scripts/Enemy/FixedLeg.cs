@@ -2,101 +2,130 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FixedLeg : EnemyMove
+public class FixedLeg : MonoBehaviour
 {
-    [SerializeField] private int attackPower; // 공격력 설정
-    [SerializeField] public BoxCollider2D attackRange; // 공격 범위 설정
+    [Header("Basic")]
+    [SerializeField] protected Rigidbody2D rigid;
+    [SerializeField] protected SpriteRenderer render;
+    [SerializeField] protected BoxCollider2D boxCollider;
+    [SerializeField] protected Transform foot;
+    protected Animator anim; // 애니메이션 추가
+    //[SerializeField] private int attackPower; // 공격력 설정
+    //[SerializeField] private float pushBackForce = 5f;
+
+    [Header("Attack")]
+    [SerializeField] private float attackCooldown = 0f; // 현재 쿨타임 상태
     [SerializeField] private float attackDelay = 1.5f; // 공격 딜레이
-    [SerializeField] private float pushBackForce = 5f;
+    bool isAttack=false;
 
-    private float attackCooldown = 0f; // 현재 쿨타임 상태
+    [SerializeField] protected float attackRange = 5f;    //공격 준비 거리
 
-    protected override void Awake()
+    [Header("Hp")]
+    [SerializeField] protected int Hp = 3;
+    //[SerializeField] protected float knockbackForce = 10f;   // 넉백 힘
+
+    [Header("About Player")]
+    [SerializeField] protected Transform player;//플레이어 위치
+    [SerializeField] protected Renderer playerRenderer;
+    protected bool isPlayerOnSamePlatform=false;
+    
+
+    protected void Awake()
     {
-        base.Awake(); // 부모 클래스의 Awake 메서드를 호출
+        rigid = GetComponent<Rigidbody2D>();
+        render = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>(); // BoxCollider2D 컴포넌트 가져오기
+        player = GameObject.FindWithTag("Player").transform;
+        if(player) playerRenderer = player.GetComponent<Renderer>();
+        anim = GetComponent<Animator>(); // Animator 가져오기
     }
 
-    protected override void FixedUpdate()
+    protected void FixedUpdate()
     {
-        attackCooldown -= Time.deltaTime;
-
-        base.CheckPlatform(); // 부모 클래스의 플랫폼 확인 메서드 호출
-
-        if (isPlayerOnSamePlatform && Vector2.Distance(transform.position, player.position) <= followDistance)
+        attackCooldown += Time.deltaTime;
+        CheckPlatform();
+        if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCooldown > attackDelay&&isAttack==false) 
         {
-            // 플레이어가 추적 범위 내에 있으면
-            if (Vector2.Distance(transform.position, player.position) < stopChaseRange)
-            {
-                StopAndPrepareAttack(); // 공격 범위 내에 도달하면 정지
-            }
+            for (int i = 0;i<10;i++)
+                Debug.Log("Attack");
+            Attack();
+            attackCooldown = 0f;
+            isAttack =true;
         }
-        else if (!isChasing)
-        {
-            // 정찰 상태
-            Patrol();
-        }
+        Turn();
     }
-
-    protected override void Patrol()
+    protected void Attack()
     {
-        Debug.Log("PAtrol");
-        if (player.position.x < this.transform.position.x) { render.flipX = false; }
-        else render.flipX=true; 
-        
+        anim.SetBool("IsAttack",true);
+        anim.SetBool("IsIdle", false);
+        Debug.Log("Attack");
     }
-
-    // StopAndPrepareAttack 메서드는 Golam만의 공격 준비 로직을 추가
-    protected override void StopAndPrepareAttack()
+    public void TriggerAttackFinish()
     {
-        rigid.velocity = Vector2.zero; // 적을 멈추게 함
-        render.flipX = player.position.x < transform.position.x; // 플레이어 방향으로 바라보기
-
-        if (attackCooldown <= 0) // 쿨타임이 없을 때
-        {
-            StartCoroutine(PrepareAttack()); // 공격 준비
-        }
-        else
-        {
-            Debug.Log("공격 대기 중, 남은 쿨타임: " + attackCooldown);
-        }
+        anim.SetBool("IsAttack", false);
+        anim.SetBool("IsIdle", true);
+        isAttack = false;
+        attackCooldown = 0f;
+        Debug.Log("FinshAttack");
     }
-
-    private IEnumerator PrepareAttack()
+    protected void Turn()
     {
-        attackCooldown = attackDelay; // 쿨타임 초기화
-        Debug.Log("공격 준비 중...");
-
-        // 공격 준비 시간 동안 멈춤
-        rigid.velocity = Vector2.zero;
-
-        yield return new WaitForSeconds(attackDelay); // 공격 준비 시간
-
-        Debug.Log("공격 시작!");
-        Attack(); // 공격 실행
-    }
-
-    private void Attack()
-    {
-        // 플레이어에 데미지를 입힘
-        PlayerHP playerScript = player.GetComponent<PlayerHP>();
-        PlayerMove playerMove = player.GetComponent<PlayerMove>();
-        if (playerScript != null && playerMove != null)
+        if (player != null)
         {
-            // 무적 상태인지 확인
-            if (player.gameObject.layer != LayerMask.NameToLayer("PlayerDamaged"))
-            {
-                // 공격 범위에서 플레이어에게 데미지 적용
-                playerScript.TakeDamage(attackPower, transform.position); // position을 targetpos로 전달
-                playerMove.OnDamaged(transform.position); // 넉백 및 무적 상태 활성화
-            }
+            if (player.transform.position.x < transform.position.x) render.flipX = true;
+            else render.flipX = false;
         }
     }
 
-
-    // 데미지 처리
-    public override void TakeDamage(int damage)
+    protected void CheckPlatform()
     {
-        base.TakeDamage(damage);
+        isPlayerOnSamePlatform = Mathf.Abs(player.position.y - foot.position.y) < 0.5f;
     }
+
+    // 충돌 처리 (플레이어의 공격)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerAttack"))
+        {
+            TakeDamage(1); // 데미지 1
+        }
+    }
+
+    // 데미지 처리 및 사망
+    public virtual void TakeDamage(int damage)
+    {
+        Hp -= damage;
+
+        Debug.Log("적이 데미지를 받음. 현재 HP: " + Hp);
+
+        // 넉백 방향 계산
+        Vector2 knockbackDirection = (transform.position - player.position).normalized;
+
+        // 넉백 적용
+        rigid.velocity = Vector2.zero; // 현재 속도 초기화
+        //rigid.AddForce(new Vector2(knockbackDirection.x * knockbackForce, rigid.velocity.y), ForceMode2D.Impulse);
+
+        if (Hp <= 0)
+        {
+            Debug.Log("적이 사망했습니다.");
+            Destroy(this.gameObject);
+        }
+    }
+
+    //이동 애니메이션 관리
+    protected virtual void StartMoving()
+    {
+        if (anim != null)
+            anim.SetBool("isMoving", true);
+    }
+
+    protected virtual void StopMoving()
+    {
+        if (anim != null)
+            anim.SetBool("isMoving", false);
+    }
+
+    
+
 
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 591f30cc15cbf2449b3e5c3deb4486e6
+guid: dd7d63e3a351fdb4cbe60e147801abb5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -97,421 +97,358 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FixedLeg_Attack_0
+      name: AttackState_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 3240
+        y: 3210
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b64917163c961e4c9d5da8a772d2b5c
-      internalID: 766503148
+      spriteID: 9f8f29d43ef92db4faa29640f931e29d
+      internalID: 2085661746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_1
+      name: AttackState_1
       rect:
         serializedVersion: 2
         x: 1300
-        y: 3240
+        y: 3210
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85f61bb8f2b8bdb44a6b9c6ec77da410
-      internalID: 987373055
+      spriteID: 11961a7bdf99b4e4c9bf4cbad1fd7c63
+      internalID: 1480561553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_2
+      name: AttackState_2
       rect:
         serializedVersion: 2
         x: 2600
-        y: 3240
+        y: 3210
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e4dd4e7aa992d746898c71ff1747424
-      internalID: 1879389930
+      spriteID: 2dc728ea080523d43b15ffc75ae61399
+      internalID: -1325605512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_3
+      name: AttackState_3
       rect:
         serializedVersion: 2
         x: 3900
-        y: 3240
+        y: 3210
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b8a64952fca7ab40add7bde0a23e104
-      internalID: 1084239224
+      spriteID: 085c8473028188f4b920eee92e7368e5
+      internalID: 184836381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_4
+      name: AttackState_4
       rect:
         serializedVersion: 2
         x: 5200
-        y: 3240
+        y: 3210
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c67c2ecc18521854faac7fbd22a42249
-      internalID: -352864164
+      spriteID: 08d970e7699021944908e4f0fe393f4b
+      internalID: -1306778131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_5
+      name: AttackState_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 2160
+        y: 2140
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6452d9910459a49408ab9a0078d35ece
-      internalID: 337157113
+      spriteID: e390570399afef640b9d1b8ab26f87f6
+      internalID: -868023540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_6
+      name: AttackState_6
       rect:
         serializedVersion: 2
         x: 1300
-        y: 2160
+        y: 2140
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a55f60c2c51943d419abdcccfe816880
-      internalID: 1201088724
+      spriteID: 372fce48dfe0a634aa990211446841ab
+      internalID: 1228649004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_7
+      name: AttackState_7
       rect:
         serializedVersion: 2
         x: 2600
-        y: 2160
+        y: 2140
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c3f9fa08c74ff84f80bf3be77d6d86c
-      internalID: -244197676
+      spriteID: 980a5cacf26e47f44978b98189b6ad36
+      internalID: -1956169514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_8
+      name: AttackState_8
       rect:
         serializedVersion: 2
         x: 3900
-        y: 2160
+        y: 2140
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1897d209bdc7a5340a03edf7184dc94c
-      internalID: 1489022951
+      spriteID: 2055b0b8ef069a24c888376519ef87e3
+      internalID: -539971415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_9
+      name: AttackState_9
       rect:
         serializedVersion: 2
         x: 5200
-        y: 2160
+        y: 2140
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e1a843fdefe75f44a03f7c29a630b85
-      internalID: 1198600957
+      spriteID: 05711e62140fa7c47bddcc508db0489f
+      internalID: 906394106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_10
+      name: AttackState_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 1080
+        y: 1070
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec0b36597da0c834bb337058ba701320
-      internalID: 1204809909
+      spriteID: 65491647f2f19364f8796879a9df83e0
+      internalID: -1415685232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_11
+      name: AttackState_11
       rect:
         serializedVersion: 2
         x: 1300
-        y: 1080
+        y: 1070
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abdec8846ee64dd4ca3a2f7c95799949
-      internalID: 1980764753
+      spriteID: 96527ae9e61452549b85be07f3d6b142
+      internalID: -1300635983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_12
+      name: AttackState_12
       rect:
         serializedVersion: 2
         x: 2600
-        y: 1080
+        y: 1070
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 910887eaff53a144d8f802423f156fb2
-      internalID: 973391360
+      spriteID: 9016f56bcff24224c8a16b8ae3ddab06
+      internalID: -1393003877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_13
+      name: AttackState_13
       rect:
         serializedVersion: 2
         x: 3900
-        y: 1080
+        y: 1070
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a2d218c661061f45870a939c542b684
-      internalID: -1258081964
+      spriteID: 195f0d298e9ab614fa4a13809a1d247e
+      internalID: 1593227951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_14
+      name: AttackState_14
       rect:
         serializedVersion: 2
         x: 5200
-        y: 1080
+        y: 1070
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb894d187dbd1f744b65b590e64624a9
-      internalID: -1951347647
+      spriteID: 9791be82d7b41224aaecf0da0782c00d
+      internalID: -610034086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_15
+      name: AttackState_15
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82f5be2021a551a4393efd3f061cd09b
-      internalID: -115347923
+      spriteID: 70dc0cdc3ee8b3f4ba433fc7b8c63a80
+      internalID: -170721828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FixedLeg_Attack_16
+      name: AttackState_16
       rect:
         serializedVersion: 2
         x: 1300
         y: 0
         width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 1070
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e071966aca213e34499a02953a86d4da
-      internalID: -1463903571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FixedLeg_Attack_17
-      rect:
-        serializedVersion: 2
-        x: 2600
-        y: 0
-        width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80ffa0f8d2c43c147bfc1a26165d76e1
-      internalID: 1005278815
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FixedLeg_Attack_18
-      rect:
-        serializedVersion: 2
-        x: 3900
-        y: 0
-        width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 831030d37d2fed44780ea28e6c7fcf63
-      internalID: 613172274
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FixedLeg_Attack_19
-      rect:
-        serializedVersion: 2
-        x: 5200
-        y: 0
-        width: 1300
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 918c88fe56f0a1a4a9e122bfd46b801f
-      internalID: -967112385
+      spriteID: b124c498a5374544ca346aa3a205cb9b
+      internalID: 1685510307
       vertices: []
       indices: 
       edges: []
@@ -527,26 +464,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FixedLeg_Attack_0: 766503148
-      FixedLeg_Attack_1: 987373055
-      FixedLeg_Attack_10: 1204809909
-      FixedLeg_Attack_11: 1980764753
-      FixedLeg_Attack_12: 973391360
-      FixedLeg_Attack_13: -1258081964
-      FixedLeg_Attack_14: -1951347647
-      FixedLeg_Attack_15: -115347923
-      FixedLeg_Attack_16: -1463903571
-      FixedLeg_Attack_17: 1005278815
-      FixedLeg_Attack_18: 613172274
-      FixedLeg_Attack_19: -967112385
-      FixedLeg_Attack_2: 1879389930
-      FixedLeg_Attack_3: 1084239224
-      FixedLeg_Attack_4: -352864164
-      FixedLeg_Attack_5: 337157113
-      FixedLeg_Attack_6: 1201088724
-      FixedLeg_Attack_7: -244197676
-      FixedLeg_Attack_8: 1489022951
-      FixedLeg_Attack_9: 1198600957
+      AttackState_0: 2085661746
+      AttackState_1: 1480561553
+      AttackState_10: -1415685232
+      AttackState_11: -1300635983
+      AttackState_12: -1393003877
+      AttackState_13: 1593227951
+      AttackState_14: -610034086
+      AttackState_15: -170721828
+      AttackState_16: 1685510307
+      AttackState_2: -1325605512
+      AttackState_3: 184836381
+      AttackState_4: -1306778131
+      AttackState_5: -868023540
+      AttackState_6: 1228649004
+      AttackState_7: -1956169514
+      AttackState_8: -539971415
+      AttackState_9: 906394106
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
