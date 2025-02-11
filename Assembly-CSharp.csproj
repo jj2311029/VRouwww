@@ -11,6 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
     <ProjectGuid>{BC156427-EC69-C310-9D61-883A326D92EB}</ProjectGuid>
+    <ProjectGuid>{8C64D68E-27CE-5C2F-E97B-2ED6CB902B67}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -116,6 +117,7 @@
     <Compile Include="Assets\Scripts\PirateShip\Object.cs" />
     <Compile Include="Assets\Scripts\PirateShip\SpawnObject.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\AttackCollider.cs" />
+    <Compile Include="Assets\Scripts\npc\DialogueLine.cs" />
     <Compile Include="Assets\Scripts\Manager\Find.cs" />
     <Compile Include="Assets\Scripts\Player\Sword.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Assets\Scripts\TextStart.cs" />
     <Compile Include="Assets\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateManager.cs" />
+    <Compile Include="Assets\Scripts\npc\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Bard.cs" />
     <Compile Include="Assets\Scripts\Player\swordStrike.cs" />
     <Compile Include="Assets\Scripts\Enemy\BucklerStats.cs" />
