@@ -55,6 +55,8 @@ public class EnemyStats : MonoBehaviour
         if (curHp <= 0)
         {
             isDie = true;
+            gameObject.GetComponent<EnemyBehavior>().StopCor();
+            this.StopAllCoroutines();
             Destroy(this.gameObject, 1f);
         }
     }

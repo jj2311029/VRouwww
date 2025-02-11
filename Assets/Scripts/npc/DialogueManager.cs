@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     public Transform npc; // NPC의 Transform
     public float dialogueTriggerDistance = 2f; // 대화가 시작될 거리 (기본값 2f)
 
-    void Start()
+    void Awake()
     {
         dialoguePanel.SetActive(false); // 대화창을 초기에는 비활성화
     }

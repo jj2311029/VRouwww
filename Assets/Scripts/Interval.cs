@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interval : MonoBehaviour
 {
-    [SerializeField] private GameObject Size;
+    [SerializeField] private SpriteRenderer Size;
 
     public int numOfEnemies = 0;
     public bool isPlayerInterval = false;
@@ -14,10 +14,8 @@ public class Interval : MonoBehaviour
     private float doorMoveTime = 0.3f; // 문이 올라가는 시간
     private float fadeDuration = 1f; // 사라지는 시간
 
-    void Start()
+    void Awake()
     {
-        DetectEnemies();
-
         SpriteRenderer spr = Size.GetComponent<SpriteRenderer>();
         Color color = spr.color;
         color.a = 0f;
@@ -31,6 +29,7 @@ public class Interval : MonoBehaviour
                 d.SetActive(false);
             }
         }
+        DetectEnemies();
     }
 
     void Update()

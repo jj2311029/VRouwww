@@ -127,7 +127,7 @@ public class BackgroundManager : MonoBehaviour
                 isTransitioning = true;
             }
 
-            if (player.position.x >= endX + 5f)
+            if (player.position.x >= endX)
             {
                 SetAlpha(background[i], 0f);
                 currentBackgroundIndex = i + 1; // 현재 배경 업데이트
