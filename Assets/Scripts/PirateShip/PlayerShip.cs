@@ -30,6 +30,13 @@ public class PlayerShip : MonoBehaviour
             if (currentPos.y <= maxY)
             {
                 transform.position += Vector3.up * shipSpeed * Time.deltaTime;
+                float currentZAngle = transform.rotation.eulerAngles.z;
+                currentZAngle = currentZAngle > 180 ? currentZAngle - 360 : currentZAngle;
+
+                if (currentZAngle < 35 && currentZAngle > -35)
+                {
+                    transform.Rotate(new Vector3(0, 0, 15) * rotationSpeed * Time.deltaTime);
+                }
             }
         }
         else if (Input.GetKey(KeySetting.Keys[KeyAction.DOWN]))
