@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class SaveLoad : MonoBehaviour
 {
     public static int savePointIndex = 10; // 세이브 포인트 수치 (게임플레이에서 증가)
-    public static int currentSavePoint;
     public static int currentSelectedSlot;
     public GameObject[] slotPrefab;
     public GameObject currentSlot;
@@ -37,7 +36,6 @@ public class SaveLoad : MonoBehaviour
         }
 
         currentSlot.SetActive(false);
-        Debug.Log($"최근 지점 : {currentSavePoint}");
         StartCoroutine(ShowSaveSlotsWithFade());
     }
 

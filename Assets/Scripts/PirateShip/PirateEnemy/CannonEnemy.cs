@@ -5,6 +5,8 @@ using UnityEngine;
 public class CannonEnemy : BasicEnemy
 {
     public GameObject cannonField;
+    private Vector3 spawnPosition;
+    
     protected override void Attack()
     {
         if (Hp <= 0)
@@ -12,11 +14,14 @@ public class CannonEnemy : BasicEnemy
             CancelInvoke("Attack");
             return;
         }
-        Vector3 spawnPosition = new Vector3(transform.position.x - 8.5f, transform.position.y, transform.position.z);
-        GameObject CF = Instantiate(cannonField, spawnPosition, transform.rotation);
+        Invoke("CreateAttack", 1f);
         StartCoroutine(PlayAnimation());
-        Destroy(CF, 2f);
         Invoke("Attack", 4f);
     }
-    
+
+    private void CreateAttack()
+    {
+        GameObject CF = Instantiate(cannonField, transform.position, transform.rotation);
+        Destroy(CF, 5f);
+    }
 }

@@ -58,9 +58,16 @@ public class BasicEnemy : MonoBehaviour
         {
             SpawnEnemy spawner = GetComponentInParent<SpawnEnemy>();
             spawner.decreaseNumOfEnemies();
-            Destroy(this.gameObject);
+            animator.Play("Explode");
+            Invoke("Die", 0.5f);
         }
     }
+
+    protected void Die()
+    {
+        Destroy(this.gameObject);
+    }
+
     protected IEnumerator PlayAnimation()
     {
         animator.SetBool("Attack", true);

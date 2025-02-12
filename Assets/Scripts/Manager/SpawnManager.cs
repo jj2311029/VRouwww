@@ -11,7 +11,9 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         player.transform.position = points[SaveLoad.currentSelectedSlot].transform.position;
-
+        SoundManager.Instance.PlayBGM(2);
+        SoundManager.Instance.PlayBGM(3);
+        SoundManager.Instance.PlayBGM(4);
     }
 
     public void GoBack()
