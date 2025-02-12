@@ -24,6 +24,7 @@ public class SavePoint : MonoBehaviour
                 if (hp != null)
                 {
                     hp.currentHP = hp.maxHP;
+                    hp.UpdateHearts();
                 }
                 else
                 {
