@@ -118,7 +118,7 @@ public class Bard : EnemyMove
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            color.a = Mathf.Lerp(1f, 0f, elapsedTime / duration); // 점점 투명하게
+            color.a = Mathf.Lerp(0.5f, 0f, elapsedTime / duration); // 점점 투명하게
             sprite.color = color;
             yield return null;
         }

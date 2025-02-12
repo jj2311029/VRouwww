@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float speed = 2f;        // 플레이어 이동 속도
     private float moveInput = 0f;                     // 좌우 이동 입력값
     private bool isFacingRight = true;                // 캐릭터가 오른쪽을 보고 있는지 여부
-    private float jumpingPower = 25f;                 // 점프력
+    public float jumpingPower = 25f;                 // 점프력
 
     [Header("로프 관련 변수")]
     private HingeJoint2D joint;                       // 로프에 매달리기 위한 조인트
@@ -48,13 +48,17 @@ public class PlayerMove : MonoBehaviour
     public GameObject shield;                         // 방패 오브젝트
 
     [Header("동료스킬 관련 변수")]
-    private int skillUnlock = 1;
+    private bool isSkillOnCooldown = false;
+    public static bool skillUnlock = false;
     public SkillEffect skillPanel;
     public GameObject skillRange;
     public GameObject mainCamera;
     private bool canUseSkill = true;
     private float lastSkillTime = -10f;
     private float skillCooldown = 10f;
+
+    [Header("스킬 UI 관련")]
+    public Image skillObject;  // 스킬 아이콘 (Image 컴포넌트)
 
     private SpriteRenderer spriteRenderer;
 
@@ -71,6 +75,7 @@ public class PlayerMove : MonoBehaviour
         playerHP = GetComponent<PlayerHP>();
         originalGravityScale = rb.gravityScale;
         anim = GetComponent<Animator>();
+        skillObject.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -241,14 +246,20 @@ public class PlayerMove : MonoBehaviour
 
     private void DoSkill()
     {
-        if (!canUseSkill || Time.time < lastSkillTime + skillCooldown)
+        if (!skillUnlock)
+        {
+            Debug.Log("스킬이 해금되지 않았습니다!");
+            return;
+        }
+
+        if (isSkillOnCooldown)
         {
             Debug.Log("스킬 쿨타임 중!");
             return;
         }
 
-        canUseSkill = false;
         lastSkillTime = Time.time;
+        isSkillOnCooldown = true; // 쿨타임 시작
 
         skillPanel.PlaySkillEffect();
         Debug.Log("doing skill");
@@ -257,13 +268,49 @@ public class PlayerMove : MonoBehaviour
         GameObject StunRange = Instantiate(skillRange, transform.position, Quaternion.identity);
         Destroy(StunRange, 0.1f);
 
-        StartCoroutine(ResetSkillCooldown());
+        StartCoroutine(SkillCooldown()); // 10초 쿨타임 적용
+        StartCoroutine(UpdateSkillVisual()); // 스킬 아이콘 상태 업데이트
     }
 
-    private IEnumerator ResetSkillCooldown()
+    private IEnumerator SkillCooldown()
     {
         yield return new WaitForSeconds(skillCooldown);
-        canUseSkill = true;
+        isSkillOnCooldown = false;
+        UpdateSkillColor();
+    }
+
+    public void UnlockSkill()
+    {
+        Debug.Log("스킬 획득!");
+        skillUnlock = true;
+        skillObject.gameObject.SetActive(true); // UI 활성화
+    }
+
+
+    private IEnumerator UpdateSkillVisual()
+    {
+        UpdateSkillColor();
+
+        while (isSkillOnCooldown)
+        {
+            yield return null; // 쿨타임 중 계속 대기
+        }
+
+        UpdateSkillColor(); // 쿨타임 끝나면 다시 채색
+    }
+
+    private void UpdateSkillColor()
+    {
+        if (skillObject == null) return;
+
+        if (isSkillOnCooldown)
+        {
+            skillObject.color = Color.gray; // 쿨타임 중 -> 흑백
+        }
+        else
+        {
+            skillObject.color = Color.white; // 스킬 사용 가능 -> 원래 색상
+        }
     }
 
     IEnumerator Parrying()
