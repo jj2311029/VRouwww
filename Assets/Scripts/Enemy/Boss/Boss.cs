@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    public GameObject patern2;
+    
     
 
     [SerializeField] protected float hp = 100;
-    [SerializeField] protected float attackSpeed = 10f;
+    [SerializeField] protected float attackSpeed = 3f;
 
     protected int page = 1;
     private int attackPatern = 0;
@@ -18,22 +18,28 @@ public class Boss : MonoBehaviour
     private int attackStack = 0;
     bool eyeattack = false;
 
-    private float groggyTime = 10f;
+    private float groggyTime = 3f;
+    bool isGroggy=false;
+
+
+    [Header("Leg Patern")]
+    public GameObject patern2;//Leg Patern
+    BossPatern2 legAttack;
 
 
     [Header("Fixed Leg")]
-    private GameObject fixedLeg1;
-    private GameObject fixedLeg2;
-    private FixedLeg fLeg1;
-    private FixedLeg fLeg2;//--------------------------------------------------------------------------고정다리 스크립트
-    [SerializeField] List<Vector2> fixedLegSpawnPoint;
-
     [SerializeField] private GameObject FixedLegPrefab;
+    [SerializeField] private GameObject fixedLeg1;
+    [SerializeField] private GameObject fixedLeg2;
+    [SerializeField] private FixedLeg fLeg1;
+    [SerializeField] private FixedLeg fLeg2;//--------------------------------------------------------------------------고정다리 스크립트
+    [SerializeField] List<Vector2> leftFixedLegSpawnPoint;
+    [SerializeField] List<Vector2> RightFixedLegSpawnPoint;
 
+    [Header("Head Patern")]
     [SerializeField] private GameObject bossHead;
 
-    //패턴 스크립트 받기
-    BossPatern2 legAttack;
+    [Header("Eye Patern")]
     [SerializeField] private BossEyePattern eyeAttack;
 
 
@@ -48,12 +54,13 @@ public class Boss : MonoBehaviour
         if (canAttack)
         {
             Patern();
-            StartCoroutine("CanAttack");
+            StartCoroutine(CanAttack());
         }
         //두 다리 모두 Hp가 0보다 작을 경우 그로기 상태
-        if (fLeg1== null && fLeg2== null && page == 1) //-------------------------------------------------------------------
+        if (fLeg1== null && fLeg2== null && page == 1&&isGroggy==false) //-------------------------------------------------------------------
         {
-            Groggy();
+            Debug.Log("Groggy");
+            StartCoroutine(Groggy());
         }
 
 
@@ -111,21 +118,6 @@ public class Boss : MonoBehaviour
             }
         }
 
-        /*switch (attackPatern)
-        {
-            case 1:
-                break;
-            case 2:
-                B2.Attack();
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-        }*/
-
     }
     //피격
     public virtual void TakeDamage(float damage)
@@ -162,11 +154,17 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Groggy()//각 고정 다리가 사라졌을 경우 이거 실행됨// 고정다리 부분에서 이거 실행시켜야됨
     {
-        bossHead.SetActive(true);
-        canAttack=false;
+        bossHead.SetActive(true);//임시로 setActive해놓음 보스 그로기 모션 나와야함
+        canAttack = false;
+        isGroggy = true;
+        Debug.LogError("Start Groggy");
+
         yield return new WaitForSeconds(groggyTime);
+
         bossHead.SetActive(false);
-        canAttack=true;
+        canAttack = true;
+        isGroggy = false;
+        Debug.LogError("End Groggy");
         if (hp >= 70) 
         {
             InstantiateFixedLeg();
@@ -175,21 +173,16 @@ public class Boss : MonoBehaviour
 
     private void InstantiateFixedLeg()
     {
-        int randomNum1 = Random.Range(0, fixedLegSpawnPoint.Count);
-        int randomNum2 = Random.Range(0, fixedLegSpawnPoint.Count);
-        Debug.Log(randomNum1 + " " + randomNum2);   
-        if(randomNum1==randomNum2)
-        {
-            if (randomNum2 == fixedLegSpawnPoint.Count - 1)
-                randomNum2--;
-            else
-                randomNum2++;
-        }
-        fixedLeg1 = Instantiate(FixedLegPrefab, fixedLegSpawnPoint[randomNum1], Quaternion.identity);
-        fixedLeg2 = Instantiate(FixedLegPrefab, fixedLegSpawnPoint[randomNum2], Quaternion.identity);
+        int randomNum1 = Random.Range(0, leftFixedLegSpawnPoint.Count);
+        int randomNum2 = Random.Range(0, RightFixedLegSpawnPoint.Count);
+        Debug.Log(randomNum1 + " " + randomNum2);
+        fixedLeg1 = Instantiate(FixedLegPrefab, leftFixedLegSpawnPoint[randomNum1], Quaternion.identity);
+        fixedLeg2 = Instantiate(FixedLegPrefab, RightFixedLegSpawnPoint[randomNum2], Quaternion.identity);
 
         fLeg1 = fixedLeg1.GetComponent<FixedLeg>();
         fLeg2 = fixedLeg2.GetComponent<FixedLeg>();
+        fLeg1.SetParent(this);
+        fLeg2.SetParent(this);
     }
 
     public IEnumerator ReinforceAttack()
@@ -208,5 +201,20 @@ public class Boss : MonoBehaviour
     public Transform GetTransform()
     {
         return transform;
+    }
+    public void DieLeg(FixedLeg fixedLeg)
+    {
+        if(fLeg1==fixedLeg)
+        {
+            fLeg1=null;
+            fixedLeg1=null;
+            Debug.Log("leg1 die");
+        }
+        else
+        {
+            fLeg2=null;
+            fixedLeg2=null;
+            Debug.Log("leg2 die");
+        }
     }
 }

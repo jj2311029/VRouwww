@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\saveButton.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PlayerShip.cs" />
     <Compile Include="Assets\Scripts\Player\Gun.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\FixedLegAttackCollider.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHp.cs" />
     <Compile Include="Assets\Decoration.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton\SoundManager.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\Scripts\Interval.cs" />
     <Compile Include="Assets\Scripts\SavePoint.cs" />
     <Compile Include="Assets\Scripts\PirateShip\Potan.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\LegAttackCollider.cs" />
     <Compile Include="Assets\Scripts\Enemy\TriggerAreaCheck.cs" />
     <Compile Include="Assets\Scripts\Enemy\Bard_Buff.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyWeapon.cs" />
@@ -116,7 +118,6 @@
     <Compile Include="Assets\Scripts\PirateShip\Object.cs" />
     <Compile Include="Assets\Scripts\PirateShip\SpawnObject.cs" />
     <Compile Include="Assets\Scripts\npc\DialogueLine.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Boss\AttackCollider.cs" />
     <Compile Include="Assets\Scripts\Manager\Find.cs" />
     <Compile Include="Assets\Scripts\Player\Sword.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
