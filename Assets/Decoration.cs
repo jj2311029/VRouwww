@@ -28,7 +28,7 @@ public class Decoration : MonoBehaviour
                 stopped[i] = false; // 초기 상태: 이동 가능
             }
         }
-        SoundManager.Instance.PlayBGM(1);
+        SoundManager.Instance.PlayBGM(0);
     }
 
     void Update()

@@ -230,11 +230,6 @@ MonoBehaviour:
   ef_source: {fileID: 1612889614}
   bk_music:
   - {fileID: 8300000, guid: 32dd4053e191c73458841538c88f42b3, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ef_music: []
   bkSlider: {fileID: 1014560128}
   efSlider: {fileID: 1967559821}
