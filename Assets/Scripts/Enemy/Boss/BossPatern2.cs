@@ -27,7 +27,7 @@ public class BossPatern2 : MonoBehaviour
     private Vector3 startPos;
     private Vector3 targetPos;
     
-    float[,] legPositions = {
+    public float[,] legPositions = {
         { -22f,  3f, 1 },
         { -22f, -2f, 1 },
         { -22f, -7f, 1 },
@@ -35,7 +35,8 @@ public class BossPatern2 : MonoBehaviour
         {  22f, -2f, -1 },
         {  22f, -7f, -1 }
     };
-
+    public List<Vector2> legsPosition;
+    
     void Update()
     {
         //여기서 보스의 명령을 받을 예정 Update에서는 나가고
@@ -55,7 +56,7 @@ public class BossPatern2 : MonoBehaviour
     }
     public void Attack()
     {
-        Debug.Log("패턴2");
+        /*Debug.Log("패턴2");
         List<int> usedIndices = new List<int>();
         for (int i = 0;i < page; i++)
         {
@@ -99,7 +100,37 @@ public class BossPatern2 : MonoBehaviour
             StartCoroutine(MoveLeg(legAttack, startPos, targetPos));
             Destroy(legAttack, 4f);  // 일정 시간 후에 다리 공격 삭제
             Destroy(dangerByLeg, 2f);
-        }
+        }*///전 코드
+
+        Debug.Log("패턴2");
+
+        // 리스트에서 랜덤한 위치 선택
+        int index = Random.Range(0, legsPosition.Count);
+        Vector2 selectedPosition = legsPosition[index];
+
+        // 선택된 위치의 X 값으로 방향 설정
+        int direction = (selectedPosition.x < 0) ? 1 : -1;
+
+        // 방향에 따른 다리 스케일 설정
+        Vector3 legDirection = leg.transform.localScale;
+        legDirection.x = (direction == 1) ? Mathf.Abs(legDirection.x) : -Mathf.Abs(legDirection.x);
+
+        // 다리 공격 생성
+        GameObject legAttack = Instantiate(leg, selectedPosition, transform.rotation);
+        legAttack.transform.localScale = legDirection;
+
+        // 목표 위치 설정 (왕복 공격)
+        Vector3 startPos = legAttack.transform.position;
+        Vector3 targetPos = new Vector3(selectedPosition.x + 20f * direction, selectedPosition.y, startPos.z);
+        Debug.Log(targetPos);
+        // 경고 지역 생성
+        GameObject dangerByLeg = Instantiate(dangerArea, new Vector3(selectedPosition.x + 20f * direction, selectedPosition.y , startPos.z), transform.rotation);
+        
+        // 이동 및 삭제 처리
+        StartCoroutine(MoveLeg(legAttack, startPos, targetPos));
+        Destroy(legAttack, 4f);
+        Destroy(dangerByLeg, 2f);
+
     }
     private IEnumerator MoveLeg(GameObject legAttack, Vector3 startPos, Vector3 targetPos)
     {

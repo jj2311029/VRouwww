@@ -11,6 +11,7 @@ public class FixedLeg : MonoBehaviour
     protected Animator anim; // 애니메이션 추가
     //[SerializeField] private int attackPower; // 공격력 설정
     //[SerializeField] private float pushBackForce = 5f;
+    [SerializeField] Boss boss;
 
     [Header("Attack")]
     [SerializeField] private float attackCooldown = 0f; // 현재 쿨타임 상태
@@ -70,8 +71,10 @@ public class FixedLeg : MonoBehaviour
     {
         if (player != null)
         {
-            if (player.transform.position.x < transform.position.x) render.flipX = true;
-            else render.flipX = false;
+            if (player.transform.position.x < transform.position.x)
+                transform.eulerAngles = new Vector3(0f, 180f, 0f);
+            else
+                transform.eulerAngles = new Vector3(0f, 0f, 0f);
         }
     }
 
@@ -106,11 +109,16 @@ public class FixedLeg : MonoBehaviour
         if (Hp <= 0)
         {
             Debug.Log("고정다리 사망.");
+            boss.DieLeg(this);
             Destroy(this.gameObject);
         }
     }
     public bool GetIsAttack()
     {
         return isAttack;
+    }
+    public void SetParent(Boss bs)
+    {
+        boss = bs;
     }
 }
