@@ -11,6 +11,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         player.transform.position = points[SaveLoad.currentSelectedSlot].transform.position;
+
     }
 
     public void GoBack()
