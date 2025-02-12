@@ -10,7 +10,7 @@ public class Obstacle : MonoBehaviour
     void Awake()
     {
         pirateManager = GameObject.Find("GameManager").GetComponent<PirateManager>();
-        Destroy(this.gameObject, 5f);
+        Destroy(this.gameObject, 10f);
     }
 
     private void FixedUpdate()

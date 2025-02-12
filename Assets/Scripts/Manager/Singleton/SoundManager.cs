@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour
         }
 
         // 기존 AudioSource 가져오기 (필요하면 추가)
-        if (bk_source == null) bk_source = gameObject.GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
+        if (bk_source == null) bk_source = gameObject.AddComponent<AudioSource>();
         if (ef_source == null) ef_source = gameObject.AddComponent<AudioSource>();
 
         bk_source.loop = true; // BGM 반복 재생
