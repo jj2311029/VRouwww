@@ -18,6 +18,7 @@ public class Heart : Object
         if (collision.CompareTag("Player"))
         {
             Destroy(this.gameObject);
+            SoundManager.Instance.PlaySFX(14);
             pirateManager.UpHeart();
         }
     }

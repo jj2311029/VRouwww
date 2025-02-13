@@ -26,11 +26,12 @@ public class PirateManager : MonoBehaviour
 
     private void Awake()
     {
+        SoundManager.Instance.StopBGM();
+        SoundManager.Instance.PlayBGM(6);
         clearRate = 0f;
         heart = 5;
         ratePerFrame = targetRate / targetTime;
     }
-
     private void Start()
     {
         clearRate = 0f;

@@ -70,6 +70,10 @@ public class PlayerHP : MonoBehaviour
             // 현재 체력에 맞는 하트를 활성화 또는 비활성화
             heartObjects[i].SetActive(i < currentHP);
         }
+        if (currentHP <= 1)
+        {
+            SoundManager.Instance.PlaySFX(1);
+        }
     }
 
     // 플레이어 사망 처리

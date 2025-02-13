@@ -130,7 +130,7 @@ public class PlayerShip : MonoBehaviour
 
         if (Input.GetKey(KeySetting.Keys[KeyAction.UP]))
         {
-            if (currentPos.y <= maxY)
+            if (currentPos.y <= maxY + 1f)
             {
                 transform.position += Vector3.up * shipSpeed * Time.deltaTime;
                 float currentZAngle = transform.rotation.eulerAngles.z;
@@ -183,6 +183,7 @@ public class PlayerShip : MonoBehaviour
             rb.velocity = transform.right * cannonSpeed;
         }
         Debug.Log("대포 발사!");
+        SoundManager.Instance.PlaySFX(12);
         Destroy(CB, 3f);
     }
 

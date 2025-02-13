@@ -193,6 +193,7 @@ public class PlayerMove : MonoBehaviour
         dashTime = Time.time + dashDuration;
         lastDashTime = Time.time;
         anim.SetBool("IsDash", true);
+        SoundManager.Instance.PlaySFX(3);
 
         // 대시 방향 결정 (입력 방향 기준)
         float horizontalInput = Input.GetAxisRaw("Horizontal");
