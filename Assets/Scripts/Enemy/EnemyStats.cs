@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyStats : MonoBehaviour
 {
     public float curHp;
     public float maxHp=3f;
     public float damage=1f;
-
+    public float knockbackForce = 0.3f;
+    public Rigidbody2D rigid;
     protected bool isDie=false;
     virtual protected void Awake()
     {
         maxHp = 3f;
         curHp = maxHp;
         damage = 1f;
+        rigid = GetComponent<Rigidbody2D>();
     }
     virtual public void TakeDamage(float damage,Transform player)
     {
@@ -46,6 +49,14 @@ public class EnemyStats : MonoBehaviour
                 curHp -= damage ;
             }
         }
+
+        Vector2 targetPos = new Vector2(player.transform.position.x, transform.position.y);
+
+        // 넉백 벡터 계산 (targetPos에서 현재 위치를 빼면 벡터가 나옴)
+        Vector2 knockbackDirection = ((Vector2)transform.position - targetPos).normalized;
+        Debug.Log((Vector3)knockbackDirection * knockbackForce);
+        // 넉백을 적용한 새로운 위치로 이동
+        transform.position += (Vector3)knockbackDirection * knockbackForce;
 
         CheckHp();
     }

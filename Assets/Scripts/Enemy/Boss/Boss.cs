@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour
     private int attackStack = 0;
     bool eyeattack = false;
 
-    private float groggyTime = 3f;
+    private float groggyTime = 10f;
     bool isGroggy=false;
 
 
@@ -36,11 +36,12 @@ public class Boss : MonoBehaviour
     [SerializeField] List<Vector2> leftFixedLegSpawnPoint;
     [SerializeField] List<Vector2> RightFixedLegSpawnPoint;
 
-    [Header("Head Patern")]
-    [SerializeField] private GameObject bossHead;
 
     [Header("Eye Patern")]
     [SerializeField] private BossEyePattern eyeAttack;
+
+    [Header("FallDown Patern")]
+    [SerializeField] private BossFallDownPatern fallDownAttack;
 
 
     private void Awake()
@@ -68,7 +69,8 @@ public class Boss : MonoBehaviour
     //패턴 고르기
     private void Patern()
     {
-        attackPatern = 2;//Random.Range(1, 5);
+        page = 2;
+        //Random.Range(1, 5);
         if(page==1)
         {
             attackPatern = Random.Range(1, 4);//1~3까지 포함
@@ -79,7 +81,7 @@ public class Boss : MonoBehaviour
                     legAttack.Attack();
                     break;
                 case 3://편의상 5번째 내려치기 패턴을 3번으로 지정
-                    //B5.Attack();
+                    fallDownAttack.Attack();
                     break;
                 default:
                     break;
@@ -98,16 +100,16 @@ public class Boss : MonoBehaviour
                 {
                     case 0:
                         //각성 패턴
+                        eyeattack = true;
                         eyeAttack.SpawnEye(this.gameObject);
                         StartCoroutine(ReinforceAttack());
                         break;
                         
                     case 1:
                         //흡입 패턴
-                        break;
 
                     case 2:
-                        //내려치기
+                        fallDownAttack.Attack();
                         break;
                 }
             }
@@ -134,7 +136,6 @@ public class Boss : MonoBehaviour
         {
             Debug.Log("Page 2");
             page = 2;
-            bossHead.SetActive(true);
         }
         if (hp <= 0)
         {
@@ -154,14 +155,14 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Groggy()//각 고정 다리가 사라졌을 경우 이거 실행됨// 고정다리 부분에서 이거 실행시켜야됨
     {
-        bossHead.SetActive(true);//임시로 setActive해놓음 보스 그로기 모션 나와야함
+        //임시로 setActive해놓음 보스 그로기 모션 나와야함
         canAttack = false;
         isGroggy = true;
         Debug.LogError("Start Groggy");
 
         yield return new WaitForSeconds(groggyTime);
 
-        bossHead.SetActive(false);
+        
         canAttack = true;
         isGroggy = false;
         Debug.LogError("End Groggy");
@@ -189,7 +190,7 @@ public class Boss : MonoBehaviour
     {
         Debug.Log("보스 공격 강화");
         float prevAtkSpeed = attackSpeed;
-        attackSpeed = 3f;
+        attackSpeed = 2f;
         yield return new WaitForSeconds(prevAtkSpeed);
         attackSpeed = prevAtkSpeed;
     }

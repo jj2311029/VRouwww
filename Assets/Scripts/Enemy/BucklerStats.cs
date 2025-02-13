@@ -31,6 +31,15 @@ public class BucklerStats : EnemyStats
             }
         }
 
+        Vector2 targetPos = new Vector2(player.transform.position.x, transform.position.y);
+
+        // 넉백 벡터 계산 (targetPos에서 현재 위치를 빼면 벡터가 나옴)
+        Vector2 knockbackDirection = ((Vector2)transform.position - targetPos).normalized;
+        Debug.Log((Vector3)knockbackDirection * knockbackForce);
+        // 넉백을 적용한 새로운 위치로 이동
+        transform.position += (Vector3)knockbackDirection * knockbackForce;
+
+
         CheckHp();
     }
 }

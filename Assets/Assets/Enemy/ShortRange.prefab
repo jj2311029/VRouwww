@@ -360,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   moveSpeed: 2
+  attackSpeed: 0
   PlayerTransform: {fileID: 0}
   timer: 1.5
   hotZone: {fileID: 9062179326721024029}
@@ -383,6 +384,8 @@ MonoBehaviour:
   curHp: 0
   maxHp: 10
   damage: 1
+  knockbackForce: 1
+  rigid: {fileID: 0}
 --- !u!212 &2031916307501010739
 SpriteRenderer:
   m_ObjectHideFlags: 0

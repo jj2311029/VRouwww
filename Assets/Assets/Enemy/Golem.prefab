@@ -177,10 +177,11 @@ MonoBehaviour:
   render: {fileID: 6317299383213196137}
   boxCollider: {fileID: 0}
   speed: 2.5
+  attackSpeed: 2
   followDistance: 5
   stopChaseRange: 3.5
   Hp: 10
-  knockbackForce: 10
+  knockbackForce: 1
   attackPower: 3
   attackRange: {fileID: 6272420437247885383}
   attackDelay: 1.5
