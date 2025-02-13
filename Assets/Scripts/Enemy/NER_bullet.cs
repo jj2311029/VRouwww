@@ -28,7 +28,7 @@ public class NER_bullet : MonoBehaviour
         {
             PlayerHP PH = collision.GetComponent<PlayerHP>();
             // vector2°¡ ¹»±î¿ë
-            PH.TakeDamage(1, direction);
+            PH.TakeDamage(1, transform.position);
             Destroy(this.gameObject);
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))

@@ -1,0 +1,3568 @@
+fileFormatVersion: 2
+guid: e9e21201d76b5484296513a1f45d1687
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ThunderImage_0
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece6a944b87704d46a8c80764c712bb0
+      internalID: -1774708041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_1
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61b0cdf55c8cd64d8e3f251289c7290
+      internalID: -1191273844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_2
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3162ac2e68e20ef4f9310785f5bf5c8e
+      internalID: -2107814171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_3
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3233eb6a7babf4547a42a835546f474b
+      internalID: 2010316654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_4
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e75e3a845826242bbd45905a4c270e
+      internalID: 1589708156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_5
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05830ab473471f41aa3dcbbeb7c888f
+      internalID: -1058740388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_6
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a2661d23f8098e4bb4406453448b073
+      internalID: 1851113882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_7
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d0b37ff7adb8544a50c7bb503f53cb
+      internalID: -722433661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_8
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd9a0e0d368b3144af2e4265907032f
+      internalID: 182588394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_9
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 9216
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eeb453524e498f4f8245859d452e814
+      internalID: -1670271195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b79a874fdd66ecd44941ae401f105b11
+      internalID: 750999399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_11
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 771f2415531f07342ad49e12a2a0c98d
+      internalID: 1233271582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_12
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c4daea312bd6748a01826feaf7a356
+      internalID: -1071662502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_13
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebb04694c78d4d04c99a4953dd11b7d8
+      internalID: 746371051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_14
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9dc267f0cb3de64ea07346ba9cd9242
+      internalID: -335642109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_15
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f86233794a945f40888795ea171c7e5
+      internalID: -1437399596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_16
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d3b6acf80680040b814c78df64bef2
+      internalID: 1145350490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_17
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b191e43fb71f48c48b90dfdfb062c740
+      internalID: -984185865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_18
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7985ad4b5f51fe40a6c4d6257b65dd7
+      internalID: -844611568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_19
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f22976cac87dc14ebddc027263ca60b
+      internalID: 1432709275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_20
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91203564216224241a8a187658fc61d7
+      internalID: 1888534471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_21
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 8704
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eda296d42d8e6bb439b480a6aaedc6f8
+      internalID: 1372752129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c24532f211170945b706a6128add0ec
+      internalID: -864398730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_23
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3316c205af1b5804b8d19a1d8aad36a6
+      internalID: -226451790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_24
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1c9f8dd1cdb74419c0584fda075791
+      internalID: -1623934151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_25
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e60f30031d3c7ba4fb5d24ce8f8fae5b
+      internalID: 418927788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_26
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac6396211680c634f9d3fd2c758c70c8
+      internalID: -1382409553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_27
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 399e5b1f1634b8e48b845f7936fcc3f1
+      internalID: -1877470579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_28
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de308f62fe46e634683d23b516ff9b11
+      internalID: 1742994665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_29
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4d4ff6abef07b40ae46c9541f6b869
+      internalID: 1152458755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_30
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c1c582853d81e4395275c77b5f0a8e
+      internalID: -412058082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_31
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d8b0f263c2b53842a1175912e03707e
+      internalID: 1598937024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_32
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 8192
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03343b5a21558214c8ee7ddff01d264d
+      internalID: 216688369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_33
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92cb246193432c642961c1afabd2be72
+      internalID: 2022054892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_34
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34049c80bd6899546af8f3d0e099d432
+      internalID: 2075546028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_35
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc239f9461a7e3f49ada707be6ff047b
+      internalID: 2058860668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_36
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c958ec1ff6a50ea4f9b3f28f0e280222
+      internalID: 64726968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_37
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49065f134e4e73f4287aad8b7679b55f
+      internalID: 408638109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_38
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7257dc6e24397544993fd3e09cbb583b
+      internalID: 123835397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_39
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6491428b3ca026e488ba17808196a9eb
+      internalID: 1882520821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_40
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c1909d01c930d4ab6c360626245c33
+      internalID: 893664650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_41
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6b6d0c079dcc624f9bd3ffa3816c945
+      internalID: -1323726906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_42
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 7168
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b80655eee28f0444b1e09599cca6b11
+      internalID: 711620791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe66584de1aa5d3498a72db47e0b335d
+      internalID: 1820141751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_44
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 789df8452b0d56f4cbfea97818dc1e4e
+      internalID: -248140588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_45
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b697a2c8b43db884ab223a44a6e05d8d
+      internalID: 299290748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_46
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0777f2ec09800474b8535fca7cd15646
+      internalID: -43394200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_47
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af1fe65436dab1f4ba93c79c8430d08c
+      internalID: 1959296374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_48
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f20caf4a85b41c54b8f57231374d90c8
+      internalID: -1870574953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_49
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bafad15d3ca69504a997123633058a97
+      internalID: 1090791453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_50
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 009a17c430489e94ab7ea05bb3283284
+      internalID: -1764558654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_51
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3914d5d1d2abec8429916f052e48847a
+      internalID: 894708578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_52
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e22f42ea05af0b34da7d7f6088406f6e
+      internalID: 1043810191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_53
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ae04551e2e520d46843b1fe1c02d9e7
+      internalID: -735141248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_54
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 6656
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ddc0b65bcb60cb4f9e72e394e798237
+      internalID: -645769272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6144
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cb74558581139840bfda66f085206a5
+      internalID: -840495166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_56
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 6144
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1927d5f5ca940c49a78ca84cc90b2b7
+      internalID: -152834502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_57
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 6144
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed2afbaefa65af7449eae3d7b29200b2
+      internalID: -1677317274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_58
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 6144
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cc9ca616030fdd46a944425325e112c
+      internalID: 804378965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_59
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 6144
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 430ae37905785e040b019344d7df1d81
+      internalID: 644326585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_60
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 5632
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d6df666512cde489d9cf30c2411840
+      internalID: -1968207194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_61
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 5632
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00f79de34c5fc9e4fa92f1bebd8c9ea5
+      internalID: -2028004924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_62
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 5632
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 544323400a413614f901121f6ad08c78
+      internalID: -1103792084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_63
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 5632
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 790f423d15399b04487c9fc64e7be8c9
+      internalID: 1640479962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_64
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 5632
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 879e87b92c0ddb84da5047bfcfb76e02
+      internalID: -1685933105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_65
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 5632
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d10536974d5c4f4da8975b7581c157f
+      internalID: 1636539662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 649b4616b47d7da4b9bb717d8e78f75e
+      internalID: 1572805562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_67
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6816b69c12fba404695cc882b9efedee
+      internalID: 1279000746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_68
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ccb83b89bb2ff144a9fc8a85c86e3de
+      internalID: 1797302339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_69
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018992d06ddf94949972adde473f9f7c
+      internalID: -488321761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_70
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12bd77d5f78c5aa4182f28a668143056
+      internalID: -1915022935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_71
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb2a8203ca77254aad4019f745aa8f8
+      internalID: 1039707689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_72
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24d0ccce64e1e69439af3682bc7290dc
+      internalID: -1230638408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_73
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dc33f5bc43889d4e80c0616b32f547d
+      internalID: 1538031023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_74
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f5d01113e19e54449968b1660801257
+      internalID: 942824079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_75
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba0ecce5586adf4097d2d4a483d533b
+      internalID: -1098917513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_76
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 657d0e72a4eb6ec428f80201dd2300af
+      internalID: 901223187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_77
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 5120
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e70c9c6698934049aab2f9e8759acb3
+      internalID: 1929131795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_78
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 4608
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d610491927a17aa4baa58d3cb2e42e3d
+      internalID: 753889583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_79
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 4608
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac84a39a016759340bebc7a6a4bc0dbb
+      internalID: 1245985176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_80
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 4608
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4010e8e85c5f284b99a0147e78b01bd
+      internalID: 1048456206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_81
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 4608
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1f2104efa06244bb86c423a562e4d7
+      internalID: 946288351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_82
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 4608
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8e6e0cfb0aed2a4d9035eb568540c7d
+      internalID: -40361417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_83
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 4608
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840f1d836cdbdf543a2463ce039d669b
+      internalID: 300980481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_84
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 4096
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 605e1322ee0c51d438523a34bb3b9080
+      internalID: 1299635324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_85
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 4096
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ddd3398b0e50cb428c369cc4f079dc7
+      internalID: 1890263289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_86
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 4096
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7ff6febcbba1940a52a5024349bbc7
+      internalID: -1724678415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_87
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 4096
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4533c0e01444e2f4ea5bcbb9d23f4ed7
+      internalID: -1186861554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_88
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 4096
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c768c17d515abb640a74b1b58ea6a2a3
+      internalID: -1171321079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_89
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 4096
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b76629db19ca44db029f6d856d1693
+      internalID: 1151771861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5eba8ecb71d0694ab725a42b90a11c7
+      internalID: -1927421551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_91
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d537026eea5e2b47a2ad9e5d2cb5ca0
+      internalID: 1155506565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_92
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f899ff5b70af2a498c0a052121d70d7
+      internalID: 305934615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_93
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb73a6d071975f2468b565bdd99b5a93
+      internalID: 2056029803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_94
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839d7f4e24897bc4ba480e45eb263fe1
+      internalID: -910083557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_95
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eec843e2a5f4c445afa54d52877ca4e
+      internalID: 1200343542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_96
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e985d9ce961c6a04cbbd419113c585e5
+      internalID: -1388457566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_97
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270334f8ab71535449bca1a690c238ee
+      internalID: -17669411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_98
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63e7a91be70030b4ea1a604f1087ee90
+      internalID: 1736865175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_99
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc9d9614f34a0134a8ca7c51b939aa19
+      internalID: 1350443442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_100
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1975738689a75d94f974d8f589cbf3e2
+      internalID: -875567970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_101
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 3584
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2be9c3d10410564388ec325ba035695
+      internalID: -1808034311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_102
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 279ae2d782d10994a863512910362e9c
+      internalID: 60372785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_103
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9abf04e76e6fd36479757409e00d67d3
+      internalID: -1718416562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_104
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad1862fb812a3e41a9673dfa4793434
+      internalID: -1722146629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_105
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7b24379fcefe96439dfe01797724f0b
+      internalID: 37199056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_106
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e31552f8e84c4a418121cfa989a3dbf
+      internalID: 968873929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_107
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10b628a225acb51448ff849c423cba0e
+      internalID: -432444977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_108
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f5a5bb8150cb974c8c3845c5210ad86
+      internalID: 1219582115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_109
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13cf73b602b80f24c9f2b953405ecb81
+      internalID: -1378113691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_110
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e726f6eaef94cbd479beb720e8295944
+      internalID: 726797933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_111
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48c24b3e125be3e4e970a0e77ab51338
+      internalID: 1423696740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_112
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f48e7b2d8fbac04ebc62f7e9e4b311a
+      internalID: 1227307654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_113
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 3072
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d266ef25c05b0af448f9b21d448dbdd1
+      internalID: 1373962117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_114
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2560
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c8c3d125e0d3b4ab6917ea45f79f37
+      internalID: -1833212794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_115
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 2560
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e37c32d4978ea564fa5d076d7f03e2a4
+      internalID: -302749381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_116
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 2560
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6f2d0819ffd5474c9fec9839dcc3c68
+      internalID: -1600745661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_117
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 2048
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a83a137735305c448b975766f0541dc
+      internalID: 2093302207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_118
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 2048
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22cba1d483efa24438b075dac824ea16
+      internalID: -279185335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_119
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 2048
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2d782a9ded7d064bb6c6d1bd72b4397
+      internalID: 1200678665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_120
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 2048
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a099df840421984fbf4b96ca4e5a1af
+      internalID: 936193957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_121
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 2048
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9570fd7ff4a4f540b959a948d88a7ab
+      internalID: -911247805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_122
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 2048
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce29e33056b39f4ca58e170368df71c
+      internalID: 993278895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_123
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5601487eebe96c74bbfbb34bd2c2020a
+      internalID: 1953212837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_124
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b714e9bf317a564d9ffcc6ace818d71
+      internalID: -1701772874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_125
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98c7d5cbd1274e240a1cdea5584c56b7
+      internalID: -1313002163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_126
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ebfc90979290ec4a9b59af9a0fc02cb
+      internalID: 579982430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_127
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad885e0f162276a42b6f5fd328c1b5c2
+      internalID: 1661326243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_128
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93b4e7926aeff945b21da06f4b6f1d1
+      internalID: 2066871266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_129
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2859ac2c64237d74ebdc108d890139d7
+      internalID: 833250034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_130
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9ef664fb6c00be40876d2d1715a7a21
+      internalID: -222982558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_131
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3dc913b2890fc340b262063fbaf35b6
+      internalID: 853114326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_132
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5a8bd550dc1d247a72b48c94a12269
+      internalID: -99776918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_133
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40680db9cc543d14287ad8ad82452772
+      internalID: -2102882694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_134
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 1536
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16168fd3edf4fd342ae204ab1cc0861b
+      internalID: 2086676976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_135
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51effabfdf47102419884bb4b0292861
+      internalID: 1120536194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_136
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 1024
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52653b4c9f9eef945a972c4a12aa32bb
+      internalID: -1171677480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_137
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 1024
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f073ea7f99d0eb488996bd44a047b3c
+      internalID: -343443678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_138
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1024
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d9cde2bf902c04abdc4e8244677c6e
+      internalID: -1527130070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_139
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 1024
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74598e034d5d3bb4bbf7a3e05f9e279d
+      internalID: -1684283219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_140
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 1024
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34e292b381b3fdc439c7f664d1e9beb7
+      internalID: 1661870717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_141
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 1024
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c517f4ab33ea7843a12066b3c4426cb
+      internalID: 1125999663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_142
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 1024
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 219b2d49cb0000e4b8981c222034e6cc
+      internalID: -1533434541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_143
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 1024
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db63bc63438eb7748aa56120e370f7b7
+      internalID: 1238780755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_144
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 512
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 584902a0a58b53e4f8fd8a617cbb439c
+      internalID: 316668887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_145
+      rect:
+        serializedVersion: 2
+        x: 9100
+        y: 512
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e22cc6dd536bc459329dc05b368872
+      internalID: 942148400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_146
+      rect:
+        serializedVersion: 2
+        x: 10010
+        y: 512
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3b2bf0a33b7fd49bc4087589754381
+      internalID: -280719772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_147
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a79cbafc50391c40a5c1f1d4368fd41
+      internalID: -2110442197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_148
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4734d726d400a045a8611ef475b13aa
+      internalID: -2098487793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_149
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef92f9aa2c207c4418687bb59e75fac1
+      internalID: 375763768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_150
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df4ee9ab7282f6479b8db4c3ef62ea5
+      internalID: 1894118482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_151
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df1babe05b0f0a44286eda2b775dff13
+      internalID: 1892929041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_152
+      rect:
+        serializedVersion: 2
+        x: 4550
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4403969eaad334346881f6a0f2ce139c
+      internalID: 299459055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_153
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2100e378996360045895420f18aef5aa
+      internalID: 122688811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_154
+      rect:
+        serializedVersion: 2
+        x: 6370
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9d7b13853efb146a240be6426d3956
+      internalID: 1248086157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_155
+      rect:
+        serializedVersion: 2
+        x: 7280
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d35797ad494734c4f97bb48c91022558
+      internalID: -2048307673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThunderImage_156
+      rect:
+        serializedVersion: 2
+        x: 8190
+        y: 0
+        width: 910
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cfbfe3cedd388e4b8358ccf105be863
+      internalID: 352388830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ThunderImage_0: -1774708041
+      ThunderImage_1: -1191273844
+      ThunderImage_10: 750999399
+      ThunderImage_100: -875567970
+      ThunderImage_101: -1808034311
+      ThunderImage_102: 60372785
+      ThunderImage_103: -1718416562
+      ThunderImage_104: -1722146629
+      ThunderImage_105: 37199056
+      ThunderImage_106: 968873929
+      ThunderImage_107: -432444977
+      ThunderImage_108: 1219582115
+      ThunderImage_109: -1378113691
+      ThunderImage_11: 1233271582
+      ThunderImage_110: 726797933
+      ThunderImage_111: 1423696740
+      ThunderImage_112: 1227307654
+      ThunderImage_113: 1373962117
+      ThunderImage_114: -1833212794
+      ThunderImage_115: -302749381
+      ThunderImage_116: -1600745661
+      ThunderImage_117: 2093302207
+      ThunderImage_118: -279185335
+      ThunderImage_119: 1200678665
+      ThunderImage_12: -1071662502
+      ThunderImage_120: 936193957
+      ThunderImage_121: -911247805
+      ThunderImage_122: 993278895
+      ThunderImage_123: 1953212837
+      ThunderImage_124: -1701772874
+      ThunderImage_125: -1313002163
+      ThunderImage_126: 579982430
+      ThunderImage_127: 1661326243
+      ThunderImage_128: 2066871266
+      ThunderImage_129: 833250034
+      ThunderImage_13: 746371051
+      ThunderImage_130: -222982558
+      ThunderImage_131: 853114326
+      ThunderImage_132: -99776918
+      ThunderImage_133: -2102882694
+      ThunderImage_134: 2086676976
+      ThunderImage_135: 1120536194
+      ThunderImage_136: -1171677480
+      ThunderImage_137: -343443678
+      ThunderImage_138: -1527130070
+      ThunderImage_139: -1684283219
+      ThunderImage_14: -335642109
+      ThunderImage_140: 1661870717
+      ThunderImage_141: 1125999663
+      ThunderImage_142: -1533434541
+      ThunderImage_143: 1238780755
+      ThunderImage_144: 316668887
+      ThunderImage_145: 942148400
+      ThunderImage_146: -280719772
+      ThunderImage_147: -2110442197
+      ThunderImage_148: -2098487793
+      ThunderImage_149: 375763768
+      ThunderImage_15: -1437399596
+      ThunderImage_150: 1894118482
+      ThunderImage_151: 1892929041
+      ThunderImage_152: 299459055
+      ThunderImage_153: 122688811
+      ThunderImage_154: 1248086157
+      ThunderImage_155: -2048307673
+      ThunderImage_156: 352388830
+      ThunderImage_16: 1145350490
+      ThunderImage_17: -984185865
+      ThunderImage_18: -844611568
+      ThunderImage_19: 1432709275
+      ThunderImage_2: -2107814171
+      ThunderImage_20: 1888534471
+      ThunderImage_21: 1372752129
+      ThunderImage_22: -864398730
+      ThunderImage_23: -226451790
+      ThunderImage_24: -1623934151
+      ThunderImage_25: 418927788
+      ThunderImage_26: -1382409553
+      ThunderImage_27: -1877470579
+      ThunderImage_28: 1742994665
+      ThunderImage_29: 1152458755
+      ThunderImage_3: 2010316654
+      ThunderImage_30: -412058082
+      ThunderImage_31: 1598937024
+      ThunderImage_32: 216688369
+      ThunderImage_33: 2022054892
+      ThunderImage_34: 2075546028
+      ThunderImage_35: 2058860668
+      ThunderImage_36: 64726968
+      ThunderImage_37: 408638109
+      ThunderImage_38: 123835397
+      ThunderImage_39: 1882520821
+      ThunderImage_4: 1589708156
+      ThunderImage_40: 893664650
+      ThunderImage_41: -1323726906
+      ThunderImage_42: 711620791
+      ThunderImage_43: 1820141751
+      ThunderImage_44: -248140588
+      ThunderImage_45: 299290748
+      ThunderImage_46: -43394200
+      ThunderImage_47: 1959296374
+      ThunderImage_48: -1870574953
+      ThunderImage_49: 1090791453
+      ThunderImage_5: -1058740388
+      ThunderImage_50: -1764558654
+      ThunderImage_51: 894708578
+      ThunderImage_52: 1043810191
+      ThunderImage_53: -735141248
+      ThunderImage_54: -645769272
+      ThunderImage_55: -840495166
+      ThunderImage_56: -152834502
+      ThunderImage_57: -1677317274
+      ThunderImage_58: 804378965
+      ThunderImage_59: 644326585
+      ThunderImage_6: 1851113882
+      ThunderImage_60: -1968207194
+      ThunderImage_61: -2028004924
+      ThunderImage_62: -1103792084
+      ThunderImage_63: 1640479962
+      ThunderImage_64: -1685933105
+      ThunderImage_65: 1636539662
+      ThunderImage_66: 1572805562
+      ThunderImage_67: 1279000746
+      ThunderImage_68: 1797302339
+      ThunderImage_69: -488321761
+      ThunderImage_7: -722433661
+      ThunderImage_70: -1915022935
+      ThunderImage_71: 1039707689
+      ThunderImage_72: -1230638408
+      ThunderImage_73: 1538031023
+      ThunderImage_74: 942824079
+      ThunderImage_75: -1098917513
+      ThunderImage_76: 901223187
+      ThunderImage_77: 1929131795
+      ThunderImage_78: 753889583
+      ThunderImage_79: 1245985176
+      ThunderImage_8: 182588394
+      ThunderImage_80: 1048456206
+      ThunderImage_81: 946288351
+      ThunderImage_82: -40361417
+      ThunderImage_83: 300980481
+      ThunderImage_84: 1299635324
+      ThunderImage_85: 1890263289
+      ThunderImage_86: -1724678415
+      ThunderImage_87: -1186861554
+      ThunderImage_88: -1171321079
+      ThunderImage_89: 1151771861
+      ThunderImage_9: -1670271195
+      ThunderImage_90: -1927421551
+      ThunderImage_91: 1155506565
+      ThunderImage_92: 305934615
+      ThunderImage_93: 2056029803
+      ThunderImage_94: -910083557
+      ThunderImage_95: 1200343542
+      ThunderImage_96: -1388457566
+      ThunderImage_97: -17669411
+      ThunderImage_98: 1736865175
+      ThunderImage_99: 1350443442
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

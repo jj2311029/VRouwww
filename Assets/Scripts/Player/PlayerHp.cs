@@ -13,11 +13,13 @@ public class PlayerHP : MonoBehaviour
 
     private bool isInvincible = false;  // 무적 상태 여부
     public float invincibilityDuration = 1f;  // 무적 상태 지속 시간
+    Rigidbody2D rb;
 
     void Start()
     {
         CreateHearts();  // 게임 시작 시 하트 객체 생성
         UpdateHearts();  // 초기 하트 이미지 업데이트
+        rb=GetComponent<Rigidbody2D>();
     }
 
     // 하트 프리팹을 이용해 하트 객체 생성
@@ -43,6 +45,15 @@ public class PlayerHP : MonoBehaviour
             currentHP = 0;
             Die();
         }
+        // 넉백 방향 계산 (목표와 현재 위치의 차이)
+        Vector2 knockbackDirection = ((Vector2)transform.position - targetpos).normalized;
+
+        // 넉백 강도 설정 (값을 조정하여 넉백의 강도를 결정)
+        float knockbackStrength = 5f;
+
+        // 현재 Rigidbody2D의 velocity에 반대 방향으로 넉백 적용
+        rb.velocity = knockbackDirection * knockbackStrength;
+
 
         // 하트 업데이트
         UpdateHearts();

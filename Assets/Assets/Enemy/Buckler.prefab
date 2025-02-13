@@ -365,7 +365,7 @@ MonoBehaviour:
   timer: 2
   hotZone: {fileID: 9062179326721024029}
   triggerArea: {fileID: 4547207603394874171}
-  curveTime: 3
+  curveTime: 4
   target: {fileID: 0}
   inRange: 0
   cooling: 0
@@ -384,6 +384,8 @@ MonoBehaviour:
   curHp: 0
   maxHp: 9
   damage: 2
+  knockbackForce: 1
+  rigid: {fileID: 0}
 --- !u!212 &6301172413193794785
 SpriteRenderer:
   m_ObjectHideFlags: 0

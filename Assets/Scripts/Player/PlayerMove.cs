@@ -9,13 +9,13 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float speed = 2f;        // 플레이어 이동 속도
     private float moveInput = 0f;                     // 좌우 이동 입력값
     private bool isFacingRight = true;                // 캐릭터가 오른쪽을 보고 있는지 여부
-    public float jumpingPower = 25f;                 // 점프력
+    public float jumpingPower = 21f;                 // 점프력
 
     [Header("로프 관련 변수")]
     private HingeJoint2D joint;                       // 로프에 매달리기 위한 조인트
     private bool isOnRope = false;                    // 로프에 매달려있는지 여부
     HingeJoint2D linkedHinge;                         // 연결된 로프의 힌지 조인트
-    [SerializeField] private float ropeForce = 15f;   // 로프에서 움직일 때 가해지는 힘
+    [SerializeField] private float ropeForce = 100f;   // 로프에서 움직일 때 가해지는 힘
     float ropeCooltime = 0.1f;                        // 로프 동작 쿨타임
     bool ableRope = false;                            // 로프 사용 가능 여부
 
@@ -130,14 +130,6 @@ public class PlayerMove : MonoBehaviour
             anim.SetBool("IsJump", false);
         }
 
-        /*
-        if (Input.GetKeyUp(KeySetting.Keys[KeyAction.UP]) && rb.velocity.y > 0f)
-        {
-            //rb.velocity += new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-        if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown)
-        */
-
 
 
         if (Input.GetKeyDown(KeySetting.Keys[KeyAction.DASH]) && Time.time >= lastDashTime + dashCooldown)//대시
@@ -194,6 +186,7 @@ public class PlayerMove : MonoBehaviour
         }
 
     }
+    
     private void StartDash()
     {
         // 대시 시작 시 설정

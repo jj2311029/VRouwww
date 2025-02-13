@@ -13,7 +13,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] protected float followDistance = 5f;    // 추격 시작 거리
     [SerializeField] protected float stopChaseRange = 2f;    // 추적 멈출 거리 (공격 준비 거리)
     [SerializeField] protected int Hp = 3;
-    [SerializeField] protected float knockbackForce = 10f;   // 넉백 힘
+    [SerializeField] protected float knockbackForce = 1f;   // 넉백 힘
 
     protected Transform player;
     protected bool isPlayerOnSamePlatform;
@@ -144,12 +144,13 @@ public class EnemyMove : MonoBehaviour
 
         Debug.Log("적이 데미지를 받음. 현재 HP: " + Hp);
 
-        // 넉백 방향 계산
-        Vector2 knockbackDirection = (transform.position - player.position).normalized;
+        Vector2 targetPos = new Vector2(player.transform.position.x, transform.position.y);
 
-        // 넉백 적용
-        rigid.velocity = Vector2.zero; // 현재 속도 초기화
-        rigid.AddForce(new Vector2(knockbackDirection.x * knockbackForce, rigid.velocity.y), ForceMode2D.Impulse);
+        // 넉백 벡터 계산 (targetPos에서 현재 위치를 빼면 벡터가 나옴)
+        Vector2 knockbackDirection = ((Vector2)transform.position - targetPos).normalized;
+        Debug.Log((Vector3)knockbackDirection * knockbackForce);
+        // 넉백을 적용한 새로운 위치로 이동
+        transform.position += (Vector3)knockbackDirection * knockbackForce;
 
         if (Hp <= 0)
         {
