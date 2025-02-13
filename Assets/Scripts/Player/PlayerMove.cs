@@ -219,7 +219,8 @@ public class PlayerMove : MonoBehaviour
     private void EndDash()
     {
         isDashing = false;
-        rb.velocity -= new Vector2(dashDirection.x * dashSpeed * 3f, 0); // 대시 끝날 때 속도 줄이기
+         // 대시 끝날 때 속도 줄이기
+        rb.velocity=Vector2.zero;
         rb.gravityScale = originalGravityScale; // 원래 중력 스케일로 복귀
         anim.SetBool("IsDash", false);
         IgnoreEnemyCollision(false); // Enemy 충돌 복귀

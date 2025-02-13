@@ -9206,6 +9206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map1-1
       objectReference: {fileID: 0}
+    - target: {fileID: 2685732909232707063, guid: 89154b00df21a41438a1f467f3e61091, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3054820007299143694, guid: 89154b00df21a41438a1f467f3e61091, type: 3}
       propertyPath: Size
       value: 
@@ -9645,6 +9649,18 @@ PrefabInstance:
       propertyPath: heartObjects.Array.data[4]
       value: 
       objectReference: {fileID: 10170922}
+    - target: {fileID: 7106786486230819619, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
+      propertyPath: m_Mass
+      value: 6.744851
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106786486230819619, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106786486230819619, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4936655615401851245, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
     m_RemovedGameObjects: []

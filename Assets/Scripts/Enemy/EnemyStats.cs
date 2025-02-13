@@ -11,12 +11,25 @@ public class EnemyStats : MonoBehaviour
     public float knockbackForce = 0.3f;
     public Rigidbody2D rigid;
     protected bool isDie=false;
+
+
+    public EnemyWeapon weapon;
     virtual protected void Awake()
     {
         maxHp = 3f;
         curHp = maxHp;
         damage = 1f;
         rigid = GetComponent<Rigidbody2D>();
+        weapon = GetComponentInChildren<EnemyWeapon>();
+        weapon.TriggerOffCollider();
+    }
+    public void TriggerOnCollider()
+    {
+        weapon.TriggerOnCollider();
+    }
+    public void TriggerOffCollider()
+    {
+        weapon.TriggerOffCollider();
     }
     virtual public void TakeDamage(float damage, Transform player)
     {

@@ -17,16 +17,23 @@ public class EnemyWeapon : MonoBehaviour
     }
     private void Update()
     {
-        if(behavior.GetAttackMode()==true)
+        /*if(behavior.GetAttackMode()==true)
         {
             hitBox.enabled = true;
         }
         else
         {
             hitBox.enabled=false;
-        }
+        }*/
     }
-
+    public void TriggerOnCollider()//적의 무기 콜라이더를 켜는 함수, 애니메이션에서 실행됨
+    {
+        hitBox.enabled = true;
+    }    
+    public void TriggerOffCollider()//적의 무기 콜라이더를 끄는 함수, 애니메이션에서 실행됨
+    {
+        hitBox.enabled = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

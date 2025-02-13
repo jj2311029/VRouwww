@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    
-    
 
     [SerializeField] protected float hp = 100;
     [SerializeField] protected float attackSpeed = 3f;
@@ -17,6 +15,9 @@ public class Boss : MonoBehaviour
     private bool canAttack = true;
     private int attackStack = 0;
     bool eyeattack = false;
+    public Animator anim; 
+
+    public Collider2D headCollider;
 
     private float groggyTime = 10f;
     bool isGroggy=false;
@@ -43,11 +44,15 @@ public class Boss : MonoBehaviour
     [Header("FallDown Patern")]
     [SerializeField] private BossFallDownPatern fallDownAttack;
 
+    [Header("Suck Patern")]
+    [SerializeField] private BossSuckPatern suckAttack;
+
 
     private void Awake()
     {
         legAttack = patern2.GetComponent<BossPatern2>();
         InstantiateFixedLeg();
+        if (anim != null) GetComponent<Animator>();
     }
     //공격 명령
     private void Update()
@@ -106,7 +111,8 @@ public class Boss : MonoBehaviour
                         break;
                         
                     case 1:
-                        //흡입 패턴
+                        suckAttack.SuckAttack();
+                        break;
 
                     case 2:
                         fallDownAttack.Attack();
@@ -135,6 +141,7 @@ public class Boss : MonoBehaviour
         if (hp <= 60 && page == 1) 
         {
             Debug.Log("Page 2");
+            headCollider.enabled = true;
             page = 2;
         }
         if (hp <= 0)
@@ -155,14 +162,15 @@ public class Boss : MonoBehaviour
 
     public IEnumerator Groggy()//각 고정 다리가 사라졌을 경우 이거 실행됨// 고정다리 부분에서 이거 실행시켜야됨
     {
-        //임시로 setActive해놓음 보스 그로기 모션 나와야함
+
         canAttack = false;
         isGroggy = true;
+        headCollider.enabled = true;
         Debug.LogError("Start Groggy");
 
         yield return new WaitForSeconds(groggyTime);
 
-        
+        headCollider.enabled = false;
         canAttack = true;
         isGroggy = false;
         Debug.LogError("End Groggy");
