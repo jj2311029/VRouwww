@@ -257,6 +257,7 @@ public class PlayerMove : MonoBehaviour
         isSkillOnCooldown = true; // 쿨타임 시작
 
         skillPanel.PlaySkillEffect();
+        SoundManager.Instance.PlaySFX(11);
         Debug.Log("doing skill");
         CameraMove cameraMove = mainCamera.GetComponent<CameraMove>();
         cameraMove.StartShake();

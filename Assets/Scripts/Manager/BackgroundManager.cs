@@ -5,17 +5,11 @@ public class BackgroundManager : MonoBehaviour
 {
     private Transform player; // 플레이어 위치 참조
     public GameObject[] background; // 배경 오브젝트 배열
-    public GameObject[] cloudGroup; // 구름 그룹 배열 (각 그룹마다 아침, 낮, 저녁, 밤 포함)
 
     public Vector2 parallaxFactor = new Vector2(1.5f, 1.2f); // 패럴랙스 효과
     public Vector2 offset = new Vector2(0, 0); // 배경 전체 오프셋
-    public float baseCloudSpeed = 2.0f; // 기본 구름 이동 속도
-    public float cloudResetX = 230f; // 구름이 다시 생성될 X 좌표
-    public float cloudLimitX = -160f; // 구름이 이동할 최대 X 좌표
 
     private Vector3[] initialPositions; // 배경 초기 위치 저장
-    private float[] cloudSpeeds; // 각 구름 그룹의 개별 속도
-
     private int currentBackgroundIndex = 0; // 현재 활성화된 배경 인덱스
 
     private float[,] transitionRanges = {
@@ -51,21 +45,7 @@ public class BackgroundManager : MonoBehaviour
         {
             SetAlpha(background[i], i == 0 ? 1f : 0f);
         }
-
-        // 구름 위치를 재설정하지 않음!
-        for (int i = 0; i < cloudGroup.Length; i++)
-        {
-            cloudGroup[i].SetActive(true);
-        }
-
-        // 각 구름 그룹의 속도를 랜덤하게 설정
-        cloudSpeeds = new float[cloudGroup.Length];
-        for (int i = 0; i < cloudGroup.Length; i++)
-        {
-            cloudSpeeds[i] = baseCloudSpeed + Random.Range(-0.5f, 1.5f);
-        }
     }
-
 
     void Update()
     {
@@ -86,26 +66,8 @@ public class BackgroundManager : MonoBehaviour
             }
         }
 
-        // 배경 및 구름 상태 조절
+        // 배경 상태 조절
         AdjustBackgroundAlpha();
-        MoveClouds();
-    }
-
-    void MoveClouds()
-    {
-        for (int i = 0; i < cloudGroup.Length; i++)
-        {
-            if (cloudGroup[i] != null)
-            {
-                cloudGroup[i].transform.position += Vector3.left * cloudSpeeds[i] * Time.deltaTime;
-
-                // 구름이 화면 밖으로 나가면 원래 위치로 이동 (x만 조정)
-                if (cloudGroup[i].transform.position.x <= cloudLimitX)
-                {
-                    cloudGroup[i].transform.position = new Vector3(cloudResetX, cloudGroup[i].transform.position.y, cloudGroup[i].transform.position.z);
-                }
-            }
-        }
     }
 
     void AdjustBackgroundAlpha()
@@ -159,5 +121,4 @@ public class BackgroundManager : MonoBehaviour
             }
         }
     }
-
 }

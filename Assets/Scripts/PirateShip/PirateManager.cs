@@ -26,6 +26,7 @@ public class PirateManager : MonoBehaviour
 
     private void Awake()
     {
+        SoundManager.Instance.StopSFX();
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlayBGM(6);
         clearRate = 0f;
