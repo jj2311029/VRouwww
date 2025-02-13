@@ -9,6 +9,10 @@ public class GameOverManager : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.Instance.StopSFX();
+        SoundManager.Instance.StopBGM();
+        SoundManager.Instance.PlaySFX(4);
+
         arrowMark.SetActive(false);
     }
 

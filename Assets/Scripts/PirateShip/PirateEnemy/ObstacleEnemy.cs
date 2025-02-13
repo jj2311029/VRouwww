@@ -19,6 +19,7 @@ public class ObstacleEnemy : BasicEnemy
         {
             Instantiate(obstacle,transform.position,Quaternion.identity);
             StartCoroutine(PlayAnimation());
+            SoundManager.Instance.PlaySFX(4);
             yield return new WaitForSeconds(coolTime);
         }
     }

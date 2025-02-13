@@ -29,8 +29,10 @@ public class CameraMove : MonoBehaviour
 
     // 아래 방향키 감지 관련 변수
     private float downKeyHoldTime = 0f;
-    private float holdDuration = 1f; // 1초 이상 눌러야 효과 적용
+    private float holdDuration = 0.5f; // 0.5초 이상 눌러야 효과 적용
     private bool isLookingDown = false;
+    private Vector3 downLookOffset = new Vector3(0, -10f, 0); // 카메라를 10f 내리는 값
+    private float downLookZoom = 13f;
 
     void Start()
     {
@@ -78,7 +80,7 @@ public class CameraMove : MonoBehaviour
                 // 카메라 줌 설정
                 if (isLookingDown)
                 {
-                    targetZoom = downZoom; // 아래 방향키 누르면 줌인
+                    targetZoom = downLookZoom; // 아래 방향키 누르면 줌인 (13f)
                 }
                 else
                 {
@@ -89,7 +91,8 @@ public class CameraMove : MonoBehaviour
                 cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, Time.deltaTime * zoomSpeed);
 
                 // 카메라 위치 설정
-                Vector3 desiredPosition = target.position + (isLookingDown ? downOffset : offset);
+                Vector3 baseOffset = isLookingDown ? downOffset + downLookOffset : offset;
+                Vector3 desiredPosition = target.position + baseOffset;
                 Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
             }

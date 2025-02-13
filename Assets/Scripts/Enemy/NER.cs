@@ -82,6 +82,7 @@ public class NER : EnemyMove
     private void Attack()
     {
         anim.SetTrigger("isTrigger");
+        SoundManager.Instance.PlaySFX(9);
         Vector3 directionToPlayer = target.transform.position - transform.position;
         directionToPlayer.z = 0f;
 

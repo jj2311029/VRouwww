@@ -1,84 +1,121 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public GameObject dialoguePanel; // 대화창 패널
-    public Text nameText; // 캐릭터 이름 텍스트
-    public Image speakerImage; // 캐릭터 이미지 (UI Image)
-    public Text dialogueText; // 대화 내용 텍스트
+    [SerializeField] GameObject go_DialogueBar;
+    [SerializeField] GameObject go_DialogueNameBar;
 
-    public DialogueData dialogueData; // 대화 데이터
-    private int currentLineIndex = 0; // 현재 대사 인덱스
-    private bool isDialogueActive = false; // 대화 활성화 상태 (private 유지)
+    [SerializeField] Text txt_Dialogue;
+    [SerializeField] Text txt_Name;
+    [SerializeField] Image img_Character; // 추가: 캐릭터 이미지 UI
 
-    public bool IsDialogueActive => isDialogueActive; // isDialogueActive 프로퍼티 추가
+    Dialogue[] dialogues;
 
-    public Transform player; // 플레이어의 Transform (이걸로 거리 체크)
-    public Transform npc; // NPC의 Transform
-    public float dialogueTriggerDistance = 2f; // 대화가 시작될 거리 (기본값 2f)
+    bool isDialogue = false;
+    bool isNext = false;
 
-    void Awake()
-    {
-        dialoguePanel.SetActive(false); // 대화창을 초기에는 비활성화
-    }
+    int lineCount = 0;
+    int contextCount = 0;
 
     void Update()
     {
-        // 플레이어와 NPC 사이의 거리를 계산
-        float distance = Vector3.Distance(player.position, npc.position);
-
-        if (distance <= dialogueTriggerDistance) // 일정 거리 이내에 있을 때만 대화 시작 가능
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            if (Input.GetKeyDown(KeyCode.Space)) // 대화 중 Space 키를 눌렀을 때
+            if (!isDialogue)
             {
-                if (!isDialogueActive)
+                Dialogue testDialogue = new Dialogue();
+                testDialogue.name = "NPC";
+                testDialogue.contexts = new string[]
                 {
-                    // 대화가 시작되지 않았다면 대화 시작
-                    StartDialogue(dialogueData);
+                    "조작법: \n방향키\n검 공격: Z\n총 공격: X\n상호작용: Space",
+                    
+                };
+                testDialogue.characterSprite = null; // 기본값 (이미지 없음)
+
+                ShowDialogue(new Dialogue[] { testDialogue });
+            }
+            else if (isNext)
+            {
+                isNext = false;
+                txt_Dialogue.text = "";
+                if (++contextCount < dialogues[lineCount].contexts.Length)
+                {
+                    StartCoroutine(TypeWriter());
                 }
                 else
                 {
-                    // 대화 중이라면 대사 진행
-                    ShowNextDialogue();
+                    contextCount = 0;
+                    if (++lineCount < dialogues.Length)
+                    {
+                        StartCoroutine(TypeWriter());
+                    }
+                    else
+                    {
+                        EndDialogue();
+                    }
                 }
             }
         }
     }
 
-    // 대화 시작
-    public void StartDialogue(DialogueData newDialogue)
+    public void ShowDialogue(Dialogue[] p_dialogues)
     {
-        dialogueData = newDialogue;
-        dialoguePanel.SetActive(true); // 대화창 활성화
-        isDialogueActive = true;
-        currentLineIndex = 0;
-        ShowNextDialogue(); // 첫 번째 대사 보여주기
-    }
+        isDialogue = true;
+        dialogues = p_dialogues;
+        txt_Dialogue.text = "";
+        txt_Name.text = dialogues[0].name; // 첫 번째 대화의 이름 표시
 
-    // 대사 진행
-    public void ShowNextDialogue()
-    {
-        if (currentLineIndex < dialogueData.lines.Length)
+        // 캐릭터 이미지 표시
+        if (dialogues[0].characterSprite != null)
         {
-            DialogueLine line = dialogueData.lines[currentLineIndex];
-            nameText.text = line.speakerName; // 캐릭터 이름
-            speakerImage.sprite = line.speakerImage; // 캐릭터 이미지
-            dialogueText.text = line.dialogueText; // 대화 내용
-
-            currentLineIndex++; // 다음 대사로 넘어가기
+            img_Character.sprite = dialogues[0].characterSprite;
+            img_Character.gameObject.SetActive(true);
         }
         else
         {
-            EndDialogue(); // 대화가 끝났으면 종료
+            img_Character.gameObject.SetActive(false);
         }
+
+        SettingUI(true); // UI와 텍스트 + 이미지 활성화
+        StartCoroutine(TypeWriter());
     }
 
-    // 대화 종료
-    private void EndDialogue()
+    void EndDialogue()
     {
-        dialoguePanel.SetActive(false); // 대화창 비활성화
-        isDialogueActive = false; // 대화 종료 상태
-        currentLineIndex = 0; // 인덱스 초기화
+        isDialogue = false;
+        contextCount = 0;
+        lineCount = 0;
+        dialogues = null;
+        isNext = false;
+
+        SettingUI(false); // UI와 텍스트 + 이미지 비활성화
+    }
+
+    IEnumerator TypeWriter()
+    {
+        string t_ReplaceText = dialogues[lineCount].contexts[contextCount];
+        t_ReplaceText = t_ReplaceText.Replace("`", ",");
+
+        txt_Dialogue.text = "";
+
+        foreach (char c in t_ReplaceText)
+        {
+            txt_Dialogue.text += c;
+            yield return new WaitForSeconds(0.003f); // 타이핑 효과
+        }
+
+        isNext = true;
+    }
+
+    void SettingUI(bool p_flag)
+    {
+        go_DialogueBar.SetActive(p_flag);
+        go_DialogueNameBar.SetActive(p_flag);
+        txt_Dialogue.gameObject.SetActive(p_flag);
+        txt_Name.gameObject.SetActive(p_flag);
+        img_Character.gameObject.SetActive(p_flag); // 추가: 이미지도 같이 나타나고 사라지게 설정
     }
 }

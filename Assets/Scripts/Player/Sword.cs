@@ -24,14 +24,17 @@ public class Sword : MonoBehaviour
         if (whatSwordAttack == 0)
         {
             firstSword();      // 첫 번째 공격
+            SoundManager.Instance.PlaySFX(5);
         }
         else if (whatSwordAttack == 1)
         {
             secondSword();     // 두 번째 공격
+            SoundManager.Instance.PlaySFX(6);
         }
         else if (whatSwordAttack == 2)
         {
             thirdSword();      // 세 번째 공격
+            SoundManager.Instance.PlaySFX(7);
         }
     }
 

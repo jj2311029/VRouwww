@@ -88,6 +88,7 @@ public class Golam : EnemyMove
         }
 
         anim.SetTrigger("isAttack");
+        SoundManager.Instance.PlaySFX(11);
         Debug.Log("골렘이 플레이어를 공격합니다!");
 
         PlayerHP playerScript = player.GetComponent<PlayerHP>();

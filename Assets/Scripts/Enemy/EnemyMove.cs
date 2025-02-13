@@ -146,17 +146,46 @@ public class EnemyMove : MonoBehaviour
 
         Vector2 targetPos = new Vector2(player.transform.position.x, transform.position.y);
 
-        // 넉백 벡터 계산 (targetPos에서 현재 위치를 빼면 벡터가 나옴)
+        // 넉백 벡터 계산
         Vector2 knockbackDirection = ((Vector2)transform.position - targetPos).normalized;
-        Debug.Log((Vector3)knockbackDirection * knockbackForce);
-        // 넉백을 적용한 새로운 위치로 이동
         transform.position += (Vector3)knockbackDirection * knockbackForce;
+
+        // 피격 시 색상 변화 추가
+        StartCoroutine(FlashRed());
 
         if (Hp <= 0)
         {
             Debug.Log("적이 사망했습니다.");
             StartCoroutine(FadeOutAndDestroy()); // 투명도 감소 후 삭제
         }
+    }
+    private IEnumerator FlashRed()
+    {
+        Color originalColor = render.color;
+        Color hitColor = new Color(1f, 0.2f, 0.2f, originalColor.a); // 빨간색 강조
+
+        float elapsedTime = 0f;
+        float duration = 0.2f; // 색 변환 속도
+
+        // 서서히 빨간색으로 변화
+        while (elapsedTime < duration)
+        {
+            render.color = Color.Lerp(originalColor, hitColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        render.color = hitColor;
+
+        elapsedTime = 0f;
+
+        // 서서히 원래 색으로 복귀
+        while (elapsedTime < duration)
+        {
+            render.color = Color.Lerp(hitColor, originalColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        render.color = originalColor;
     }
 
     // 투명도 낮추면서 적 삭제

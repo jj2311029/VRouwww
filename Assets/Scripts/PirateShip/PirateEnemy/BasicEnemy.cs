@@ -59,6 +59,7 @@ public class BasicEnemy : MonoBehaviour
             SpawnEnemy spawner = GetComponentInParent<SpawnEnemy>();
             spawner.decreaseNumOfEnemies();
             animator.Play("Explode");
+            SoundManager.Instance.PlaySFX(15);
             Invoke("Die", 0.5f);
         }
     }

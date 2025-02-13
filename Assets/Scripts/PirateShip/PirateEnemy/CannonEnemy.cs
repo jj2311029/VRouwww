@@ -22,6 +22,7 @@ public class CannonEnemy : BasicEnemy
     private void CreateAttack()
     {
         GameObject CF = Instantiate(cannonField, transform.position, transform.rotation);
+        SoundManager.Instance.PlaySFX(11);
         Destroy(CF, 5f);
     }
 }

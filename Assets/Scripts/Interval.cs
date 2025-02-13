@@ -10,6 +10,7 @@ public class Interval : MonoBehaviour
     public bool isPlayerInterval = false;
     public bool stageClear = false;
     public bool doorOpen = false;
+    private bool firstEntryTriggered = false;
     public GameObject[] door;
     private float doorMoveTime = 0.3f; // 문이 올라가는 시간
     private float fadeDuration = 1f; // 사라지는 시간
@@ -60,7 +61,15 @@ public class Interval : MonoBehaviour
                     StartCoroutine(FadeOutAndDestroy(d)); // 투명도를 줄이며 서서히 삭제
                 }
             }
+            SoundManager.Instance.StopBGM();
+            Invoke("SlowBGM", 0.3f);
         }
+    }
+    void SlowBGM()
+    {
+        SoundManager.Instance.PlayBGM(2);
+        SoundManager.Instance.PlayBGM(3);
+        SoundManager.Instance.PlayBGM(4);
     }
 
     void DetectEnemies()
@@ -79,9 +88,13 @@ public class Interval : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !firstEntryTriggered) // 첫 번째 플레이어만 실행
         {
+            firstEntryTriggered = true; // 이후 실행 방지
             isPlayerInterval = true;
+
+            SoundManager.Instance.StopBGM();
+            SoundManager.Instance.PlayBGM(1);
         }
     }
 

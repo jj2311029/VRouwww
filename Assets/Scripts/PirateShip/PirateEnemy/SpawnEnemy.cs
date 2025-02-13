@@ -42,7 +42,7 @@ public class SpawnEnemy : MonoBehaviour
             {
                 int num=Random.Range(0, enemyPrefab.Length);
                 
-                Vector2 randomPos = new(screenWidth, Random.Range(-screenHeight, screenHeight));
+                Vector2 randomPos = new(screenWidth, Random.Range(-screenHeight + 1f, screenHeight - 1f));
                 GameObject enemy= Instantiate(enemyPrefab[num], randomPos, Quaternion.identity, this.transform);
                 BasicEnemy enemyScript= enemy.GetComponent<BasicEnemy>();
                 enemyScript.SetBoundary(stopLine);

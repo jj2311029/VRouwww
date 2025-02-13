@@ -94,6 +94,7 @@ public class Bard : EnemyMove
     //버프 부여
     private void Music()
     {
+        SoundManager.Instance.PlaySFX(10);
         StartCoroutine("WaitAttack");
         Debug.Log("연주 시작");
         chargeTime = 0;
