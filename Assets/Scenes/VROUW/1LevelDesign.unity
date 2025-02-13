@@ -2192,7 +2192,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8b601d0dbe59a914c850b8049fd76a82, type: 3}
-    m_FontSize: 10
+    m_FontSize: 8
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -9046,7 +9046,7 @@ PrefabInstance:
       objectReference: {fileID: 723180392}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: currentHP
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: heartPrefab
@@ -10116,8 +10116,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1172928762}
-  - component: {fileID: 1172928761}
   - component: {fileID: 1172928763}
+  - component: {fileID: 1172928764}
   m_Layer: 0
   m_Name: Tong
   m_TagString: Untagged
@@ -10125,26 +10125,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1172928761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172928760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07f339702b7e4de4abc9ad95dce9784f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 1378660586}
-  nameText: {fileID: 926142804}
-  speakerImage: {fileID: 1378660588}
-  dialogueText: {fileID: 282811287}
-  dialogueData: {fileID: 11400000, guid: 8e6bea78276e5ab429bd841774e2f403, type: 2}
-  player: {fileID: 1828717441}
-  npc: {fileID: 1172928762}
-  dialogueTriggerDistance: 2
 --- !u!4 &1172928762
 Transform:
   m_ObjectHideFlags: 0
@@ -10212,6 +10192,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1172928764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172928760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb18fc3f947bf943b2d5e05ba13912c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go_DialogueBar: {fileID: 317145017}
+  go_DialogueNameBar: {fileID: 317145017}
+  txt_Dialogue: {fileID: 282811287}
+  txt_Name: {fileID: 926142804}
+  img_Character: {fileID: 1378660588}
 --- !u!1 &1174413129
 GameObject:
   m_ObjectHideFlags: 0
@@ -12060,7 +12057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1378660587
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14481,7 +14478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 362643384558087454, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 19.8
+      value: 9.37
       objectReference: {fileID: 0}
     - target: {fileID: 6803041955247524725, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_LocalPosition.x
