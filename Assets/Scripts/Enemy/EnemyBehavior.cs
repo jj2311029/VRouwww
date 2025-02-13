@@ -25,6 +25,7 @@ public class EnemyBehavior : MonoBehaviour
     [HideInInspector] public bool inRange;
     protected Animator animator;
     protected float distance;
+    protected bool isSFXPlayed = false;
     protected bool attackMode;
     protected GameObject Ground;
     [HideInInspector] public bool cooling;
@@ -116,6 +117,17 @@ public class EnemyBehavior : MonoBehaviour
         attackMode = true;
         animator.SetBool("Attack", true);
         animator.SetBool("CanWalk", false);
+        if (!isSFXPlayed)
+        {
+            isSFXPlayed = true;
+            SoundManager.Instance.PlaySFX(8);
+            Invoke("SFXReady", 0.5f);
+        }
+    }
+
+    protected void SFXReady()
+    {
+        isSFXPlayed = false;
     }
 
     protected void StopAttack()

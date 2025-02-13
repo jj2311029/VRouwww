@@ -60,15 +60,37 @@ public class EnemyStats : MonoBehaviour
 
         CheckHp();
     }
-    
+
     virtual protected void CheckHp()
     {
         if (curHp <= 0)
         {
             isDie = true;
+
             gameObject.GetComponent<EnemyBehavior>().StopCor();
             this.StopAllCoroutines();
-            Destroy(this.gameObject, 1f);
+
+            StartCoroutine(FadeOutAndDestroy()); // 추가: 서서히 사라지도록 함
+
+            Destroy(this.gameObject, 0.5f); // 기존 코드 유지
+        }
+    }
+    private IEnumerator FadeOutAndDestroy()
+    {
+        float fadeDuration = 0.5f; // 투명화 속도 (기존 삭제 타이밍과 동일하게 설정)
+        float elapsedTime = 0f;
+        SpriteRenderer render = GetComponent<SpriteRenderer>();
+
+        if (render == null) yield break; // 예외 처리: 렌더러가 없으면 중단
+
+        Color originalColor = render.color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+            render.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
         }
     }
     protected void Update()

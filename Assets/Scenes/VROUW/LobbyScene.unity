@@ -234,7 +234,34 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1bbd0afebf13aad438f57031a31e45a5, type: 3}
   - {fileID: 8300000, guid: 211d92a3eb24f7440808328196510de4, type: 3}
   - {fileID: 8300000, guid: d34375b9c64e2c34a8ce665746f1b0a9, type: 3}
-  ef_music: []
+  - {fileID: 8300000, guid: ff2a041a80736cf44a3e786b727c00ee, type: 3}
+  - {fileID: 8300000, guid: bbe7f58b13aab6344af857a0f5309d7f, type: 3}
+  - {fileID: 8300000, guid: a794dd6880131584e81c7f3e68d597eb, type: 3}
+  - {fileID: 8300000, guid: f4ffe7f0e746d8b4e90a39d936258b61, type: 3}
+  ef_music:
+  - {fileID: 8300000, guid: 43b40e3a6ea49924291b2ef1d9a70392, type: 3}
+  - {fileID: 8300000, guid: 7ece6d12a2695cb4394e7bb77a9ce7e6, type: 3}
+  - {fileID: 8300000, guid: 1b3e94bb123421947a4a8d177bea9a8b, type: 3}
+  - {fileID: 8300000, guid: ddf803166ac075e47b96400db69117fa, type: 3}
+  - {fileID: 8300000, guid: 052c4d798ade7e74cb37557c71248e46, type: 3}
+  - {fileID: 8300000, guid: 68d73ae22c9471c4395bc612bea93f01, type: 3}
+  - {fileID: 8300000, guid: b721cb22dad4a44468251f20b18842a3, type: 3}
+  - {fileID: 8300000, guid: bfe20dba93251564a96c554b69775113, type: 3}
+  - {fileID: 8300000, guid: 6eeb35bdde8bc594aa44be8998f8a4ed, type: 3}
+  - {fileID: 8300000, guid: bfbded41413dbe84f969ffaf69a4f1fe, type: 3}
+  - {fileID: 8300000, guid: 54642659580384b45bc0e4b542adcbea, type: 3}
+  - {fileID: 8300000, guid: 15f4c6195c6d1c542ab4fe3e832d945a, type: 3}
+  - {fileID: 8300000, guid: c531c0e18b6ba1545a625858a15bd13b, type: 3}
+  - {fileID: 8300000, guid: dd2bb2c0e0934984eb9686b7e10642dc, type: 3}
+  - {fileID: 8300000, guid: ab2037ba8aeb14246a9959552ef6bd00, type: 3}
+  - {fileID: 8300000, guid: 1c48bf48ef1f37b4588af37eaf8ca16c, type: 3}
+  - {fileID: 8300000, guid: ebfd0f6b7713cf049903cb5fb38c383b, type: 3}
+  - {fileID: 8300000, guid: ab843bab421891b40898787de922c819, type: 3}
+  - {fileID: 8300000, guid: dae04225a42ace943b33e5fff0903dec, type: 3}
+  - {fileID: 8300000, guid: 600b1dbe170d5e24c9888ab726fdfe30, type: 3}
+  - {fileID: 8300000, guid: 1eebe05269f349b43b009c645ac15c31, type: 3}
+  - {fileID: 8300000, guid: 1babcd8f29f4df241869c7d737b7bcb6, type: 3}
+  - {fileID: 8300000, guid: 5021c5ef503c9434eb1b752a5652466a, type: 3}
   bkSlider: {fileID: 1014560128}
   efSlider: {fileID: 1967559821}
   defaultBGMIndex: 0
@@ -4207,7 +4234,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.224
+  m_Value: 0.471
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

@@ -53,7 +53,6 @@ public class SoundManager : MonoBehaviour
     {
         if (index >= 0 && index < bk_music.Count)
         {
-            bk_source.Stop();
             bk_source.clip = bk_music[index];
             bk_source.Play();
         }
@@ -74,6 +73,14 @@ public class SoundManager : MonoBehaviour
         {
             Debug.LogError($"[SoundManager] SFX Index {index} is out of range!");
         }
+    }
+    public void StopBGM()
+    {
+        bk_source.Stop();  // BGM 정지
+    }
+    public void StopSFX()
+    {
+        ef_source.Stop();  // BGM 정지
     }
 
     // BGM 볼륨 조절 (슬라이더 연동)
