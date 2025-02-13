@@ -386,6 +386,7 @@ MonoBehaviour:
   damage: 1
   knockbackForce: 1
   rigid: {fileID: 0}
+  weapon: {fileID: 8694904680161818953}
 --- !u!212 &2031916307501010739
 SpriteRenderer:
   m_ObjectHideFlags: 0
