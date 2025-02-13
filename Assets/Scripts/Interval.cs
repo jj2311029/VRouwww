@@ -62,10 +62,14 @@ public class Interval : MonoBehaviour
                 }
             }
             SoundManager.Instance.StopBGM();
-            SoundManager.Instance.PlayBGM(2);
-            SoundManager.Instance.PlayBGM(3);
-            SoundManager.Instance.PlayBGM(4);
+            Invoke("SlowBGM", 0.3f);
         }
+    }
+    void SlowBGM()
+    {
+        SoundManager.Instance.PlayBGM(2);
+        SoundManager.Instance.PlayBGM(3);
+        SoundManager.Instance.PlayBGM(4);
     }
 
     void DetectEnemies()

@@ -12,6 +12,8 @@ public class SpawnManager : MonoBehaviour
     {
         player.transform.position = points[SaveLoad.currentSelectedSlot].transform.position;
         SoundManager.Instance.StopBGM();
+        SoundManager.Instance.StopSFX();
+
         SoundManager.Instance.PlayBGM(2);
         SoundManager.Instance.PlayBGM(3);
         SoundManager.Instance.PlayBGM(4);

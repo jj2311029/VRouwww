@@ -7,8 +7,8 @@ public class PlayerHP : MonoBehaviour
 {
     public GameObject heartPrefab;  // 하트 프리팹
     public GameObject diePanel; // 사망 패널
-    public int maxHP = 5;  // 최대 체력
-    public int currentHP = 5;  // 현재 체력
+    public int maxHP = 30;  // 최대 체력
+    public int currentHP = 30;  // 현재 체력
     public List<GameObject> heartObjects = new List<GameObject>();  // 하트 GameObject 리스트
 
     private bool isInvincible = false;  // 무적 상태 여부
@@ -49,7 +49,7 @@ public class PlayerHP : MonoBehaviour
         Vector2 knockbackDirection = ((Vector2)transform.position - targetpos).normalized;
 
         // 넉백 강도 설정 (값을 조정하여 넉백의 강도를 결정)
-        float knockbackStrength = 5f;
+        float knockbackStrength = 10f;
 
         // 현재 Rigidbody2D의 velocity에 반대 방향으로 넉백 적용
         rb.velocity = knockbackDirection * knockbackStrength;
@@ -107,11 +107,42 @@ public class PlayerHP : MonoBehaviour
         SceneManager.LoadScene("Gameover");
     }
 
-    // 무적 상태 코루틴
+    // 무적 상태 코루틴 (서서히 빨개졌다가 원래 색으로 복귀)
     private IEnumerator InvincibilityCoroutine()
     {
-        isInvincible = true;  // 무적 상태 시작
-        yield return new WaitForSeconds(invincibilityDuration);  // 지정된 시간 동안 대기
-        isInvincible = false;  // 무적 상태 종료
+        isInvincible = true;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null)
+        {
+            Color originalColor = spriteRenderer.color; // 원래 색상 저장
+            Color targetColor = new Color(1f, 0.2f, 0.2f, originalColor.a); // 빨간색 (R값 강조)
+
+            float elapsedTime = 0f;
+            float duration = invincibilityDuration / 3f; // 색 변환 속도 조절
+
+            // 서서히 빨간색으로 변화
+            while (elapsedTime < duration)
+            {
+                spriteRenderer.color = Color.Lerp(originalColor, targetColor, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            spriteRenderer.color = targetColor; // 최종 빨간색 적용
+
+            elapsedTime = 0f;
+
+            // 서서히 원래 색으로 복귀
+            while (elapsedTime < duration)
+            {
+                spriteRenderer.color = Color.Lerp(targetColor, originalColor, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            spriteRenderer.color = originalColor; // 최종 원래 색상 복귀
+        }
+
+        yield return new WaitForSeconds(invincibilityDuration / 3f); // 남은 무적 시간 유지
+        isInvincible = false;
     }
 }
