@@ -63,7 +63,7 @@ public class PlayerHP : MonoBehaviour
     }
 
     // 하트 상태 업데이트
-    void UpdateHearts()
+    public void UpdateHearts()
     {
         for (int i = 0; i < heartObjects.Count; i++)
         {

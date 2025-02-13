@@ -165,7 +165,6 @@ public class PlayerMove : MonoBehaviour
             joint.enabled = false;
             //rb.velocity+=new Vector2(rb.velocity.x, rb.velocity.y);
             rb.velocity += rb.velocity.normalized * rb.velocity.magnitude * 1.5f;//1.5f를 곱해서 더 멀리 보내기
-
         }
 
         if (Input.GetKeyDown(KeySetting.Keys[KeyAction.PARRYING]) && !isparrying) //패링
@@ -193,6 +192,7 @@ public class PlayerMove : MonoBehaviour
         isDashing = true;
         dashTime = Time.time + dashDuration;
         lastDashTime = Time.time;
+        anim.SetBool("IsDash", true);
 
         // 대시 방향 결정 (입력 방향 기준)
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -220,6 +220,7 @@ public class PlayerMove : MonoBehaviour
         isDashing = false;
         rb.velocity -= new Vector2(dashDirection.x * dashSpeed * 3f, 0); // 대시 끝날 때 속도 줄이기
         rb.gravityScale = originalGravityScale; // 원래 중력 스케일로 복귀
+        anim.SetBool("IsDash", false);
         IgnoreEnemyCollision(false); // Enemy 충돌 복귀
     }
 
