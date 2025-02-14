@@ -134,6 +134,10 @@ public class BossPatern2 : MonoBehaviour
     private IEnumerator MoveLeg(GameObject legAttack, Vector3 startPos, Vector3 targetPos)
     {
         bool isMovingForward = true;
+
+        //È¿°úÀ½
+        SoundManager.Instance.PlaySFX(24);
+
         yield return new WaitForSeconds(2f);
         while (legAttack != null)
         {

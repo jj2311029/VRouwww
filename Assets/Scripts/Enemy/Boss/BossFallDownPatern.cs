@@ -34,6 +34,10 @@ public class BossFallDownPatern : MonoBehaviour
     public void Attack()
     {
         anim.SetBool("IsFalldown", true);
+
+        //È¿°úÀ½
+        SoundManager.Instance.PlaySFX(20);
+
     }
 
 }

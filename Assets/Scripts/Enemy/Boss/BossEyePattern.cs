@@ -12,6 +12,8 @@ public class BossEyePattern : MonoBehaviour
         int num = Random.Range(0,eyeSpawnPoint.Count);
         Vector2 spawnPoint = eyeSpawnPoint[num];
 
+        //각성 효과음
+        SoundManager.Instance.PlaySFX(22);
 
         GameObject eye=Instantiate(eyePrefab,spawnPoint,Quaternion.identity,bossScript.transform);
         eye.tag = "Boss";

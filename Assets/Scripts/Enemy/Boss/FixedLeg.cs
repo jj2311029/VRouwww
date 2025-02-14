@@ -56,6 +56,10 @@ public class FixedLeg : MonoBehaviour
     protected void Attack()
     {
         anim.SetBool("IsAttack",true);
+
+        //공격 효과음
+        SoundManager.Instance.PlaySFX(19);
+
         anim.SetBool("IsIdle", false);
         Debug.Log("Attack");
     }
@@ -104,14 +108,80 @@ public class FixedLeg : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         Hp -= damage;
+        Debug.Log("고정다리가 데미지를 받음. 현재 HP: " + Hp);
 
-        Debug.Log("적이 데미지를 받음. 현재 HP: " + Hp);
+        // 피격 시 빨간색 효과 추가
+        StartCoroutine(InvincibilityEffectCoroutine());
+
         if (Hp <= 0)
         {
             Debug.Log("고정다리 사망.");
+            SoundManager.Instance.PlaySFX(20); // 사망 효과음 재생
             boss.DieLeg(this);
-            Destroy(this.gameObject);
+            StartCoroutine(FadeOutAndDestroy()); // 투명도 감소 후 제거
         }
+    }
+
+    // 피격 시 빨간색으로 변하고 원래 색으로 돌아오는 코루틴 추가
+    private IEnumerator InvincibilityEffectCoroutine()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        if (sr == null)
+            yield break;
+
+        Color originalColor = sr.color;
+        Color hitColor = new Color(1f, 0.2f, 0.2f, originalColor.a); // 빨간색 강조
+
+        float elapsedTime = 0f;
+        float duration = 0.2f; // 색상 변경 지속 시간
+
+        // 서서히 빨간색으로 변화
+        while (elapsedTime < duration)
+        {
+            sr.color = Color.Lerp(originalColor, hitColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        sr.color = hitColor; // 최종 빨간색 적용
+
+        elapsedTime = 0f;
+
+        // 서서히 원래 색으로 복귀
+        while (elapsedTime < duration)
+        {
+            sr.color = Color.Lerp(hitColor, originalColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        sr.color = originalColor; // 최종 원래 색 복귀
+    }
+
+    // 사망 시 서서히 투명해지면서 삭제되는 코루틴 (기존 코드 유지)
+    private IEnumerator FadeOutAndDestroy()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        if (sr == null)
+        {
+            Destroy(gameObject);
+            yield break;
+        }
+
+        float fadeDuration = 1.5f;
+        float elapsedTime = 0f;
+        Color originalColor = sr.color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(originalColor.a, 0f, elapsedTime / fadeDuration);
+            sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+        Destroy(gameObject);
     }
     public bool GetIsAttack()
     {

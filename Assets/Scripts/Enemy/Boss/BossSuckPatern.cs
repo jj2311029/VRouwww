@@ -21,6 +21,10 @@ public class BossSuckPatern : MonoBehaviour
     IEnumerator Suck()
     {
         isSuck = true;
+
+        //È¿°úÀ½
+        SoundManager.Instance.PlaySFX(21);
+
         Range.enabled = true;
         DieArea.enabled = true;
         yield return new WaitForSeconds(suckTime);
