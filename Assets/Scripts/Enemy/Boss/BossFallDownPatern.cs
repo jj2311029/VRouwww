@@ -7,6 +7,11 @@ public class BossFallDownPatern : MonoBehaviour
     public GameObject leftLegCollider;
     public GameObject rightLegCollider;
     public Animator anim;
+    private void Start()
+    {
+        leftLegCollider.SetActive(false);
+        rightLegCollider.SetActive(false);
+    }
     public void TriggerActiveCollider()
     {
         leftLegCollider.SetActive(true);

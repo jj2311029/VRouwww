@@ -122,7 +122,6 @@ public class BossPatern2 : MonoBehaviour
         // 목표 위치 설정 (왕복 공격)
         Vector3 startPos = legAttack.transform.position;
         Vector3 targetPos = new Vector3(selectedPosition.x + 20f * direction, selectedPosition.y, startPos.z);
-        Debug.Log(targetPos);
         // 경고 지역 생성
         GameObject dangerByLeg = Instantiate(dangerArea, new Vector3(selectedPosition.x + 20f * direction, selectedPosition.y , startPos.z), transform.rotation);
         

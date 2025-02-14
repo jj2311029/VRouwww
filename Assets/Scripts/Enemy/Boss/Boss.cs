@@ -30,16 +30,17 @@ public class Boss : MonoBehaviour
 
     [Header("Fixed Leg")]
     [SerializeField] private GameObject FixedLegPrefab;
-    [SerializeField] private GameObject fixedLeg1;
-    [SerializeField] private GameObject fixedLeg2;
-    [SerializeField] private FixedLeg fLeg1;
-    [SerializeField] private FixedLeg fLeg2;//--------------------------------------------------------------------------고정다리 스크립트
+    private GameObject fixedLeg1;
+    private GameObject fixedLeg2;
+    private FixedLeg fLeg1;
+    private FixedLeg fLeg2;//--------------------------------------------------------------------------고정다리 스크립트
     [SerializeField] List<Vector2> leftFixedLegSpawnPoint;
     [SerializeField] List<Vector2> RightFixedLegSpawnPoint;
 
 
-    [Header("Eye Patern")]
+    [Header("Arousal Patern")]
     [SerializeField] private BossEyePattern eyeAttack;
+    [SerializeField] private ThunderEffect thunderEffect;
 
     [Header("FallDown Patern")]
     [SerializeField] private BossFallDownPatern fallDownAttack;
@@ -53,6 +54,8 @@ public class Boss : MonoBehaviour
         legAttack = patern2.GetComponent<BossPatern2>();
         InstantiateFixedLeg();
         if (anim != null) GetComponent<Animator>();
+        canAttack = false;
+        CanAttack();
     }
     //공격 명령
     private void Update()
@@ -74,18 +77,16 @@ public class Boss : MonoBehaviour
     //패턴 고르기
     private void Patern()
     {
-        page = 2;
-        //Random.Range(1, 5);
         if(page==1)
         {
             attackPatern = Random.Range(1, 4);//1~3까지 포함
             switch (attackPatern)
             {
-                case 1://고정다리 패턴인데 
-                case 2://일반 다리 패턴//case1과 2일 때 일반 다리 패턴이 나가게 설정 했습니다.
+                case 1:
+                case 2:
                     legAttack.Attack();
                     break;
-                case 3://편의상 5번째 내려치기 패턴을 3번으로 지정
+                case 3:
                     fallDownAttack.Attack();
                     break;
                 default:
@@ -111,7 +112,9 @@ public class Boss : MonoBehaviour
                         break;
                         
                     case 1:
+                        anim.SetBool("IsSuck", true);
                         suckAttack.SuckAttack();
+                        anim.SetBool("IsSuck", false);
                         break;
 
                     case 2:
@@ -130,13 +133,6 @@ public class Boss : MonoBehaviour
     //피격
     public virtual void TakeDamage(float damage)
     {
-        /*if (page == 2)//공격 받는 경우 1. 그로기 상태일 때 2. 2페이즈일 때 플레이어의 공격이 collider와 겹쳤을 때
-            //bossHead에 collider를 박아놓고 그로기 상태 또는 2페이즈 일때 setActive를 해서 하게 설정
-        {
-            hp -= damage;
-            if (hp <= 0)
-                Destroy(this.gameObject);
-        }*/
         hp -= damage;
         if (hp <= 60 && page == 1) 
         {
@@ -167,12 +163,12 @@ public class Boss : MonoBehaviour
         isGroggy = true;
         headCollider.enabled = true;
         Debug.LogError("Start Groggy");
-
+        anim.SetBool("IsGroggy",true);
         yield return new WaitForSeconds(groggyTime);
-
         headCollider.enabled = false;
         canAttack = true;
         isGroggy = false;
+        anim.SetBool("IsGroggy", false);
         Debug.LogError("End Groggy");
         if (hp >= 70) 
         {
@@ -197,9 +193,17 @@ public class Boss : MonoBehaviour
     public IEnumerator ReinforceAttack()
     {
         Debug.Log("보스 공격 강화");
+
         float prevAtkSpeed = attackSpeed;
+
+        anim.SetBool("IsArousal", true);
+        thunderEffect.TriggerThunderOn();
         attackSpeed = 2f;
+
         yield return new WaitForSeconds(prevAtkSpeed);
+
+        anim.SetBool("IsArousal",false);
+        thunderEffect.TriggerThunderOff();
         attackSpeed = prevAtkSpeed;
     }
 
