@@ -39,7 +39,6 @@ public class BucklerStats : EnemyStats
         // 넉백을 적용한 새로운 위치로 이동
         transform.position += (Vector3)knockbackDirection * knockbackForce;
 
-
         CheckHp();
     }
 }
