@@ -263,7 +263,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1babcd8f29f4df241869c7d737b7bcb6, type: 3}
   - {fileID: 8300000, guid: ecf0347aa122ee643b18c794f38bfd44, type: 3}
   - {fileID: 8300000, guid: 5021c5ef503c9434eb1b752a5652466a, type: 3}
-  - {fileID: 8300000, guid: 5021c5ef503c9434eb1b752a5652466a, type: 3}
+  - {fileID: 8300000, guid: e464a3ad34d81d740a5bc4bacada6385, type: 3}
   bkSlider: {fileID: 1014560128}
   efSlider: {fileID: 1967559821}
   defaultBGMIndex: 0
