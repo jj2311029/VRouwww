@@ -37,23 +37,7 @@ public class BossPatern2 : MonoBehaviour
     };
     public List<Vector2> legsPosition;
     
-    void Update()
-    {
-        //여기서 보스의 명령을 받을 예정 Update에서는 나가고
-        if (Input.GetKey(KeyCode.A) && gidare)
-        {
-            Debug.Log("공격");
-            moveCount = 0;
-            StartCoroutine("Wait");
-            Attack();
-        }
-    }
-    private IEnumerator Wait()
-    {
-        gidare = false;
-        yield return new WaitForSeconds(1f); // 대기 시간
-        gidare = true;
-    }
+    
     public void Attack()
     {
         /*Debug.Log("패턴2");
@@ -102,7 +86,6 @@ public class BossPatern2 : MonoBehaviour
             Destroy(dangerByLeg, 2f);
         }*///전 코드
 
-        Debug.Log("패턴2");
 
         // 리스트에서 랜덤한 위치 선택
         int index = Random.Range(0, legsPosition.Count);

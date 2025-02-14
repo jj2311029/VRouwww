@@ -8,11 +8,11 @@ public class Boss : MonoBehaviour
 {
 
     [SerializeField] protected float hp = 100;
-    [SerializeField] protected float attackSpeed = 3f;
+    [SerializeField] protected float attackSpeed = 8f;
 
     protected int page = 1;
     private int attackPatern = 0;
-    private bool canAttack = true;
+    public bool canAttack = false;
     private int attackStack = 0;
     bool eyeattack = false;
     public Animator anim; 
@@ -30,10 +30,10 @@ public class Boss : MonoBehaviour
 
     [Header("Fixed Leg")]
     [SerializeField] private GameObject FixedLegPrefab;
-    private GameObject fixedLeg1;
-    private GameObject fixedLeg2;
-    private FixedLeg fLeg1;
-    private FixedLeg fLeg2;//--------------------------------------------------------------------------고정다리 스크립트
+    [SerializeField] private GameObject fixedLeg1;
+    [SerializeField] private GameObject fixedLeg2;
+    [SerializeField] private FixedLeg fLeg1;
+    [SerializeField] private FixedLeg fLeg2;//--------------------------------------------------------------------------고정다리 스크립트
     [SerializeField] List<Vector2> leftFixedLegSpawnPoint;
     [SerializeField] List<Vector2> RightFixedLegSpawnPoint;
 
@@ -41,6 +41,7 @@ public class Boss : MonoBehaviour
     [Header("Arousal Patern")]
     [SerializeField] private BossEyePattern eyeAttack;
     [SerializeField] private ThunderEffect thunderEffect;
+    [SerializeField] private Animator ArousalScreenEffect;
 
     [Header("FallDown Patern")]
     [SerializeField] private BossFallDownPatern fallDownAttack;
@@ -54,7 +55,6 @@ public class Boss : MonoBehaviour
         legAttack = patern2.GetComponent<BossPatern2>();
         InstantiateFixedLeg();
         if (anim != null) GetComponent<Animator>();
-        canAttack = false;
         CanAttack();
     }
     //공격 명령
@@ -68,7 +68,6 @@ public class Boss : MonoBehaviour
         //두 다리 모두 Hp가 0보다 작을 경우 그로기 상태
         if (fLeg1== null && fLeg2== null && page == 1&&isGroggy==false) //-------------------------------------------------------------------
         {
-            Debug.Log("Groggy");
             StartCoroutine(Groggy());
         }
 
@@ -80,13 +79,16 @@ public class Boss : MonoBehaviour
         if(page==1)
         {
             attackPatern = Random.Range(1, 4);//1~3까지 포함
+            
             switch (attackPatern)
             {
                 case 1:
                 case 2:
                     legAttack.Attack();
+                    Debug.Log("legAttack");
                     break;
                 case 3:
+                    Debug.Log("fallDownAttack");
                     fallDownAttack.Attack();
                     break;
                 default:
@@ -106,18 +108,20 @@ public class Boss : MonoBehaviour
                 {
                     case 0:
                         //각성 패턴
-                        eyeattack = true;
                         eyeAttack.SpawnEye(this.gameObject);
+                        Debug.Log("ArousalAttack");
                         StartCoroutine(ReinforceAttack());
                         break;
                         
                     case 1:
+                        Debug.Log("SuckAttack");
                         anim.SetBool("IsSuck", true);
                         suckAttack.SuckAttack();
-                        anim.SetBool("IsSuck", false);
+                        
                         break;
 
                     case 2:
+                        Debug.Log("FalldownAttack");
                         fallDownAttack.Attack();
                         break;
                 }
@@ -138,17 +142,18 @@ public class Boss : MonoBehaviour
         {
             Debug.Log("Page 2");
             headCollider.enabled = true;
+            attackSpeed = 5f;
             page = 2;
         }
         if (hp <= 0)
         {
             Debug.Log("Boss die");
-
+            anim.SetBool("Die",true);
 
             //효과음
             SoundManager.Instance.PlaySFX(23);
 
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,1f);
 
         }
            
@@ -160,6 +165,10 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(attackSpeed);
         canAttack = true;
     }
+    void TriggerSuckFalse()
+    {
+        anim.SetBool("IsSuck", false);
+    }
 
     public IEnumerator Groggy()//각 고정 다리가 사라졌을 경우 이거 실행됨// 고정다리 부분에서 이거 실행시켜야됨
     {
@@ -167,17 +176,19 @@ public class Boss : MonoBehaviour
         canAttack = false;
         isGroggy = true;
         headCollider.enabled = true;
-        Debug.LogError("Start Groggy");
         anim.SetBool("IsGroggy",true);
         yield return new WaitForSeconds(groggyTime);
         headCollider.enabled = false;
         canAttack = true;
         isGroggy = false;
         anim.SetBool("IsGroggy", false);
-        Debug.LogError("End Groggy");
-        if (hp >= 70) 
+        if (hp >= 60) 
         {
             InstantiateFixedLeg();
+        }
+        else
+        {
+            headCollider.enabled = true;
         }
     }
 
@@ -185,7 +196,6 @@ public class Boss : MonoBehaviour
     {
         int randomNum1 = Random.Range(0, leftFixedLegSpawnPoint.Count);
         int randomNum2 = Random.Range(0, RightFixedLegSpawnPoint.Count);
-        Debug.Log(randomNum1 + " " + randomNum2);
         fixedLeg1 = Instantiate(FixedLegPrefab, leftFixedLegSpawnPoint[randomNum1], Quaternion.identity);
         fixedLeg2 = Instantiate(FixedLegPrefab, RightFixedLegSpawnPoint[randomNum2], Quaternion.identity);
 
@@ -194,22 +204,22 @@ public class Boss : MonoBehaviour
         fLeg1.SetParent(this);
         fLeg2.SetParent(this);
     }
+    
 
     public IEnumerator ReinforceAttack()
     {
-        Debug.Log("보스 공격 강화");
-
-        float prevAtkSpeed = attackSpeed;
-
+        eyeattack = true;
         anim.SetBool("IsArousal", true);
+        ArousalScreenEffect.SetBool("ArousalEffect", true);
         thunderEffect.TriggerThunderOn();
         attackSpeed = 2f;
-
-        yield return new WaitForSeconds(prevAtkSpeed);
-
+        
+        yield return new WaitForSeconds(6f);
+        eyeattack = false;
+        
         anim.SetBool("IsArousal",false);
         thunderEffect.TriggerThunderOff();
-        attackSpeed = prevAtkSpeed;
+        attackSpeed = 8f;
     }
 
     public float GetAtkSpeed()
@@ -224,15 +234,13 @@ public class Boss : MonoBehaviour
     {
         if(fLeg1==fixedLeg)
         {
-            fLeg1=null;
+            fLeg1 =null;
             fixedLeg1=null;
-            Debug.Log("leg1 die");
         }
         else
         {
-            fLeg2=null;
+            fLeg2 =null;
             fixedLeg2=null;
-            Debug.Log("leg2 die");
         }
     }
 }

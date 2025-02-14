@@ -45,9 +45,9 @@ public class SwordStrike : MonoBehaviour
         }
         if (collision.tag == "Boss")
         {
-            EnemyMove EA = collision.GetComponent<EnemyMove>();
-            EA.TakeDamage(2);
-
+            //EnemyMove EA = collision.GetComponent<EnemyMove>();
+            //EA.TakeDamage(2);
+            Debug.Log("tag");
             Boss bossScript = collision.GetComponent<Boss>();
             if (bossScript != null)
             {

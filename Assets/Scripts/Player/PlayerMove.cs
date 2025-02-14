@@ -537,7 +537,7 @@ public class PlayerMove : MonoBehaviour
             OnDamaged(targetPos);
 
             // PlayerHP에 TakeDamage 호출
-            playerHP.TakeDamage(1, targetPos); // 충돌 후 플레이어 체력 감소
+            
         }
     }
 
