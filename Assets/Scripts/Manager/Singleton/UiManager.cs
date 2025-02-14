@@ -29,14 +29,17 @@ public class UiManager : Singleton<UiManager>
             if (soundPanel.activeSelf)
             {
                 CloseSoundPanel();
+                SoundManager.Instance.PlaySFX(0);
             }
             else if (keyPanel.activeSelf) 
             {
                 CloseKeyPanel();
+                SoundManager.Instance.PlaySFX(0);
             }
             else if(beforeMainPanel.activeSelf)
             {
                 CloseBeforeMainPanel();
+                SoundManager.Instance.PlaySFX(0);
             }
             else
             {
@@ -70,24 +73,29 @@ public class UiManager : Singleton<UiManager>
     public void OpenKeyPanel()
     {
         keyPanel.SetActive(true);
+        SoundManager.Instance.PlaySFX(0);
     }
     public void CloseKeyPanel()
     {
         keyPanel.SetActive(false);
+        SoundManager.Instance.PlaySFX(0);
     }
 
     public void OpenBeforeMainPanel()
     {
         beforeMainPanel.SetActive(true);
+        SoundManager.Instance.PlaySFX(0);
     }
     public void CloseBeforeMainPanel()
     {
         beforeMainPanel.SetActive(false);
+        SoundManager.Instance.PlaySFX(0);
     }
 
     public void ContinueGame()
     {
         settingPanel.SetActive(false);
+        SoundManager.Instance.PlaySFX(0);
         Pause = false;
         Time.timeScale = 1;
     }
@@ -95,15 +103,18 @@ public class UiManager : Singleton<UiManager>
     public void OpenSoundPanel()
     {
         soundPanel.SetActive(true);
+        SoundManager.Instance.PlaySFX(0);
     }
     public void CloseSoundPanel()
     {
         soundPanel.SetActive(false);
+        SoundManager.Instance.PlaySFX(0);
     }
     
     
     public void MainMenu()
     {
+        SoundManager.Instance.PlaySFX(0);
         CloseBeforeMainPanel();
         CloseSetting();
         SceneManager.LoadScene("LobbyScene");

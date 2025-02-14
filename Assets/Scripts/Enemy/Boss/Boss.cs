@@ -143,6 +143,11 @@ public class Boss : MonoBehaviour
         if (hp <= 0)
         {
             Debug.Log("Boss die");
+
+
+            //È¿°úÀ½
+            SoundManager.Instance.PlaySFX(23);
+
             Destroy(this.gameObject);
 
         }

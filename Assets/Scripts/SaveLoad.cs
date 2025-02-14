@@ -143,7 +143,7 @@ public class SaveLoad : MonoBehaviour
     }
     void ToBoss()
     {
-        SceneManager.LoadScene("BossMap");
+        SceneManager.LoadScene("BossScene");
     }
 
     public void GoBack()
