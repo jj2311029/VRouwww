@@ -8,6 +8,11 @@ public class BossSuckPatern : MonoBehaviour
     [SerializeField] CircleCollider2D Range;
     [SerializeField] CircleCollider2D DieArea;
     bool isSuck = false;
+    private void Start()
+    {
+        Range.enabled=false;
+        DieArea.enabled=false;
+    }
     public void SuckAttack()
     {
         StartCoroutine(Suck());
@@ -17,8 +22,10 @@ public class BossSuckPatern : MonoBehaviour
     {
         isSuck = true;
         Range.enabled = true;
+        DieArea.enabled = true;
         yield return new WaitForSeconds(suckTime);
         Range.enabled = false;
+        DieArea.enabled=false;
         isSuck = false;
     }
     private void OnTriggerStay2D(Collider2D collision)

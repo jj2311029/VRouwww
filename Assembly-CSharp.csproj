@@ -113,6 +113,7 @@
     <Compile Include="Assets\Scripts\Enemy\ShortRange.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBehavior.cs" />
     <Compile Include="Assets\Scripts\Player\Rope.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\ThunderEffect.cs" />
     <Compile Include="Assets\Scripts\PirateShip\OakBarrel.cs" />
     <Compile Include="Assets\Scripts\Enemy\HotZoneCheck.cs" />
     <Compile Include="Assets\Scripts\PirateShip\PirateEnemy\SpawnEnemy.cs" />
