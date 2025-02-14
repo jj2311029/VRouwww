@@ -14,12 +14,14 @@ public class PlayerHP : MonoBehaviour
     private bool isInvincible = false;  // 무적 상태 여부
     public float invincibilityDuration = 1f;  // 무적 상태 지속 시간
     public Rigidbody2D rb;
+    public PlayerMove pm;
 
     void Start()
     {
         CreateHearts();  // 게임 시작 시 하트 객체 생성
         UpdateHearts();  // 초기 하트 이미지 업데이트
         rb=gameObject.GetComponent<Rigidbody2D>();
+        if (pm==null) pm=gameObject.GetComponent<PlayerMove>();
     }
 
     // 하트 프리팹을 이용해 하트 객체 생성
@@ -37,6 +39,7 @@ public class PlayerHP : MonoBehaviour
     {
         // 무적 상태일 경우 데미지 무효화
         if (isInvincible) return;
+        if (pm.GetParrying()) StartCoroutine(pm.ParryingSuccess());
         currentHP -= damage;
         if (currentHP <= 0)
         {

@@ -51,14 +51,29 @@ public class SwordStrike : MonoBehaviour
             Boss bossScript = collision.GetComponent<Boss>();
             if (bossScript != null)
             {
-                bossScript.TakeDamage(2);
+                if(pm.GetSuccessParrying())
+                {
+                    bossScript.TakeDamage(3);
+                }
+                else
+                {
+                    bossScript.TakeDamage(2);
+                }
+                
             }
             else
             {
                 bossScript=collision.gameObject.GetComponentInParent<Boss>();
                 if (bossScript != null)
                 {
-                    bossScript.TakeDamage(2);
+                    if (pm.GetSuccessParrying())
+                    {
+                        bossScript.TakeDamage(3);
+                    }
+                    else
+                    {
+                        bossScript.TakeDamage(2);
+                    }
                 }
                 else Debug.Log("NullRefference of bossScript");
             }
