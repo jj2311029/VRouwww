@@ -12,7 +12,19 @@ public class LegAttackCollider : MonoBehaviour
             if (playerScript != null)
             {
                 playerScript.TakeDamage(1, transform.position);
-                Debug.Log("Player  Damaged: 1");
+                Debug.Log("Leg Attack");
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            PlayerHP playerScript = collision.gameObject.GetComponent<PlayerHP>();
+            if (playerScript != null)
+            {
+                playerScript.TakeDamage(1, transform.position);
+                Debug.Log("Leg Attack");
             }
         }
     }

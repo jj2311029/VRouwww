@@ -16,8 +16,9 @@ public class FixedLegAttackCollider : MonoBehaviour
             PlayerHP playerScript = collision.gameObject.GetComponent<PlayerHP>();
             if (playerScript != null )
             {
+                Debug.Log("Fixed Leg Hand");
                 playerScript.TakeDamage(1, transform.position); // float을 int로 변환
-                Debug.Log("Player  Damaged: 1" );
+                fixedLeg.SetAttacked();
             }
         }
     }

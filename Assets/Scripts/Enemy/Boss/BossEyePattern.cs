@@ -11,6 +11,7 @@ public class BossEyePattern : MonoBehaviour
     {
         int num = Random.Range(0,eyeSpawnPoint.Count);
         Vector2 spawnPoint = eyeSpawnPoint[num];
+        Debug.Log("EYE PAtern");
 
         //각성 효과음
         SoundManager.Instance.PlaySFX(22);

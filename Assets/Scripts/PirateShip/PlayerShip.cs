@@ -114,7 +114,6 @@ public class PlayerShip : MonoBehaviour
     [SerializeField] float cannonSpeed = 15f;
     private Quaternion originalRotation;
     private float maxY = 3f;
-    private float maxRotationAngle = 15f;
     private bool Wait = true;
 
     Vector2 currentPos;

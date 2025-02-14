@@ -23,6 +23,7 @@ public class FixedLeg : MonoBehaviour
     [Header("Hp")]
     [SerializeField] protected int Hp = 3;
     //[SerializeField] protected float knockbackForce = 10f;   // 넉백 힘
+    bool isAlive=true;
 
     [Header("About Player")]
     [SerializeField] protected Transform player;//플레이어 위치
@@ -45,11 +46,11 @@ public class FixedLeg : MonoBehaviour
         attackCooldown += Time.deltaTime;
         if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCooldown > attackDelay&&isAttack==false) 
         {
-            for (int i = 0;i<10;i++)
-                Debug.Log("Attack");
-            Attack();
+            isAttack = true;
             attackCooldown = 0f;
-            isAttack =true;
+            
+            Attack();
+            
         }
         Turn();
     }
@@ -61,7 +62,6 @@ public class FixedLeg : MonoBehaviour
         SoundManager.Instance.PlaySFX(19);
 
         anim.SetBool("IsIdle", false);
-        Debug.Log("Attack");
     }
     public void TriggerAttackFinish()
     {
@@ -69,7 +69,6 @@ public class FixedLeg : MonoBehaviour
         anim.SetBool("IsIdle", true);
         isAttack = false;
         attackCooldown = 0f;
-        Debug.Log("FinshAttack");
     }
     protected void Turn()
     {
@@ -99,7 +98,6 @@ public class FixedLeg : MonoBehaviour
             if (playerScript != null )
             {
                 playerScript.TakeDamage(1, transform.position); // float을 int로 변환
-                Debug.Log("Enemy hit Player  Damage: 1" );
             }
         }
     }
@@ -107,15 +105,16 @@ public class FixedLeg : MonoBehaviour
     // 데미지 처리 및 사망
     public virtual void TakeDamage(int damage)
     {
+        if(isAlive == false) {return; }
         Hp -= damage;
-        Debug.Log("고정다리가 데미지를 받음. 현재 HP: " + Hp);
 
         // 피격 시 빨간색 효과 추가
         StartCoroutine(InvincibilityEffectCoroutine());
 
         if (Hp <= 0)
         {
-            Debug.Log("고정다리 사망.");
+            isAlive = false ;
+
             SoundManager.Instance.PlaySFX(20); // 사망 효과음 재생
             boss.DieLeg(this);
             StartCoroutine(FadeOutAndDestroy()); // 투명도 감소 후 제거
@@ -186,6 +185,10 @@ public class FixedLeg : MonoBehaviour
     public bool GetIsAttack()
     {
         return isAttack;
+    }
+    public void SetAttacked()
+    {
+        isAttack=false;
     }
     public void SetParent(Boss bs)
     {

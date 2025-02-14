@@ -29,6 +29,7 @@ public class BossFallDownPatern : MonoBehaviour
         {
             PlayerHP PH = collision.GetComponent<PlayerHP>();
             PH.TakeDamage(1, transform.position);
+            Debug.Log("Fall Down Hit!");
         }
     }
     public void Attack()
