@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VROUW/SaveLoad.unity
     guid: 943a5c30294159849baa98d89a6683c7
+  - enabled: 1
+    path: Assets/Scenes/VROUW/BossMap.unity
+    guid: dddd52f721eb6b24d8c5da25aac45d95
   m_configObjects: {}

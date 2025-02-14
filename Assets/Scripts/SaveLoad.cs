@@ -8,6 +8,7 @@ public class SaveLoad : MonoBehaviour
 {
     public static int savePointIndex = 10; // 세이브 포인트 수치 (게임플레이에서 증가)
     public static int currentSelectedSlot;
+    public GameObject diePanel;
     public GameObject[] slotPrefab;
     public GameObject currentSlot;
     public Transform SaveSlotCanvas;
@@ -98,26 +99,63 @@ public class SaveLoad : MonoBehaviour
         {
             currentSelectedSlot = slotIndex;
             Debug.Log($"Slot {slotIndex} 선택됨. 세이브 데이터를 로드합니다.");
-            SceneManager.LoadScene("1LevelDesign");
         }
         else
         {
             Debug.Log("이 슬롯은 아직 잠겨 있습니다.");
         }
         currentSelectedSlot = slotIndex;
+        DiePanel panelScript = diePanel.GetComponent<DiePanel>();
+        if (panelScript != null)
+        {
+            panelScript.Bravo6(); // 애니메이션 실행
+        }
+        Invoke("ToLevel", 1f);
+    }
+
+    void ToLevel()
+    {
+        SceneManager.LoadScene("1LevelDesign");
     }
 
     public void PriateCalls()
+    {
+        DiePanel panelScript = diePanel.GetComponent<DiePanel>();
+        if (panelScript != null)
+        {
+            panelScript.Bravo6(); // 애니메이션 실행
+        }
+        Invoke("ToPirate", 1f);
+    }
+    void ToPirate()
     {
         SceneManager.LoadScene("PirateShip");
     }
 
     public void BossMab()
     {
-        SceneManager.LoadScene("");
+        DiePanel panelScript = diePanel.GetComponent<DiePanel>();
+        if (panelScript != null)
+        {
+            panelScript.Bravo6(); // 애니메이션 실행
+        }
+        Invoke("ToBoss", 1f);
+    }
+    void ToBoss()
+    {
+        SceneManager.LoadScene("BossMap");
     }
 
     public void GoBack()
+    {
+        DiePanel panelScript = diePanel.GetComponent<DiePanel>();
+        if (panelScript != null)
+        {
+            panelScript.Bravo6(); // 애니메이션 실행
+        }
+        Invoke("ToLobby", 1f);
+    }
+    void ToLobby()
     {
         SceneManager.LoadScene("LobbyScene");
     }
