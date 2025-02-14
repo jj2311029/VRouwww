@@ -42,10 +42,9 @@ public class PlayerMove : MonoBehaviour
 
     [Header("패링 관련 변수")]
     bool isparrying = false;                          // 패링 중인지 여부
-    private float parryingCoolTime = 0.5f;            // 패링 쿨타임
+    private float parryingCoolTime = 1.5f;            // 패링 쿨타임
     bool successParrying = false;                     // 패링 성공 여부
     float DamageUpTime = 1f;                         // 패링 성공 후 데미지 증가 시간
-    public GameObject shield;                         // 방패 오브젝트
 
     [Header("동료스킬 관련 변수")]
     private bool isSkillOnCooldown = false;
@@ -313,12 +312,12 @@ public class PlayerMove : MonoBehaviour
     IEnumerator Parrying()
     {
         isparrying = true;
+        Debug.Log("tryParrying");
         //패링 지속 중인지 확인하고 PlayerHp에 TakeDamage 스크립트가 있는지 확인
         //isparrying이 false가 되면 1.5초 후 다시 확인
-        shield.SetActive(true);
         yield return new WaitForSeconds(parryingCoolTime);
-        shield.SetActive(false);
         isparrying = false;
+        Debug.Log("EndParrying");
     }
     public bool GetParrying()
     {
@@ -332,7 +331,6 @@ public class PlayerMove : MonoBehaviour
     {
         Debug.Log("패링 성공");
         successParrying = true;
-        shield.SetActive(false);
         isparrying = false;
         //animator.SetBool("IsParrying",false);
         yield return new WaitForSeconds(DamageUpTime);
