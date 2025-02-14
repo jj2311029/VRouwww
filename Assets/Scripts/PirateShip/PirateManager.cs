@@ -24,6 +24,10 @@ public class PirateManager : MonoBehaviour
     [SerializeField] private GameObject player;
     private SpriteRenderer playerSprite;
 
+    [Header("SpawnManager")]
+    [SerializeField] public SpawnEnemy spawnEnemy;
+    [SerializeField] public SpawnObject spawnObject;
+
     private void Awake()
     {
         SoundManager.Instance.StopSFX();
@@ -32,6 +36,8 @@ public class PirateManager : MonoBehaviour
         clearRate = 0f;
         heart = 5;
         ratePerFrame = targetRate / targetTime;
+        if (spawnEnemy == null) spawnEnemy =FindObjectOfType<SpawnEnemy>();
+        if (spawnObject == null) spawnObject = FindObjectOfType<SpawnObject>();
     }
     private void Start()
     {
@@ -42,6 +48,10 @@ public class PirateManager : MonoBehaviour
         {
             playerSprite = player.GetComponent<SpriteRenderer>();
         }
+        else
+        {
+            Debug.LogError("Player is Null");
+        }
     }
 
     void FixedUpdate()
@@ -49,6 +59,8 @@ public class PirateManager : MonoBehaviour
         if (clearRate >= targetRate)
         {
             Debug.Log("clear");
+            spawnObject.StopSpawn();
+            spawnEnemy.StopSpawn();
             // SceneManager.LoadScene("BossScene");
         }
         else
