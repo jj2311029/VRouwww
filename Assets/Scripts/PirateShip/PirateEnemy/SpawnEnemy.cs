@@ -15,6 +15,8 @@ public class SpawnEnemy : MonoBehaviour
     float screenHeight;
     float screenWidth;
 
+    bool stopSpawn=false;
+
     
     void Awake()
     {
@@ -36,7 +38,7 @@ public class SpawnEnemy : MonoBehaviour
 
     protected IEnumerator Spawn()
     {
-        while (true)
+        while (stopSpawn==false )
         {
             if(enemyNum<enemyLimit)
             {
@@ -56,5 +58,8 @@ public class SpawnEnemy : MonoBehaviour
         }
     }
 
-
+    public void StopSpawn()
+    {
+        stopSpawn = true;
+    }
 }
