@@ -4350,11 +4350,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4234300000427111664, guid: a9fe0772ac12ca842a4ab8eac7232dfa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 505.98
+      value: 504.2
       objectReference: {fileID: 0}
     - target: {fileID: 4234300000427111664, guid: a9fe0772ac12ca842a4ab8eac7232dfa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.37
+      value: 6.78
       objectReference: {fileID: 0}
     - target: {fileID: 4234300000427111664, guid: a9fe0772ac12ca842a4ab8eac7232dfa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9332,7 +9332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: maxHP
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: diePanel
@@ -9340,12 +9340,12 @@ PrefabInstance:
       objectReference: {fileID: 723180392}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: currentHP
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: heartPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1388952044}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: heartObjects.Array.data[0]
       value: 

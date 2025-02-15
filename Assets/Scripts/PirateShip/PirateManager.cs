@@ -63,22 +63,41 @@ public class PirateManager : MonoBehaviour
             Debug.Log("clear");
             spawnObject.StopSpawn();
             spawnEnemy.StopSpawn();
-            DiePanel panelScript = diePanel.GetComponent<DiePanel>();
-            if (panelScript != null)
-            {
-                panelScript.Bravo6(); // 애니메이션 실행
-            }
-            Invoke("ToSave", 1f);
+            Invoke("Curtain", 8f);
         }
         else
         {
             clearRate += ratePerFrame * Time.deltaTime;
         }
     }
+    void Curtain()
+    {
+        if (diePanel != null)
+        {
+            Debug.Log("diePanel 활성화됨");
+            DiePanel panelScript = diePanel.GetComponent<DiePanel>();
+            if (panelScript != null)
+            {
+                Debug.Log("Bravo6() 실행");
+                panelScript.Bravo6(); // 애니메이션 실행
+            }
+            else
+            {
+                Debug.LogWarning("diePanel에 DiePanel 스크립트 없음!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("diePanel이 null임!");
+        }
+
+        Invoke("ToSave", 2f);
+    }
+
     void ToSave()
     {
         SaveLoad.savePointIndex = 10;
-        SceneManager.LoadScene("BossScene");
+        SceneManager.LoadScene("SaveLoad");
     }
 
     public void ReStart()
