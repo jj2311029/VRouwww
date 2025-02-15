@@ -67,8 +67,7 @@ public class Interval : MonoBehaviour
     }
     void SlowBGM()
     {
-        SoundManager.Instance.PlayBGM(2);
-        SoundManager.Instance.PlayBGM(3);
+        SoundManager.Instance.bk_source.clip = SoundManager.Instance.bk_music[4];
         SoundManager.Instance.PlayBGM(4);
     }
 
@@ -94,6 +93,7 @@ public class Interval : MonoBehaviour
             isPlayerInterval = true;
 
             SoundManager.Instance.StopBGM();
+            SoundManager.Instance.bk_source.clip = SoundManager.Instance.bk_music[1];
             SoundManager.Instance.PlayBGM(1);
         }
     }

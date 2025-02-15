@@ -238,6 +238,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bbe7f58b13aab6344af857a0f5309d7f, type: 3}
   - {fileID: 8300000, guid: a794dd6880131584e81c7f3e68d597eb, type: 3}
   - {fileID: 8300000, guid: f4ffe7f0e746d8b4e90a39d936258b61, type: 3}
+  - {fileID: 8300000, guid: 42871c01922a94d45810cebe652fd926, type: 3}
   ef_music:
   - {fileID: 8300000, guid: 43b40e3a6ea49924291b2ef1d9a70392, type: 3}
   - {fileID: 8300000, guid: 7ece6d12a2695cb4394e7bb77a9ce7e6, type: 3}

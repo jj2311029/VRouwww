@@ -11,8 +11,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource ef_source; // 효과음 오디오 소스
 
     [Header("Audio Clips")]
-    [SerializeField] private List<AudioClip> bk_music; // BGM 리스트
-    [SerializeField] private List<AudioClip> ef_music; // 효과음 리스트
+    [SerializeField] public List<AudioClip> bk_music; // BGM 리스트
+    [SerializeField] public List<AudioClip> ef_music; // 효과음 리스트
 
     [Header("Volume Controls")]
     public Slider bkSlider;
