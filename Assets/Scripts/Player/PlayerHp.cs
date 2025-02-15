@@ -38,6 +38,7 @@ public class PlayerHP : MonoBehaviour
     // 체력 감소 처리
     public void TakeDamage(int damage, Vector2 targetpos)
     {
+        Debug.Log("맞음");
         // 무적 상태일 경우 데미지 무효화
         if (isInvincible) return;
         if (pm.GetParrying())
