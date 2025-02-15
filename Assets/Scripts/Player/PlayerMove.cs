@@ -333,6 +333,7 @@ public class PlayerMove : MonoBehaviour
     {
         Debug.Log("패링 성공");
         SoundManager.Instance.PlaySFX(16);
+        anim.SetTrigger("IsAttack1");
         successParrying = true;
         Parry parry = this.GetComponent<Parry>();
         parry.ParrySuccess();

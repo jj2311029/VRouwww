@@ -14,6 +14,7 @@ public class BossCamera : MonoBehaviour
     void Start()
     {
         SoundManager.Instance.StopBGM();
+        SoundManager.Instance.PlayBGM(9);
         SoundManager.Instance.PlaySFX(17);
         Camera.main.orthographicSize = zoomSize; // 기본 줌 설정
         initialPosition = transform.position; // 초기 위치 저장
