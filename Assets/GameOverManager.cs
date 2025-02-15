@@ -18,8 +18,19 @@ public class GameOverManager : MonoBehaviour
 
     public void Redo()
     {
-        SaveLoad.currentSelectedSlot = SavePoint.diePoint - 1;
-        SceneManager.LoadScene("1LevelDesign");
+        if (SaveLoad.currentSelectedSlot >= 8)
+        {
+            SaveLoad.currentSelectedSlot = SavePoint.diePoint - 1;
+            SceneManager.LoadScene("1LevelDesign");
+        }
+        else if (SaveLoad.currentSelectedSlot == 9)
+        {
+            SceneManager.LoadScene("PirateShip");
+        }
+        else
+        {
+            SceneManager.LoadScene("BossScene");
+        }
     }
 
     public void ArrowMark()

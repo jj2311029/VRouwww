@@ -4,27 +4,37 @@ using UnityEngine;
 
 public class Parry : MonoBehaviour
 {
-    public GameObject player;  // 플레이어 오브젝트
     public GameObject parring; // 패링 이펙트 오브젝트 (필요 시 사용)
-
+    private bool whereParry;
     private Animator anim;
 
     private void Start()
     {
-        anim = player.GetComponent<Animator>();  // 플레이어의 Animator 컴포넌트 가져오기
+        anim = parring.GetComponent<Animator>();  // 플레이어의 Animator 컴포넌트 가져오기
     }
 
     void Update()
     {
-        // 패링 성공 시 애니메이션 실행
-        if (Input.GetKeyDown(KeyCode.P)) // 예시: P 키를 누르면 패링 실행
+        if (Input.GetKey(KeySetting.Keys[KeyAction.LEFT])) // 왼쪽 이동
         {
-            ParrySuccess();
+            whereParry = true;
+        }
+        else if (Input.GetKey(KeySetting.Keys[KeyAction.RIGHT])) // 오른쪽 이동
+        {
+            whereParry = false;
         }
     }
 
-    void ParrySuccess()
+    public void ParrySuccess()
     {
-        anim.SetTrigger("Parry"); // "Parry" 애니메이션 실행
+        Debug.Log("패링애니");
+        if (whereParry)
+        {
+            anim.SetTrigger("Parry2"); // "Parry" 애니메이션 실행
+        }
+        else
+        {
+            anim.SetTrigger("Parry"); // "Parry" 애니메이션 실행
+        }
     }
 }

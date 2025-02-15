@@ -43,8 +43,9 @@ public class PlayerMove : MonoBehaviour
     [Header("패링 관련 변수")]
     bool isparrying = false;                          // 패링 중인지 여부
     private float parryingCoolTime = 1.5f;            // 패링 쿨타임
-    bool successParrying = false;                     // 패링 성공 여부
+    public bool successParrying = false;                     // 패링 성공 여부
     float DamageUpTime = 1f;                         // 패링 성공 후 데미지 증가 시간
+    private Parry parry;
 
     [Header("동료스킬 관련 변수")]
     private bool isSkillOnCooldown = false;
@@ -75,6 +76,7 @@ public class PlayerMove : MonoBehaviour
         originalGravityScale = rb.gravityScale;
         anim = GetComponent<Animator>();
         skillObject.gameObject.SetActive(false);
+        parry = this.GetComponent<Parry>();
     }
 
     // Update is called once per frame
@@ -330,7 +332,10 @@ public class PlayerMove : MonoBehaviour
     public IEnumerator ParryingSuccess()
     {
         Debug.Log("패링 성공");
+        SoundManager.Instance.PlaySFX(16);
         successParrying = true;
+        Parry parry = this.GetComponent<Parry>();
+        parry.ParrySuccess();
         isparrying = false;
         //animator.SetBool("IsParrying",false);
         yield return new WaitForSeconds(DamageUpTime);

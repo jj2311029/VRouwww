@@ -39,7 +39,11 @@ public class PlayerHP : MonoBehaviour
     {
         // 무적 상태일 경우 데미지 무효화
         if (isInvincible) return;
-        if (pm.GetParrying()) StartCoroutine(pm.ParryingSuccess());
+        if (pm.GetParrying())
+        {
+            StartCoroutine(pm.ParryingSuccess());
+            return;
+        }
         currentHP -= damage;
         if (currentHP <= 0)
         {
@@ -50,7 +54,7 @@ public class PlayerHP : MonoBehaviour
         Vector2 knockbackDirection = ((Vector2)transform.position - targetpos).normalized;
 
         // 넉백 강도 설정 (값을 조정하여 넉백의 강도를 결정)
-        float knockbackStrength = 10f;
+        float knockbackStrength = 7f;
 
         // 현재 Rigidbody2D의 velocity에 반대 방향으로 넉백 적용
         rb.velocity += knockbackDirection * knockbackStrength;
