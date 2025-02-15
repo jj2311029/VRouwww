@@ -45,6 +45,7 @@ public class PlayerHP : MonoBehaviour
             StartCoroutine(pm.ParryingSuccess());
             return;
         }
+        return;
         currentHP -= damage;
         if (currentHP <= 0)
         {

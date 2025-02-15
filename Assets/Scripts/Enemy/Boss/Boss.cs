@@ -71,6 +71,10 @@ public class Boss : MonoBehaviour
         {
             StartCoroutine(Groggy());
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            TakeDamage(39);
+        }
 
 
     }
@@ -151,12 +155,12 @@ public class Boss : MonoBehaviour
         if (hp <= 0)
         {
             Debug.Log("Boss die");
-            anim.SetBool("Die",true);
+            anim.SetBool("IsDie",true);
 
             //È¿°úÀ½
             SoundManager.Instance.PlaySFX(23);
 
-            Destroy(this.gameObject,1f);
+            Destroy(this.gameObject,5f);
 
         }
            
@@ -276,7 +280,7 @@ public class Boss : MonoBehaviour
                 yield return null;
             }
 
-            spriteRenderer.color = originalColor;
+            spriteRenderer.color = Color.white;
         }
     }
 

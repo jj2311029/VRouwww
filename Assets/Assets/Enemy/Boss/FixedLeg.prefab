@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8078275364589108956}
   - component: {fileID: 2146877840968279177}
   - component: {fileID: 2432760886680654937}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FixedLeg
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -52,6 +52,7 @@ MonoBehaviour:
   rigid: {fileID: 8450170769561496103}
   render: {fileID: 2432760886680654937}
   boxCollider: {fileID: 8078275364589108956}
+  boss: {fileID: 0}
   attackCooldown: 0
   attackDelay: 1.5
   attackRange: 5
@@ -117,10 +118,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.4409032, y: 4.147134}
+  m_Offset: {x: 0.29, y: 4.147134}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.35, y: 0}
     oldSize: {x: 13, y: 10.7}
     newSize: {x: 13, y: 10.7}
     adaptiveTilingThreshold: 0.5
@@ -215,7 +216,7 @@ GameObject:
   - component: {fileID: 5276001901518369578}
   - component: {fileID: 1715615342142217678}
   - component: {fileID: 6221511593179219671}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +297,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.32, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
 --- !u!114 &6221511593179219671
