@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
-
+    [SerializeField] private Slider hpSlider;
     [SerializeField] protected float hp = 100;
     [SerializeField] protected float attackSpeed = 8f;
 
@@ -49,6 +50,14 @@ public class Boss : MonoBehaviour
     [Header("Suck Patern")]
     [SerializeField] private BossSuckPatern suckAttack;
 
+    private void Start()
+    {
+        if (hpSlider != null)
+        {
+            hpSlider.maxValue = hp; // HP 바의 최대값 설정
+            hpSlider.value = hp; // HP 초기값 설정
+        }
+    }
 
     private void Awake()
     {
@@ -145,6 +154,8 @@ public class Boss : MonoBehaviour
         hp -= damage;
         StartCoroutine(HitEffect());
 
+        UpdateHPUI();
+
         if (hp <= 60 && page == 1) 
         {
             Debug.Log("Page 2");
@@ -165,6 +176,15 @@ public class Boss : MonoBehaviour
         }
            
     }
+
+    private void UpdateHPUI()
+    {
+        if (hpSlider != null)
+        {
+            hpSlider.value = hp;
+        }
+    }
+
     //공격 텀
     private IEnumerator CanAttack()
     {
