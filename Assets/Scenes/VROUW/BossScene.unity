@@ -903,6 +903,7 @@ MonoBehaviour:
   leftLegCollider: {fileID: 840881427}
   rightLegCollider: {fileID: 168709192}
   anim: {fileID: 244155324}
+  Warning: {fileID: 2880187716999136333, guid: e84ff597221b4534d8d3c92c1cd81f26, type: 3}
 --- !u!1 &297343810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,8 +1195,8 @@ Transform:
   m_GameObject: {fileID: 316702083}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.32, y: -2.18, z: -0.1175611}
-  m_LocalScale: {x: 1.67, y: 1.67, z: 1.67}
+  m_LocalPosition: {x: -0.32, y: 0.62, z: -0.1175611}
+  m_LocalScale: {x: 2.9420888, y: 2.9420888, z: 2.9420888}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1074063856}
@@ -1949,23 +1950,23 @@ PrefabInstance:
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: heartObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1534442538}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: heartObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 667345980}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: heartObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1608224412}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: heartObjects.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 890855037}
     - target: {fileID: 5682298890612709860, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: heartObjects.Array.data[4]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2073099261}
     - target: {fileID: 7106786486230819619, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: m_Mass
       value: 6.744851
