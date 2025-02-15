@@ -21,7 +21,7 @@ public class Boss : MonoBehaviour
 
     private float groggyTime = 10f;
     bool isGroggy=false;
-
+    SpriteRenderer spriteRenderer;
 
     [Header("Leg Patern")]
     public GameObject patern2;//Leg Patern
@@ -52,6 +52,7 @@ public class Boss : MonoBehaviour
 
     private void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         legAttack = patern2.GetComponent<BossPatern2>();
         InstantiateFixedLeg();
         if (anim != null) GetComponent<Animator>();
@@ -138,6 +139,8 @@ public class Boss : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         hp -= damage;
+        StartCoroutine(HitEffect());
+
         if (hp <= 60 && page == 1) 
         {
             Debug.Log("Page 2");
@@ -243,4 +246,38 @@ public class Boss : MonoBehaviour
             fixedLeg2=null;
         }
     }
+
+    private IEnumerator HitEffect()
+    {
+        if (spriteRenderer != null)
+        {
+            Color originalColor = spriteRenderer.color;
+            Color hitColor = new Color(1f, 0.2f, 0.2f, originalColor.a);
+
+            float duration = 0.2f;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                spriteRenderer.color = Color.Lerp(originalColor, hitColor, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            spriteRenderer.color = hitColor;
+
+            yield return new WaitForSeconds(0.1f);
+
+            elapsedTime = 0f;
+            while (elapsedTime < duration)
+            {
+                spriteRenderer.color = Color.Lerp(hitColor, originalColor, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            spriteRenderer.color = originalColor;
+        }
+    }
+
 }

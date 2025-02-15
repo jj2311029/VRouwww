@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,18 +16,15 @@ public class GameOverManager : MonoBehaviour
 
     public void Redo()
     {
-        if (SaveLoad.currentSelectedSlot >= 8)
+        SaveLoad.currentSelectedSlot = SavePoint.diePoint - 1;
+        // 저장된 씬으로 복귀
+        if (!string.IsNullOrEmpty(PlayerHP.lastSceneName))
         {
-            SaveLoad.currentSelectedSlot = SavePoint.diePoint - 1;
-            SceneManager.LoadScene("1LevelDesign");
-        }
-        else if (SaveLoad.currentSelectedSlot == 9)
-        {
-            SceneManager.LoadScene("PirateShip");
+            SceneManager.LoadScene(PlayerHP.lastSceneName);
         }
         else
         {
-            SceneManager.LoadScene("BossScene");
+            SceneManager.LoadScene("LobbyScene"); // 기본값
         }
     }
 
@@ -37,6 +32,7 @@ public class GameOverManager : MonoBehaviour
     {
         arrowMark.SetActive(true);
     }
+
     public void NoArrowMark()
     {
         arrowMark.SetActive(false);

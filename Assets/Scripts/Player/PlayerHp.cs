@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHP : MonoBehaviour
 {
+    public static string lastSceneName = "";
     public GameObject heartPrefab;  // 하트 프리팹
     public GameObject diePanel; // 사망 패널
     public int maxHP = 30;  // 최대 체력
@@ -85,7 +86,7 @@ public class PlayerHP : MonoBehaviour
     public void Die()
     {
         Debug.Log("플레이어 사망");
-
+        lastSceneName = SceneManager.GetActiveScene().name;
         if (diePanel != null)
         {
             DiePanel panelScript = diePanel.GetComponent<DiePanel>();

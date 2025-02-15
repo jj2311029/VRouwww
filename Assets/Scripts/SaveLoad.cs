@@ -35,7 +35,7 @@ public class SaveLoad : MonoBehaviour
         {
             slotPrefab[i].SetActive(false);
         }
-
+        SoundManager.Instance.StopBGM();
         currentSlot.SetActive(false);
         StartCoroutine(ShowSaveSlotsWithFade());
     }
