@@ -80,7 +80,7 @@ public class Boss : MonoBehaviour
         if(page==1)
         {
             attackPatern = Random.Range(1, 4);//1~3까지 포함
-            attackPatern = 3;
+            
             switch (attackPatern)
             {
                 case 1:
