@@ -7,6 +7,7 @@ public class BossFallDownPatern : MonoBehaviour
     public GameObject leftLegCollider;
     public GameObject rightLegCollider;
     public Animator anim;
+    public GameObject Warning;
     private void Start()
     {
         leftLegCollider.SetActive(false);
@@ -34,11 +35,19 @@ public class BossFallDownPatern : MonoBehaviour
     }
     public void Attack()
     {
+        StartCoroutine(WaitAttack());
+    }
+
+    IEnumerator WaitAttack()
+    {
+        GameObject warningObject= Instantiate(Warning, transform.position, Quaternion.identity);
+        Destroy(warningObject, 1f);
+        yield return new WaitForSeconds(1f);
+
         anim.SetBool("IsFalldown", true);
 
         //È¿°úÀ½
         SoundManager.Instance.PlaySFX(20);
 
     }
-
 }

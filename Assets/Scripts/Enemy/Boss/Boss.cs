@@ -80,7 +80,7 @@ public class Boss : MonoBehaviour
         if(page==1)
         {
             attackPatern = Random.Range(1, 4);//1~3까지 포함
-            
+            attackPatern = 3;
             switch (attackPatern)
             {
                 case 1:
@@ -104,7 +104,7 @@ public class Boss : MonoBehaviour
                 attackPatern = Random.Range(0, 3);//0~2까지 포함
                 attackStack = 0;
                 if (eyeattack) attackPatern = 2;//각성 패턴 중에는 내려치기와 기본공격만 실행
-
+                
                 switch(attackPatern)
                 {
                     case 0:
