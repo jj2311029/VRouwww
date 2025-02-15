@@ -1829,11 +1829,11 @@ PrefabInstance:
       objectReference: {fileID: 1700330728}
     - target: {fileID: 3473205432887327854, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: curHealth
-      value: 5
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 3473205432887327854, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 3473205432887327854, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: ropeForce
