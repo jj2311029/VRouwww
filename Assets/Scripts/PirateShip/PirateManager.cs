@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PirateManager : MonoBehaviour
 {
+    public GameObject diePanel;
+
     [Header("Hearts")]
     [SerializeField] public GameObject heart1;
     [SerializeField] public GameObject heart2;
@@ -16,7 +18,7 @@ public class PirateManager : MonoBehaviour
 
     [Header("ClearRate")]
     [SerializeField] float clearRate = 0f;
-    [SerializeField] private float targetTime = 10f;
+    [SerializeField] private float targetTime = 60f;
     private float ratePerFrame;
     private float targetRate = 100f;
 
@@ -61,12 +63,22 @@ public class PirateManager : MonoBehaviour
             Debug.Log("clear");
             spawnObject.StopSpawn();
             spawnEnemy.StopSpawn();
-            // SceneManager.LoadScene("BossScene");
+            DiePanel panelScript = diePanel.GetComponent<DiePanel>();
+            if (panelScript != null)
+            {
+                panelScript.Bravo6(); // 애니메이션 실행
+            }
+            Invoke("ToSave", 1f);
         }
         else
         {
             clearRate += ratePerFrame * Time.deltaTime;
         }
+    }
+    void ToSave()
+    {
+        SaveLoad.savePointIndex = 10;
+        SceneManager.LoadScene("BossScene");
     }
 
     public void ReStart()
