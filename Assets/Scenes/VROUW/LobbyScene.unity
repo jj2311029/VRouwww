@@ -260,7 +260,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dae04225a42ace943b33e5fff0903dec, type: 3}
   - {fileID: 8300000, guid: 600b1dbe170d5e24c9888ab726fdfe30, type: 3}
   - {fileID: 8300000, guid: 1eebe05269f349b43b009c645ac15c31, type: 3}
-  - {fileID: 8300000, guid: 1babcd8f29f4df241869c7d737b7bcb6, type: 3}
+  - {fileID: 8300000, guid: 1b96a34ba2367294887913682dc909d1, type: 3}
   - {fileID: 8300000, guid: ecf0347aa122ee643b18c794f38bfd44, type: 3}
   - {fileID: 8300000, guid: 5021c5ef503c9434eb1b752a5652466a, type: 3}
   - {fileID: 8300000, guid: e464a3ad34d81d740a5bc4bacada6385, type: 3}
@@ -6308,7 +6308,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &1602804895
 GameObject:

@@ -34,15 +34,19 @@ public class BossSuckPatern : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Rigidbody2D playerRb = collision.GetComponent<Rigidbody2D>();
-        if (playerRb != null&&isSuck)
+        if(collision.CompareTag("Player"))
         {
-            // 공격 중심과 플레이어 위치
-            Vector2 direction = (transform.position - collision.transform.position).normalized;
+            Rigidbody2D playerRb = collision.GetComponent<Rigidbody2D>();
+            if (playerRb != null && isSuck)
+            {
+                // 공격 중심과 플레이어 위치
+                Vector2 direction = (transform.position - collision.transform.position).normalized;
 
-            // 힘 적용
-            playerRb.velocity += (direction * pullForce * Time.deltaTime);
+                // 힘 적용
+                playerRb.velocity += (direction * pullForce * Time.deltaTime);
+            }
         }
+        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
