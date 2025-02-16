@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
+    public GameObject diePanel;
+
     [SerializeField] private Slider hpSlider;
     [SerializeField] protected float hp = 100;
     [SerializeField] protected float attackSpeed = 8f;
@@ -172,7 +174,11 @@ public class Boss : MonoBehaviour
             SoundManager.Instance.PlaySFX(23);
 
             Destroy(this.gameObject,5f);
-
+            DiePanel panelScript = diePanel.GetComponent<DiePanel>();
+            if (panelScript != null)
+            {
+                panelScript.Bravo6(); // 애니메이션 실행
+            }
         }
            
     }
