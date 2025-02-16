@@ -1270,6 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165ee5ffd90d01468bf5d0756fb6ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diePanel: {fileID: 299642725}
   hpSlider: {fileID: 455793877}
   hp: 100
   attackSpeed: 8
@@ -2496,7 +2497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6803041955247524725, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.784
+      value: 3.0040002
       objectReference: {fileID: 0}
     - target: {fileID: 6803041955247524725, guid: 0060a53806c8a9e4e9228d9d3f3af590, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2746,7 +2747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5834050173330951443, guid: 7c9e27297f3a5e54290e088b7767254b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.67
+      value: -5.45
       objectReference: {fileID: 0}
     - target: {fileID: 5958903423074803485, guid: 7c9e27297f3a5e54290e088b7767254b, type: 3}
       propertyPath: m_LocalScale.x
