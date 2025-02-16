@@ -9195,6 +9195,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 738086093}
     - target: {fileID: 3473205432887327854, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
+      propertyPath: curHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473205432887327854, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
+      propertyPath: maxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473205432887327854, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: ropeForce
       value: 100
       objectReference: {fileID: 0}
@@ -9221,6 +9229,10 @@ PrefabInstance:
     - target: {fileID: 3473205432887327854, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: skillUIImage
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473205432887327854, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
+      propertyPath: successParrying
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3473205432887327854, guid: 6de36547bfa79854db11cf4e2f0603a6, type: 3}
       propertyPath: skillUIContainer
